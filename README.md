@@ -8,21 +8,21 @@ What helps instead is dimming noisy boilerplate and highlight few important mome
 
 ## Important
 
-- **Bold brown ![](swatches/A4472D.svg)**: breaking control flow, `return`, `break`, `continue`. Non-breaking control flow shouldn't be highlighted, but currently we can't: `if`, `match`, `loop`, `for`, `.await`, `?`
-- **Bold black ![](swatches/080808.svg)**: all declarations
-- Brown ![](swatches/A4472D.svg): macros, as they might hide control flow: `bail!`, `ensure!`, `todo!`, and `?` inside
-- _Italic bark ochre_ ![](swatches/9F5C10.svg): comments, as they carry important notes
-- Green ![](swatches/0F8A0F.svg): string literals that you read when debugging
+- ![](swatches/A4472D.svg) **Bold brown**: breaking control flow, `return`, `break`, `continue`. Non-breaking control flow shouldn't be highlighted, but currently we can't: `if`, `match`, `loop`, `for`, `.await`, `?`
+- ![](swatches/080808.svg) **Bold black**: all declarations
+- ![](swatches/A4472D.svg) Brown: macros, as they might hide control flow: `bail!`, `ensure!`, `todo!`, and `?` inside
+- ![](swatches/9F5C10.svg) _Italic bark ochre_: comments, as they carry important notes
+- ![](swatches/0F8A0F.svg) Green: string literals that you read when debugging
 
 ## Insignificant
 
-- Transparent gray ![](swatches/A8A8A8.svg): `#[...] attributes`
-- Italic gray ![](swatches/8C8C8C.svg): `\\\ Doc comments`
-- Light gray ![](swatches/6E6E6E.svg): `fn`, `let`, `pub`, `use`, `impl` keywords, primitive types, generic parameters, lifetimes, punctuation (`::`, `.`, `,`, brackets)
+- ![](swatches/A8A8A8.svg) Transparent gray: `#[...] attributes`
+- ![](swatches/8C8C8C.svg) Italic gray: `\\\ Doc comments`
+- ![](swatches/6E6E6E.svg) Light gray: `fn`, `let`, `pub`, `use`, `impl` keywords, primitive types, generic parameters, lifetimes, punctuation (`::`, `.`, `,`, brackets)
 
 ## Regular
 
-Regular black ![](swatches/080808.svg): variables, fields, types, paths, function and macro calls, constants, operators, numbers, enum variants.
+![](swatches/080808.svg) Regular black: variables, fields, types, paths, function and macro calls, constants, operators, numbers, enum variants.
 
 ## Installation
 
