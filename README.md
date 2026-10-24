@@ -28,7 +28,7 @@ What helps instead is dimming noisy boilerplate and highlight few important mome
 
 You need these settings:
 
-```json
+```jsonc
 // ~/.config/zed/settings.json
 
 {
