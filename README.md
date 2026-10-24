@@ -8,21 +8,21 @@ What helps instead is dimming noisy boilerplate and highlight few important mome
 
 ## Important
 
-- **Bold brown ![](https://placehold.co/12x12/A4472D/A4472D.png)**: breaking control flow, `return`, `break`, `continue`. Non-breaking control flow shouldn't be highlighted, but currently we can't: `if`, `match`, `loop`, `for`, `.await`, `?`
-- **Bold black ![](https://placehold.co/12x12/080808/080808.png)**: all declarations
-- Macros ![](https://placehold.co/12x12/080808/080808.png): ❓ currently regular, should be mark as important as ~declarations/control flow as they could be tricky
-- _Italic bark ochre_ ![](https://placehold.co/12x12/9F5C10/9F5C10.png): comments, as they carry important notes
-- Green ![](https://placehold.co/12x12/0F8A0F/0F8A0F.png): string literals that you read when debugging
+- **Bold brown ![](swatches/A4472D.svg)**: breaking control flow, `return`, `break`, `continue`. Non-breaking control flow shouldn't be highlighted, but currently we can't: `if`, `match`, `loop`, `for`, `.await`, `?`
+- **Bold black ![](swatches/080808.svg)**: all declarations
+- Brown ![](swatches/A4472D.svg): macros, as they might hide control flow: `bail!`, `ensure!`, `todo!`, and `?` inside
+- _Italic bark ochre_ ![](swatches/9F5C10.svg): comments, as they carry important notes
+- Green ![](swatches/0F8A0F.svg): string literals that you read when debugging
 
 ## Insignificant
 
-- Transparent gray ![](https://placehold.co/12x12/A8A8A8/A8A8A8.png): `#[...] attributes`
-- Italic gray ![](https://placehold.co/12x12/8C8C8C/8C8C8C.png): `\\\ Doc comments`
-- Light gray ![](https://placehold.co/12x12/6E6E6E/6E6E6E.png): `fn`, `let`, `pub`, `use`, `impl` keywords, primitive types, generic parameters, lifetimes, punctuation (`::`, `.`, `,`, brackets)
+- Transparent gray ![](swatches/A8A8A8.svg): `#[...] attributes`
+- Italic gray ![](swatches/8C8C8C.svg): `\\\ Doc comments`
+- Light gray ![](swatches/6E6E6E.svg): `fn`, `let`, `pub`, `use`, `impl` keywords, primitive types, generic parameters, lifetimes, punctuation (`::`, `.`, `,`, brackets)
 
 ## Regular
 
-Regular black ![](https://placehold.co/12x12/080808/080808.png): variables, fields, types, paths, function and macro calls, constants, operators, numbers, enum variants.
+Regular black ![](swatches/080808.svg): variables, fields, types, paths, function and macro calls, constants, operators, numbers, enum variants.
 
 ## Installation
 
@@ -30,6 +30,7 @@ You need these settings:
 
 ```json
 // ~/.config/zed/settings.json
+
 {
   "languages": { "Rust": { "semantic_tokens": "combined" } },
   "global_lsp_settings": {
@@ -48,22 +49,25 @@ You need these settings:
         "token_type": "const",
         "token_modifiers": ["declaration"],
         "style": ["constant.definition"]
+      },
+      {
+        "token_modifiers": ["declaration", "library"],
+        "font_weight": "normal"
       }
     ]
   }
 }
 ```
 
-Tree-sitter sees syntax only. It can't tell a struct declaration from a struct reference, and `?` is just another operator to it. The theme works like that out of the box: function declarations are bold, struct, enum, trait and const declarations stay plain, `?` stays black.
+Without these settings the theme still works, with three gaps:
 
-rust-analyzer knows what things are. Turn its semantic tokens on, and declarations get bold, `?` gets brown. There is a catch: Zed's default rules paint every keyword gray, control flow included. Two rules give it back. The third makes `const` declarations bold, like the other declarations.
+- struct, enum, trait and const declarations are plain, not bold
+- `?` is black, not brown
+- generic parameters are black, not gray
 
-Each of these settings covers a gap in Zed or rust-analyzer. [UPSTREAM.md](UPSTREAM.md) tracks the fixes.
+With semantic tokens on but without the rules:
 
-## Extra (?)
+- `return`, `if`, `match`, `.await` and the rest of control flow turn gray
+- import aliases like `as Map` turn bold.
 
-Want more? Zed makes import aliases bold, because rust-analyzer marks them as declarations. One rule keeps them plain. Put it after the three above, the first matching rule wins:
-
-```json
-{ "token_modifiers": ["declaration", "library"], "font_weight": "normal" }
-```
+Each rule covers a gap in Zed or rust-analyzer, [UPSTREAM.md](UPSTREAM.md) tracks the fixes.

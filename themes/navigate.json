@@ -283,7 +283,12 @@
             "font_weight": 700
           },
           "function.special": {
-            "color": "#080808",
+            "color": "#A4472D",
+            "font_style": null,
+            "font_weight": null
+          },
+          "function.macro": {
+            "color": "#A4472D",
             "font_style": null,
             "font_weight": null
           },
