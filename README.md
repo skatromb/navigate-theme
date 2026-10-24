@@ -22,7 +22,7 @@ What helps instead is dimming noisy boilerplate and highlight few important mome
 
 ## Regular
 
-![](swatches/080808.svg) Regular black: variables, fields, types, paths, function and macro calls, constants, operators, numbers, enum variants.
+- ![](swatches/080808.svg) Regular black: variables, fields, types, paths, function and macro calls, constants, operators, numbers, enum variants.
 
 ## Installation
 
