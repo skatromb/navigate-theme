@@ -16,9 +16,9 @@ What helps instead is dimming noisy boilerplate and highlight few important mome
 
 ## Insignificant
 
-- ![](swatches/A8A8A8.svg) Transparent gray: `#[...] attributes`
+- ![](swatches/A8A8A8.svg) Light gray: `#[...] attributes`
+- ![](swatches/6E6E6E.svg) Dark gray: `fn`, `let`, `pub`, `use`, `impl` keywords, primitive types, generic parameters, lifetimes, punctuation (`::`, `.`, `,`, brackets)
 - ![](swatches/8C8C8C.svg) Italic gray: `\\\ Doc comments`
-- ![](swatches/6E6E6E.svg) Light gray: `fn`, `let`, `pub`, `use`, `impl` keywords, primitive types, generic parameters, lifetimes, punctuation (`::`, `.`, `,`, brackets)
 
 ## Regular
 
