@@ -1,0 +1,7 @@
+id = "navigate-theme"
+name = "Navigate"
+version = "0.0.1"
+schema_version = 1
+authors = ["Vania Livadnyi <1759463+skatromb@users.noreply.github.com>"]
+description = "Light Zed theme for Rust: dims scaffolding, highlights control flow"
+repository = "https://github.com/skatromb/navigate-theme"
