@@ -6,6 +6,8 @@ Most color schemes colorize syntax: keywords, expressions, operators. That doesn
 
 What helps instead is dimming noisy boilerplate and highlight few important moments.
 
+![](sample.png)
+
 ## Important
 
 - ![](swatches/A4472D.svg) **Bold brown**: breaking control flow, `return`, `break`, `continue`. Non-breaking control flow shouldn't be highlighted, but currently we can't: `if`, `match`, `loop`, `for`, `.await`, `?`
