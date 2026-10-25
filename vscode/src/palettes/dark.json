@@ -1,0 +1,15 @@
+{
+  "name": "Navigate Dark",
+  "filename": "navigate-dark-color-theme.json",
+  "ui": "./pustota-contrast-ui.json",
+  "colors": {
+    "background": "#0a0e14",
+    "regular": "#e0ded8",
+    "important": "#e3825f",
+    "comment": "#cfa463",
+    "string": "#86c17a",
+    "insignificant": "#949ca8",
+    "docComment": "#7c8490",
+    "attribute": "#5a6270"
+  }
+}

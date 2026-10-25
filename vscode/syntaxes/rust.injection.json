@@ -1,5 +1,5 @@
 {
-  "scopeName": "navigate.rust",
+  "scopeName": "navigate.injection.rust",
   "injectionSelector": "L:source.rust -comment -string -meta.attribute",
   "patterns": [
     {

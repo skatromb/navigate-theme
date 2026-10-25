@@ -16,20 +16,20 @@
   },
   "tokenColors": [
     {
-      "name": "Brown: control flow, ?, macros, unsafe",
+      "name": "Important: control flow, ?, macros, unsafe",
       "scope": [
         "keyword.control",
-        "keyword.operator.question.rust",
-        "keyword.other.unsafe.rust",
         "entity.name.function.macro",
-        "entity.name.type.macro"
+        "entity.name.type.macro",
+        "keyword.operator.question.rust",
+        "keyword.other.unsafe.rust"
       ],
       "settings": {
         "foreground": "#e3825f"
       }
     },
     {
-      "name": "Italic ochre: comments",
+      "name": "Italic: comments",
       "scope": [
         "comment",
         "comment punctuation.definition.comment"
@@ -40,7 +40,7 @@
       }
     },
     {
-      "name": "Green: strings",
+      "name": "Strings",
       "scope": [
         "string",
         "punctuation.definition.string",
@@ -52,18 +52,18 @@
       }
     },
     {
-      "name": "Dark gray: keywords, syntax operators, lifetimes, punctuation",
+      "name": "Insignificant: keywords, syntax operators, punctuation",
       "scope": [
         "keyword",
         "storage",
         "keyword.control.import",
         "keyword.control.export",
         "keyword.control.from",
+        "punctuation",
         "meta.impl.rust keyword.control",
         "variable.language.super",
         "meta.use entity.name.namespace",
-        "entity.name.type.lifetime",
-        "punctuation"
+        "entity.name.type.lifetime"
       ],
       "settings": {
         "foreground": "#949ca8"
@@ -81,15 +81,15 @@
         "keyword.operator.increment",
         "keyword.operator.decrement",
         "keyword.operator.exponent",
-        "keyword.operator.assignment.rust",
-        "keyword.operator.assignment.compound"
+        "keyword.operator.assignment.compound",
+        "keyword.operator.assignment.rust"
       ],
       "settings": {
         "foreground": "#e0ded8"
       }
     },
     {
-      "name": "Italic gray: doc comments",
+      "name": "Italic insignificant: doc comments",
       "scope": [
         "comment.line.documentation",
         "comment.block.documentation",
@@ -102,7 +102,7 @@
       }
     },
     {
-      "name": "Light gray: attributes",
+      "name": "Attributes",
       "scope": [
         "meta.attribute.rust",
         "meta.attribute.rust punctuation",
