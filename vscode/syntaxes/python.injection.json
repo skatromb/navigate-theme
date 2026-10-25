@@ -29,6 +29,13 @@
       }
     },
     {
+      "match": "^\\s*(class)\\s+(\\w+)(?=\\s*\\[)",
+      "captures": {
+        "1": { "name": "storage.type.class.python" },
+        "2": { "name": "entity.name.type.class.python" }
+      }
+    },
+    {
       "match": "^\\s*(type)\\s+(?=\\w+\\s*[\\[=])",
       "captures": {
         "1": { "name": "storage.type.type.python" }

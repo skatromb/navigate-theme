@@ -29,6 +29,20 @@
       }
     },
     {
+      "name": "Bold: type names at their definition",
+      "scope": [
+        "entity.name.type.struct",
+        "entity.name.type.enum",
+        "entity.name.type.trait",
+        "entity.name.type.declaration",
+        "meta.impl.rust > entity.name.type",
+        "entity.name.type.class"
+      ],
+      "settings": {
+        "fontStyle": "bold"
+      }
+    },
+    {
       "name": "Italic: comments",
       "scope": [
         "comment",

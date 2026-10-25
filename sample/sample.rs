@@ -1,11 +1,12 @@
 use std::collections::HashMap as Alias;
+pub type TypeAlias = Alias<String, bool>;
 
 const CONSTANT: u32 = 30;
 
 /// Doc comment.
 #[derive(Debug, Clone)]
-pub struct Struct<'lifetime> {
-    pub str_field: &'lifetime str,
+pub struct Struct<'lifetime, GenType> {
+    pub gen_field: &'lifetime GenType,
     pub vec_field: Vec<i64>,
 }
 
@@ -17,13 +18,13 @@ pub trait Trait {
     fn method(&self) -> Option<i64>;
 }
 
-impl Struct<'_> {
-    pub async fn async_fn<GenType: Trait>(param: &GenType) -> i64 {
+impl<GenType: Trait> Struct<'_, GenType> {
+    pub async fn async_fn(param: &GenType) -> i64 {
         async { param.method().unwrap_or(0) }.await
     }
 }
 
-impl Trait for Struct<'_> {
+impl<GenType: Trait> Trait for Struct<'_, GenType> {
     fn method(&self) -> Option<i64> {
         for item in &self.vec_field {
             if *item <= 0 {
@@ -35,7 +36,7 @@ impl Trait for Struct<'_> {
     }
 }
 
-pub fn pub_fn(param: &str, enum_value: Enum) -> Result<Alias<String, bool>, std::io::Error> {
+pub fn pub_fn(param: &str, enum_value: Enum) -> Result<TypeAlias, std::io::Error> {
     let local = std::fs::read_to_string(param)?;
     let parsed = local.parse::<u64>().unwrap_or(0);
     println!("parsed {parsed} from {}", param);
