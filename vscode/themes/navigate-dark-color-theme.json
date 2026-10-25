@@ -45,7 +45,10 @@
         "string",
         "punctuation.definition.string",
         "punctuation.definition.char",
-        "constant.character.escape"
+        "constant.character.escape",
+        "storage.type.string.python",
+        "string.regexp keyword",
+        "string.regexp punctuation"
       ],
       "settings": {
         "foreground": "#86c17a"
@@ -63,7 +66,9 @@
         "meta.impl.rust keyword.control",
         "variable.language.super",
         "meta.use entity.name.namespace",
-        "entity.name.type.lifetime"
+        "entity.name.type.lifetime",
+        "entity.name.namespace.python",
+        "constant.character.format.placeholder.other.python"
       ],
       "settings": {
         "foreground": "#949ca8"
@@ -94,7 +99,9 @@
         "comment.line.documentation",
         "comment.block.documentation",
         "comment.line.documentation punctuation.definition.comment",
-        "comment.block.documentation punctuation.definition.comment"
+        "comment.block.documentation punctuation.definition.comment",
+        "string.quoted.docstring",
+        "string.quoted.docstring punctuation.definition.string"
       ],
       "settings": {
         "foreground": "#7c8490",
@@ -108,7 +115,12 @@
         "meta.attribute.rust punctuation",
         "meta.attribute.rust punctuation.definition.string",
         "meta.attribute.rust string",
-        "meta.attribute.rust keyword"
+        "meta.attribute.rust keyword",
+        "meta.function.decorator.python",
+        "meta.function.decorator.python punctuation",
+        "meta.function.decorator.python punctuation.definition.string",
+        "meta.function.decorator.python string",
+        "meta.function.decorator.python keyword"
       ],
       "settings": {
         "foreground": "#5a6270"
