@@ -1,41 +1,42 @@
 //! Crate doc comment.
-use std::collections::HashMap as Map;
+use std::collections::HashMap as Alias;
 
-const MAX_DAYS: u32 = 30;
+const CONSTANT: u32 = 30;
 #[derive(Debug, Clone)]
-pub struct Listing<'title> {
-    pub title: &'title str,
-    pub prices: Vec<i64>,
+pub struct Struct<'lifetime> {
+    pub str_field: &'lifetime str,
+    pub vec_field: Vec<i64>,
 }
-pub enum Status {
-    Sold { days: u32 },
+fn _private_fn(_param: &Struct) {}
+pub enum Enum {
+    Variant { field: u32 },
 }
-pub trait Priced {
-    fn price(&self) -> Option<i64>;
+pub trait Trait {
+    fn method(&self) -> Option<i64>;
 }
-impl Priced for Listing<'_> {
-    fn price(&self) -> Option<i64> {
-        for price in &self.prices {
-            if *price <= 0 {
+impl Struct<'_> {
+    pub async fn async_fn<GenType: Trait>(param: &GenType) -> i64 {
+        async { param.method().unwrap_or(0) }.await
+    }
+}
+impl Trait for Struct<'_> {
+    fn method(&self) -> Option<i64> {
+        for item in &self.vec_field {
+            if *item <= 0 {
                 continue; // line comment
             }
-            return Some(*price);
+            return Some(*item);
         }
         None
     }
 }
-impl Listing<'_> {
-    pub async fn settle<GenType: Priced>(item: &GenType) -> i64 {
-        async { item.price().unwrap_or(0) }.await
-    }
-}
-pub fn load(path: &str, status: Status) -> Result<Map<String, bool>, std::io::Error> {
-    let raw = std::fs::read_to_string(path)?;
-    let parsed = raw.parse::<u64>().unwrap_or(0);
-    println!("parsed {parsed} from {}", path);
-    match status {
-        Status::Sold { days } if days > MAX_DAYS => todo!(),
+pub fn pub_fn(param: &str, enum_value: Enum) -> Result<Alias<String, bool>, std::io::Error> {
+    let local = std::fs::read_to_string(param)?;
+    let parsed = local.parse::<u64>().unwrap_or(0);
+    println!("parsed {parsed} from {}", param);
+    match enum_value {
+        Enum::Variant { field } if field > CONSTANT => todo!(),
         _ => {}
     }
-    Ok(Map::new())
+    Ok(Alias::new())
 }
