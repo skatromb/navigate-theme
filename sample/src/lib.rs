@@ -13,7 +13,7 @@ pub enum Enum {
     Variant { field: u32 },
 }
 
-pub unsafe trait Trait {
+pub trait Trait {
     fn method(&self) -> Option<i64>;
 }
 
@@ -23,7 +23,7 @@ impl Struct<'_> {
     }
 }
 
-unsafe impl Trait for Struct<'_> {
+impl Trait for Struct<'_> {
     fn method(&self) -> Option<i64> {
         for item in &self.vec_field {
             if *item <= 0 {
@@ -45,3 +45,5 @@ pub fn pub_fn(param: &str, enum_value: Enum) -> Result<Alias<String, bool>, std:
     }
     Ok(Alias::new())
 }
+
+pub unsafe trait UnsafeTrait {}
