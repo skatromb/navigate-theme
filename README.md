@@ -6,7 +6,7 @@ Most color schemes colorize syntax: keywords, expressions, operators. That doesn
 
 [Install in VSCode](https://marketplace.visualstudio.com/items?itemName=skatromb.navigate-theme)
 
-| [Rust](sample/src/lib.rs) | [Python](sample/sample.py) |
+| Rust | Python |
 | --- | --- |
 | ![](sample/rust.png) | ![](sample/python.png) |
 
