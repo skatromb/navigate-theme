@@ -1,0 +1,24 @@
+{
+  "scopeName": "navigate.rust",
+  "injectionSelector": "L:source.rust -comment -string -meta.attribute",
+  "patterns": [
+    {
+      "name": "meta.impl.rust",
+      "begin": "^\\s*(?:(unsafe)\\s+)?(impl)\\b",
+      "beginCaptures": {
+        "1": { "name": "keyword.other.unsafe.rust" },
+        "2": { "name": "keyword.other.rust" }
+      },
+      "end": "(?=\\{|;|\\bwhere\\b)",
+      "patterns": [{ "include": "source.rust" }]
+    },
+    {
+      "name": "entity.name.namespace.rust",
+      "match": "\\bself(?=::)"
+    },
+    {
+      "name": "keyword.other.unsafe.rust",
+      "match": "\\bunsafe\\b"
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "name": "Navigate Dark",
+  "$schema": "vscode://schemas/color-theme",
+  "type": "dark",
+  "include": "./pustota-contrast-ui.json",
+  "semanticHighlighting": false,
+  "colors": {
+    "editor.background": "#0a0e14",
+    "editor.foreground": "#e0ded8",
+    "editorBracketHighlight.foreground1": "#949ca8",
+    "editorBracketHighlight.foreground2": "#949ca8",
+    "editorBracketHighlight.foreground3": "#949ca8",
+    "editorBracketHighlight.foreground4": "#949ca8",
+    "editorBracketHighlight.foreground5": "#949ca8",
+    "editorBracketHighlight.foreground6": "#949ca8"
+  },
+  "tokenColors": [
+    {
+      "name": "Brown: control flow, ?, macros, unsafe",
+      "scope": [
+        "keyword.control",
+        "keyword.operator.question.rust",
+        "keyword.other.unsafe.rust",
+        "entity.name.function.macro",
+        "entity.name.type.macro"
+      ],
+      "settings": {
+        "foreground": "#e3825f"
+      }
+    },
+    {
+      "name": "Italic ochre: comments",
+      "scope": [
+        "comment",
+        "comment punctuation.definition.comment"
+      ],
+      "settings": {
+        "foreground": "#cfa463",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "name": "Green: strings",
+      "scope": [
+        "string",
+        "punctuation.definition.string",
+        "punctuation.definition.char",
+        "constant.character.escape"
+      ],
+      "settings": {
+        "foreground": "#86c17a"
+      }
+    },
+    {
+      "name": "Dark gray: keywords, syntax operators, lifetimes, punctuation",
+      "scope": [
+        "keyword",
+        "storage",
+        "keyword.control.import",
+        "keyword.control.export",
+        "keyword.control.from",
+        "meta.impl.rust keyword.control",
+        "variable.language.super",
+        "meta.use entity.name.namespace",
+        "entity.name.type.lifetime",
+        "punctuation"
+      ],
+      "settings": {
+        "foreground": "#949ca8"
+      }
+    },
+    {
+      "name": "Regular: math, comparison, logic operators",
+      "scope": [
+        "keyword.operator.math",
+        "keyword.operator.arithmetic",
+        "keyword.operator.comparison",
+        "keyword.operator.relational",
+        "keyword.operator.logical",
+        "keyword.operator.bitwise",
+        "keyword.operator.increment",
+        "keyword.operator.decrement",
+        "keyword.operator.exponent",
+        "keyword.operator.assignment.rust",
+        "keyword.operator.assignment.compound"
+      ],
+      "settings": {
+        "foreground": "#e0ded8"
+      }
+    },
+    {
+      "name": "Italic gray: doc comments",
+      "scope": [
+        "comment.line.documentation",
+        "comment.block.documentation",
+        "comment.line.documentation punctuation.definition.comment",
+        "comment.block.documentation punctuation.definition.comment"
+      ],
+      "settings": {
+        "foreground": "#7c8490",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "name": "Light gray: attributes",
+      "scope": [
+        "meta.attribute.rust",
+        "meta.attribute.rust punctuation",
+        "meta.attribute.rust punctuation.definition.string",
+        "meta.attribute.rust string",
+        "meta.attribute.rust keyword"
+      ],
+      "settings": {
+        "foreground": "#5a6270"
+      }
+    },
+    {
+      "scope": [
+        "markup.italic"
+      ],
+      "settings": {
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "scope": [
+        "markup.bold"
+      ],
+      "settings": {
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "scope": [
+        "markup.strikethrough"
+      ],
+      "settings": {
+        "fontStyle": "strikethrough"
+      }
+    }
+  ]
+}

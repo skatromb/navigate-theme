@@ -1,0 +1,35 @@
+{
+  "name": "navigate-theme",
+  "displayName": "Navigate",
+  "description": "Color theme that helps you navigate through the code",
+  "version": "0.1.0",
+  "publisher": "skatromb",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/skatromb/navigate-theme.git",
+    "directory": "vscode"
+  },
+  "engines": {
+    "vscode": "^1.87.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Navigate Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/navigate-dark-color-theme.json"
+      }
+    ],
+    "grammars": [
+      {
+        "scopeName": "navigate.rust",
+        "path": "./syntaxes/rust.json",
+        "injectTo": ["source.rust"]
+      }
+    ]
+  }
+}
