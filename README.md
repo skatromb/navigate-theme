@@ -6,8 +6,6 @@ Most color schemes colorize syntax: keywords, expressions, operators. That doesn
 
 What helps instead is dimming noisy boilerplate and highlight few important moments.
 
-The same token always gets the same color. Colors come from syntax only, the theme never guesses whether a name is a type or a value.
-
 ![](sample.png)
 
 ## Important
