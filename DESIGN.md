@@ -4,7 +4,7 @@ Colors come from syntax only, the theme never guesses whether a name is a type o
 
 ## Important
 
-- **Bold**: a type name at its definition, so you can find it when you scroll: `struct`, `enum`, `trait`, `type`, `impl` headers, `class`
+- **Bold**: top-level definitions: `struct`, `enum`, `trait`, `type`, `impl` headers, `class`.
 - ![](swatches/E3825F.png) Brown: control flow, as it changes where the code goes next
   - Rust: `return`, `break`, `continue`, `if`, `match`, `for`, `.await`, `?`, `unsafe`, and macros, as they might hide control flow: `bail!`, `todo!`
   - Python: `return`, `break`, `continue`, `if`, `match`, `for`, `await`, `yield`, `try`, `except`, `raise`, `assert`

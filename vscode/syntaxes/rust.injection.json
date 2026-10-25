@@ -1,27 +1,38 @@
 {
   "scopeName": "navigate.injection.rust",
-  "injectionSelector": "L:source.rust -comment -string -meta.attribute",
+  "injectionSelector": "L:source.rust -comment -string -meta.attribute -meta.toplevel",
   "patterns": [
     {
-      "name": "meta.impl.rust",
-      "begin": "^\\s*(?:(unsafe)\\s+)?(impl)\\b",
-      "beginCaptures": {
-        "1": { "name": "keyword.other.unsafe.rust" },
-        "2": { "name": "keyword.other.rust" }
-      },
-      "end": "(?=\\{|;|\\bwhere\\b)",
-      "patterns": [{ "include": "#generic" }, { "include": "source.rust" }]
+      "name": "meta.toplevel.rust",
+      "begin": "^(?=(?:pub(?:\\([^)]*\\))?\\s+)?(?:(?:async|const|unsafe|extern\\s+\"[^\"]*\")\\s+)*fn\\b)",
+      "end": "(?<=\\{|;)",
+      "patterns": [{ "include": "#rules" }, { "include": "source.rust" }]
     },
-    {
-      "name": "entity.name.namespace.rust",
-      "match": "\\bself(?=::)"
-    },
-    {
-      "name": "keyword.other.unsafe.rust",
-      "match": "\\bunsafe\\b"
-    }
+    { "include": "#rules" }
   ],
   "repository": {
+    "rules": {
+      "patterns": [
+        {
+          "name": "meta.impl.rust",
+          "begin": "^\\s*(?:(unsafe)\\s+)?(impl)\\b",
+          "beginCaptures": {
+            "1": { "name": "keyword.other.unsafe.rust" },
+            "2": { "name": "keyword.other.rust" }
+          },
+          "end": "(?=\\{|;|\\bwhere\\b)",
+          "patterns": [{ "include": "#generic" }, { "include": "source.rust" }]
+        },
+        {
+          "name": "entity.name.namespace.rust",
+          "match": "\\bself(?=::)"
+        },
+        {
+          "name": "keyword.other.unsafe.rust",
+          "match": "\\bunsafe\\b"
+        }
+      ]
+    },
     "generic": {
       "contentName": "meta.generic.rust",
       "begin": "(_?[A-Z][A-Za-z0-9_]*)?(<)",
