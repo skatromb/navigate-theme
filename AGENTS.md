@@ -8,3 +8,5 @@ We could also probably get some inspiration from Alabaster theme or Pustota Ligh
 The theme must work for anyone who just installs it. Never change editor settings to get an effect. Design for the syntax grammar only. Semantic tokens are an optional bonus.
 
 UPSTREAM.md tracks gaps we fix upstream.
+
+README screenshots: `cd tools && npm install && npm run render`. [tools/render.js](tools/render.js) tokenizes the samples with the VS Code grammars and this theme, then screenshots the HTML with headless Chrome.

@@ -1,0 +1,11 @@
+{
+  "name": "navigate-tools",
+  "private": true,
+  "scripts": {
+    "render": "node render.js rust ../sample/rust.png && node render.js python ../sample/python.png"
+  },
+  "devDependencies": {
+    "vscode-oniguruma": "^2.0.1",
+    "vscode-textmate": "^9.3.0"
+  }
+}
