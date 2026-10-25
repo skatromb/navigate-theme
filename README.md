@@ -1,5 +1,7 @@
 # Navigate
 
+<img src="vscode/icon.png" width="128" alt="Navigate logo">
+
 Color theme that helps you navigate through the code.
 
 Most color schemes colorize syntax: keywords, expressions, operators. That doesn't help: you already know the syntax. What helps instead is dimming noisy boilerplate and highlight few important moments.

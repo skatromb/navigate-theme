@@ -4,6 +4,7 @@
   "description": "Color theme that helps you navigate through the code",
   "version": "0.3.0",
   "publisher": "skatromb",
+  "icon": "icon.png",
   "license": "MIT",
   "repository": {
     "type": "git",
