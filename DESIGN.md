@@ -16,10 +16,9 @@ Colors come from syntax only, the theme never guesses whether a name is a type o
 
 ## Insignificant
 
-- ![](swatches/949CA8.png) Gray: keywords and punctuation
+- ![](swatches/949CA8.png) Gray: keywords, punctuation, `#[...]` attributes and `@decorators`
   - Rust: `fn`, `let`, `pub`, `use`, `impl`, `mut`, `crate`, `super`, lifetimes, operators that glue syntax: `::`, `.`, `->`, `=>`, `=`, `..`, `&`, `*`. Import path prefixes: `std::io::` in `use std::io::Error`
   - Python: `def`, `class`, `async`, `lambda`, `with`, `as`, `pass`, `in` of `for` loops, `{}` in f-strings. Import path prefixes: `os.path` in `from os.path import join`
 - ![](swatches/7C8490.png) _Italic gray_: `/// Doc comments` and `"""docstrings"""`
-- ![](swatches/5A6270.png) Light gray: `#[...]` attributes and `@decorators`
 
 Grammar gaps are fixed with injections in [vscode/syntaxes](vscode/syntaxes), scopes per language are in [vscode/src/theme.js](vscode/src/theme.js).

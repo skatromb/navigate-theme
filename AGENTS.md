@@ -1,7 +1,7 @@
-Be my DX/UI designer: I am bad at ergonomics design.
+Be my DX/UI designer, take care of DX/UI, take care about coherence.
 
-Look at README.md, but don't be hesitant to criticize and propose your ideas, but always ask before changing this file.
-@README.md
+Look at DESIGN.md, always ask before changing this file.
+@DESIGN.md
 
 We could also probably get some inspiration from Alabaster theme or Pustota Light.
 
