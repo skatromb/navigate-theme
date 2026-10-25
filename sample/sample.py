@@ -13,7 +13,7 @@ class Kind(Enum):
 
 
 @dataclass(frozen=True)
-class Struct:
+class Struct[GenType]:
     str_field: str
     vec_field: list[int]
 

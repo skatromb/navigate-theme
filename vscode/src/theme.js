@@ -13,6 +13,21 @@ const tokenColors = (c) => [
     settings: { foreground: c.important },
   },
   {
+    name: 'Bold: type names at their definition, top-level functions',
+    scope: scopes({
+      rust: [
+        'entity.name.type.struct',
+        'entity.name.type.enum',
+        'entity.name.type.trait',
+        'entity.name.type.declaration',
+        'meta.impl.rust > entity.name.type',
+        'meta.toplevel.rust meta.function.definition.rust entity.name.function',
+      ],
+      python: ['entity.name.type.class', 'meta.toplevel.python meta.function.python entity.name.function'],
+    }),
+    settings: { fontStyle: 'bold' },
+  },
+  {
     name: 'Italic: comments',
     scope: scopes({
       any: ['comment', 'comment punctuation.definition.comment'],

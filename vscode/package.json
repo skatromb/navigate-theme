@@ -2,7 +2,7 @@
   "name": "navigate-theme",
   "displayName": "Navigate",
   "description": "Color theme that helps you navigate through the code",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "publisher": "skatromb",
   "license": "MIT",
   "repository": {
@@ -17,7 +17,7 @@
     "dev": "npm run package && code --install-extension navigate.vsix --force"
   },
   "engines": {
-    "vscode": "^1.87.0"
+    "vscode": "^1.93.0"
   },
   "categories": [
     "Themes"
