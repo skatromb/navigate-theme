@@ -30,6 +30,8 @@ impl Trait for Struct<'_> {
         None
     }
 }
+pub unsafe trait UnsafeTrait {}
+unsafe impl UnsafeTrait for Struct<'_> {}
 pub fn pub_fn(param: &str, enum_value: Enum) -> Result<Alias<String, bool>, std::io::Error> {
     let local = std::fs::read_to_string(param)?;
     let parsed = local.parse::<u64>().unwrap_or(0);
