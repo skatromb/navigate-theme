@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="512" height="512" role="img" aria-label="Navigate">
-  <rect width="64" height="64" rx="14" fill="#EEEDE9"/>
+  <rect width="64" height="64" rx="14" fill="#FAFAFA"/>
   <path d="M32 20 L4 13 L4 27 Z" fill="#BD5E3E" fill-opacity="0.28"/>
   <path d="M32 20 L60 13 L60 27 Z" fill="#BD5E3E" fill-opacity="0.28"/>
   <path d="M26 16 L32 10 L38 16 Z" fill="#292720"/>
-  <rect x="27" y="16" width="10" height="8" rx="1" fill="#EEEDE9" stroke="#292720" stroke-width="1.5"/>
+  <rect x="27" y="16" width="10" height="8" rx="1" fill="#FAFAFA" stroke="#292720" stroke-width="1.5"/>
   <circle cx="32" cy="20" r="3" fill="#BD5E3E"/>
   <path d="M27.5 25 L36.5 25 L39.3 57 L24.7 57 Z" fill="#292720"/>
   <g stroke-linecap="round">
