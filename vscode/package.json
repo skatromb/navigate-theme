@@ -2,7 +2,7 @@
   "name": "navigate-theme",
   "displayName": "Navigate",
   "description": "Color theme that helps you navigate through the code",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "publisher": "skatromb",
   "icon": "icon.png",
   "license": "MIT",
@@ -29,6 +29,11 @@
         "label": "Navigate Dark",
         "uiTheme": "vs-dark",
         "path": "./themes/navigate-dark-color-theme.json"
+      },
+      {
+        "label": "Navigate Light",
+        "uiTheme": "vs",
+        "path": "./themes/navigate-light-color-theme.json"
       }
     ],
     "grammars": [

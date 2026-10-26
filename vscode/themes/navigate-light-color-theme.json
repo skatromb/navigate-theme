@@ -1,0 +1,158 @@
+{
+  "name": "Navigate Light",
+  "$schema": "vscode://schemas/color-theme",
+  "type": "light",
+  "include": "./pustota-light-ui.json",
+  "semanticHighlighting": false,
+  "colors": {
+    "editor.background": "#fafafa",
+    "editor.foreground": "#292720",
+    "editorBracketHighlight.foreground1": "#747b86",
+    "editorBracketHighlight.foreground2": "#747b86",
+    "editorBracketHighlight.foreground3": "#747b86",
+    "editorBracketHighlight.foreground4": "#747b86",
+    "editorBracketHighlight.foreground5": "#747b86",
+    "editorBracketHighlight.foreground6": "#747b86"
+  },
+  "tokenColors": [
+    {
+      "name": "Important: control flow, ?, macros, unsafe",
+      "scope": [
+        "keyword.control",
+        "entity.name.function.macro",
+        "entity.name.type.macro",
+        "keyword.operator.question.rust",
+        "keyword.other.unsafe.rust"
+      ],
+      "settings": {
+        "foreground": "#bd5e3e"
+      }
+    },
+    {
+      "name": "Bold: type names at their definition, top-level functions",
+      "scope": [
+        "entity.name.type.struct",
+        "entity.name.type.enum",
+        "entity.name.type.trait",
+        "entity.name.type.declaration",
+        "meta.impl.rust > entity.name.type",
+        "meta.toplevel.rust meta.function.definition.rust entity.name.function",
+        "entity.name.type.class",
+        "meta.toplevel.python meta.function.python entity.name.function"
+      ],
+      "settings": {
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "Italic: comments",
+      "scope": [
+        "comment",
+        "comment punctuation.definition.comment"
+      ],
+      "settings": {
+        "foreground": "#8d6421",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "name": "Strings",
+      "scope": [
+        "string",
+        "punctuation.definition.string",
+        "punctuation.definition.char",
+        "constant.character.escape",
+        "storage.type.string.python",
+        "string.regexp keyword",
+        "string.regexp punctuation"
+      ],
+      "settings": {
+        "foreground": "#3a722f"
+      }
+    },
+    {
+      "name": "Insignificant: keywords, syntax operators, punctuation",
+      "scope": [
+        "keyword",
+        "storage",
+        "keyword.control.import",
+        "keyword.control.export",
+        "keyword.control.from",
+        "punctuation",
+        "meta.impl.rust keyword.control",
+        "variable.language.super",
+        "meta.use entity.name.namespace",
+        "entity.name.type.lifetime",
+        "meta.attribute.rust",
+        "meta.attribute.rust string",
+        "meta.attribute.rust punctuation.definition.string",
+        "entity.name.namespace.python",
+        "constant.character.format.placeholder.other.python",
+        "meta.function.decorator.python",
+        "meta.function.decorator.python string",
+        "meta.function.decorator.python punctuation.definition.string"
+      ],
+      "settings": {
+        "foreground": "#747b86"
+      }
+    },
+    {
+      "name": "Regular: math, comparison, logic operators",
+      "scope": [
+        "keyword.operator.math",
+        "keyword.operator.arithmetic",
+        "keyword.operator.comparison",
+        "keyword.operator.relational",
+        "keyword.operator.logical",
+        "keyword.operator.bitwise",
+        "keyword.operator.increment",
+        "keyword.operator.decrement",
+        "keyword.operator.exponent",
+        "keyword.operator.assignment.compound",
+        "keyword.operator.assignment.rust"
+      ],
+      "settings": {
+        "foreground": "#292720"
+      }
+    },
+    {
+      "name": "Italic insignificant: doc comments",
+      "scope": [
+        "comment.line.documentation",
+        "comment.block.documentation",
+        "comment.line.documentation punctuation.definition.comment",
+        "comment.block.documentation punctuation.definition.comment",
+        "string.quoted.docstring",
+        "string.quoted.docstring punctuation.definition.string"
+      ],
+      "settings": {
+        "foreground": "#88919c",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "scope": [
+        "markup.italic"
+      ],
+      "settings": {
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "scope": [
+        "markup.bold"
+      ],
+      "settings": {
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "scope": [
+        "markup.strikethrough"
+      ],
+      "settings": {
+        "fontStyle": "strikethrough"
+      }
+    }
+  ]
+}

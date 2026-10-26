@@ -1,6 +1,6 @@
 # Navigate
 
-<img src="vscode/icon.png" width="128" alt="Navigate logo">
+<img src="vscode/icon.png" width="128" alt="Navigate Dark logo"> <img src="vscode/icon-light.png" width="128" alt="Navigate Light logo">
 
 Color theme that helps you navigate through the code.
 

@@ -1,5 +1,6 @@
 {
   "name": "Navigate Dark",
+  "type": "dark",
   "filename": "navigate-dark-color-theme.json",
   "ui": "./pustota-contrast-ui.json",
   "colors": {
