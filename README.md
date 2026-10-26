@@ -11,5 +11,6 @@ Most color schemes colorize syntax: keywords, expressions, operators. That doesn
 | Rust | Python |
 | --- | --- |
 | ![](sample/rust.png) | ![](sample/python.png) |
+| ![](sample/rust-light.png) | ![](sample/python-light.png) |
 
 [DESIGN.md](DESIGN.md) explains the colors. Panels are copied from [Pustota contrast](https://github.com/pustota-theme/pustota) (MIT, © Nikita Sobolev).

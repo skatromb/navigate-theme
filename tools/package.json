@@ -2,7 +2,7 @@
   "name": "navigate-tools",
   "private": true,
   "scripts": {
-    "render": "node render.js rust ../sample/rust.png && node render.js python ../sample/python.png"
+    "render": "node render.js rust ../sample/rust.png && node render.js python ../sample/python.png && node render.js rust ../sample/rust-light.png light && node render.js python ../sample/python-light.png light"
   },
   "devDependencies": {
     "vscode-oniguruma": "^2.0.1",
