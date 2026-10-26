@@ -11,4 +11,4 @@ UPSTREAM.md tracks gaps we fix upstream.
 
 README screenshots: `cd tools && npm install && npm run render`. [tools/render.js](tools/render.js) tokenizes the samples with the VS Code grammars and this theme, then screenshots the HTML with headless Chrome.
 
-Release: bump `version` in [vscode/package.json](vscode/package.json), merge, then `cd vscode && npm run package`. The user uploads `vscode/navigate.vsix` to the marketplace by hand.
+Release: bump `version` in [vscode/package.json](vscode/package.json), merge, then `cd vscode && npm run package`. The user uploads `vscode/navigate.vsix` by hand: give them https://marketplace.visualstudio.com/manage/publishers/skatromb (⋯ next to Navigate > Update).
