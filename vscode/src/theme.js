@@ -105,7 +105,7 @@ const tokenColors = (c) => [
 module.exports = (palette) => ({
   name: palette.name,
   $schema: 'vscode://schemas/color-theme',
-  type: 'dark',
+  type: palette.type,
   include: palette.ui,
   semanticHighlighting: false,
   colors: {

@@ -5,9 +5,9 @@ const { execFileSync } = require('child_process');
 const vsctm = require('vscode-textmate');
 const oniguruma = require('vscode-oniguruma');
 
-const [language, output] = process.argv.slice(2);
+const [language, output, variant = 'dark'] = process.argv.slice(2);
 if (!language || !output) {
-  console.error('usage: node tools/render.js <rust|python> <out.png>');
+  console.error('usage: node tools/render.js <rust|python> <out.png> [dark|light]');
   process.exit(1);
 }
 
@@ -26,7 +26,7 @@ const grammarPaths = {
   [`navigate.injection.${language}`]: path.join(ROOT, 'vscode/syntaxes', `${language}.injection.json`),
 };
 
-const theme = JSON.parse(fs.readFileSync(path.join(ROOT, 'vscode/themes/navigate-dark-color-theme.json')));
+const theme = JSON.parse(fs.readFileSync(path.join(ROOT, `vscode/themes/navigate-${variant}-color-theme.json`)));
 const background = theme.colors['editor.background'];
 const foreground = theme.colors['editor.foreground'];
 

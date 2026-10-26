@@ -29,6 +29,11 @@
         "label": "Navigate Dark",
         "uiTheme": "vs-dark",
         "path": "./themes/navigate-dark-color-theme.json"
+      },
+      {
+        "label": "Navigate Light",
+        "uiTheme": "vs",
+        "path": "./themes/navigate-light-color-theme.json"
       }
     ],
     "grammars": [

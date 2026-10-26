@@ -1,0 +1,15 @@
+{
+  "name": "Navigate Light",
+  "type": "light",
+  "filename": "navigate-light-color-theme.json",
+  "ui": "./pustota-light-ui.json",
+  "colors": {
+    "background": "#fafafa",
+    "regular": "#292720",
+    "important": "#bd5e3e",
+    "comment": "#8d6421",
+    "string": "#3a722f",
+    "insignificant": "#747b86",
+    "docComment": "#88919c"
+  }
+}
