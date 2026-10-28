@@ -1,11 +1,15 @@
-Be my DX/UI designer, take care of DX/UI, take care about coherence.
+Take care about the DX/UI and its coherence, as professional designer would do.
+
+Always look at https://github.com/pustota-theme/pustota as of reference implementation (including in repo tooling) before implementing anything.
 
 Look at DESIGN.md, always ask before changing this file.
 @DESIGN.md
 
-We could also probably get some inspiration from Alabaster theme or Pustota Light.
+We could also get some inspiration from https://github.com/tonsky/vscode-theme-alabaster.
 
-The theme must work for anyone who just installs it. Never change editor settings to get an effect. Design for the syntax grammar only. Semantic tokens are an optional bonus.
+The theme must work for anyone who just installs it.
+Never change editor settings to get an effect.
+Design for the syntax grammar only.
 
 UPSTREAM.md tracks gaps we fix upstream.
 
