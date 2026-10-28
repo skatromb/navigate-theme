@@ -15,4 +15,6 @@ UPSTREAM.md tracks gaps we fix upstream.
 
 README screenshots: `cd tools && npm install && npm run render`. [tools/render.js](tools/render.js) tokenizes the samples with the VS Code grammars and this theme, then screenshots the HTML with headless Chrome.
 
+Token snapshots: `cd tools && npm test` fails when [tools/snapshots](tools/snapshots) differ from the rendered samples. Accept an intended change with `npm run snapshot` and commit the diff.
+
 Release: bump `version` in [vscode/package.json](vscode/package.json), merge, then push tag `v<version>` on `main`. [.github/workflows/publish.yml](.github/workflows/publish.yml) publishes to the Marketplace with `vsce publish --oidc`, no token.
