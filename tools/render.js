@@ -12,7 +12,7 @@ if (!language || !output) {
 }
 
 const ROOT = path.join(__dirname, '..');
-const VSCODE_EXTENSIONS = '/Applications/Visual Studio Code.app/Contents/Resources/app/extensions';
+const VSCODE_EXTENSIONS = 'https://raw.githubusercontent.com/microsoft/vscode/1.143.1/extensions';
 const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 
 const languages = {
@@ -21,8 +21,8 @@ const languages = {
 }[language];
 
 const grammarPaths = {
-  [languages.scope]: path.join(VSCODE_EXTENSIONS, languages.grammar),
-  'source.regexp.python': path.join(VSCODE_EXTENSIONS, 'python/syntaxes/MagicRegExp.tmLanguage.json'),
+  [languages.scope]: `${VSCODE_EXTENSIONS}/${languages.grammar}`,
+  'source.regexp.python': `${VSCODE_EXTENSIONS}/python/syntaxes/MagicRegExp.tmLanguage.json`,
   [`navigate.injection.${language}`]: path.join(ROOT, 'vscode/syntaxes', `${language}.injection.json`),
 };
 
@@ -36,12 +36,19 @@ const onigLib = oniguruma.loadWASM(wasm).then(() => ({
   createOnigString: (text) => new oniguruma.OnigString(text),
 }));
 
+async function download(url) {
+  const response = await fetch(url);
+  if (!response.ok) throw new Error(`${url}: ${response.status}`);
+  return response.text();
+}
+
 const registry = new vsctm.Registry({
   onigLib,
   theme: { name: theme.name, settings: [{ settings: { foreground } }, ...theme.tokenColors] },
   loadGrammar: async (scopeName) => {
     const file = grammarPaths[scopeName];
-    return file ? vsctm.parseRawGrammar(fs.readFileSync(file).toString(), file) : null;
+    if (!file) return null;
+    return vsctm.parseRawGrammar(file.startsWith('https://') ? await download(file) : fs.readFileSync(file).toString(), file);
   },
   getInjections: (scopeName) => (scopeName === languages.scope ? [`navigate.injection.${language}`] : []),
 });
