@@ -51,7 +51,7 @@
         "comment punctuation.definition.comment"
       ],
       "settings": {
-        "foreground": "#cfa463",
+        "foreground": "#dfa54d",
         "fontStyle": "italic"
       }
     },
@@ -67,7 +67,7 @@
         "string.regexp punctuation"
       ],
       "settings": {
-        "foreground": "#86c17a"
+        "foreground": "#85c577"
       }
     },
     {

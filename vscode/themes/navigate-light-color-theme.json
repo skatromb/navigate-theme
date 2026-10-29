@@ -25,7 +25,7 @@
         "keyword.other.unsafe.rust"
       ],
       "settings": {
-        "foreground": "#bd5e3e"
+        "foreground": "#c7562b"
       }
     },
     {
@@ -51,7 +51,7 @@
         "comment punctuation.definition.comment"
       ],
       "settings": {
-        "foreground": "#8d6421",
+        "foreground": "#975f03",
         "fontStyle": "italic"
       }
     },
@@ -67,7 +67,7 @@
         "string.regexp punctuation"
       ],
       "settings": {
-        "foreground": "#3a722f"
+        "foreground": "#3b7a2c"
       }
     },
     {

@@ -7,8 +7,8 @@
     "background": "#0a0e14",
     "regular": "#e0ded8",
     "important": "#e3825f",
-    "comment": "#cfa463",
-    "string": "#86c17a",
+    "comment": "#dfa54d",
+    "string": "#85c577",
     "insignificant": "#949ca8",
     "docComment": "#7c8490"
   }
