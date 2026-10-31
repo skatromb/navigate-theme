@@ -28,3 +28,6 @@ jobs:
 
       - name: Publish to Visual Studio Marketplace
         run: npx --yes @vscode/vsce@^4.1.0 publish --oidc --packagePath navigate.vsix
+
+      - name: Publish to Open VSX
+        run: npx --yes ovsx@^1.3.0 publish --trusted-publishing --packagePath navigate.vsix
