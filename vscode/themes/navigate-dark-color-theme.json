@@ -3,7 +3,17 @@
   "$schema": "vscode://schemas/color-theme",
   "type": "dark",
   "include": "./pustota-contrast-ui.json",
-  "semanticHighlighting": false,
+  "semanticHighlighting": true,
+  "semanticTokenColors": {
+    "*.documentation": {
+      "foreground": "#7c8490",
+      "fontStyle": "italic"
+    },
+    "selfKeyword:rust": "#e0ded8",
+    "selfTypeKeyword:rust": "#e0ded8",
+    "operator.controlFlow:rust": "#e3825f",
+    "keyword.unsafe:rust": "#e3825f"
+  },
   "colors": {
     "editor.background": "#0a0e14",
     "editor.foreground": "#e0ded8",
@@ -31,13 +41,13 @@
     {
       "name": "Bold: type names at their definition, top-level functions",
       "scope": [
-        "entity.name.type.struct",
-        "entity.name.type.enum",
-        "entity.name.type.trait",
-        "entity.name.type.declaration",
+        "source.rust entity.name.type.struct",
+        "source.rust entity.name.type.enum",
+        "source.rust entity.name.type.trait",
+        "source.rust entity.name.type.declaration",
         "meta.impl.rust > entity.name.type",
         "meta.toplevel.rust meta.function.definition.rust entity.name.function",
-        "entity.name.type.class",
+        "source.python entity.name.type.class",
         "meta.toplevel.python meta.function.python entity.name.function",
         "meta.create.sql entity.name.function.sql",
         "entity.name.type.cte.sql",

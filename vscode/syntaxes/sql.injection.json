@@ -160,12 +160,24 @@
         { "include": "#jinja-definition-name" },
         {
           "name": "keyword.control.jinja",
-          "match": "(?<!\\.)\\b(?:if|elif|else|endif|for|endfor)\\b"
+          "match": "(?<!\\.)\\b(?:if|elif|else|endif|for|endfor|break|continue)\\b"
         }
       ]
     },
     "jinja-syntax": {
       "patterns": [
+        {
+          "name": "meta.for.jinja",
+          "begin": "(?<!\\.)\\b(for)\\b",
+          "beginCaptures": {
+            "1": { "name": "keyword.control.jinja" }
+          },
+          "end": "\\b(in)\\b|(?=[-+]?%\\})",
+          "endCaptures": {
+            "1": { "name": "keyword.control.jinja" }
+          },
+          "patterns": [{ "include": "#jinja-content" }]
+        },
         {
           "name": "keyword.other.jinja",
           "match": "(?<!\\.)\\b(?:as|block|call|do|endblock|endcall|endfilter|endmacro|endraw|endset|endwith|filter|from|import|include|macro|raw|recursive|required|scoped|set|with)\\b"
@@ -198,8 +210,8 @@
     },
     "jinja-content": {
       "patterns": [
-        { "include": "#jinja-keywords" },
         { "include": "#jinja-syntax" },
+        { "include": "#jinja-keywords" },
         {
           "name": "string.quoted.single.jinja",
           "begin": "'",

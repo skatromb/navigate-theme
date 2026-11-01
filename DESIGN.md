@@ -1,11 +1,11 @@
 # Design
 
-Colors come from syntax only, the theme never guesses whether a name is a type or a value.
+Colors come from the grammar. Semantic tokens only fix what the grammar cannot tell apart.
 
 ## Important
 
 - **Bold**: names at their top-level definition: types, classes, top-level functions, macros, named queries. Example: `struct **Order**`, `class **Order**`
-- ![](swatches/E3825F.png) Orange-brown: control flow, as it needs extra attention `return`, `break`, `continue`, `if`, `for`
+- ![](swatches/E3825F.png) Orange-brown: control flow, as it needs extra attention: `return`, `break`, `continue`, `if`, `for … in`
 - ![](swatches/CFA463.png) _Italic ochre_: comments, as they carry important notes
 - ![](swatches/86C17A.png) Green: string literals that you look for when debugging. Code inside a string, like a template expression, keeps its colors
 

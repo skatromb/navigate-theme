@@ -1,6 +1,6 @@
 {
   "scopeName": "navigate.injection.jinja",
-  "injectionSelector": "L:meta.embedded.inline.jinja -(meta.embedded.inline.jinja string) -comment, L:meta.embedded.block.jinja -(meta.embedded.block.jinja string) -comment",
+  "injectionSelector": "L:meta.embedded.inline.jinja -(meta.embedded.inline.jinja string) -comment, L:meta.embedded.block.jinja -(meta.embedded.block.jinja string) -comment -meta.for.jinja",
   "patterns": [
     { "include": "navigate.injection.sql#jinja-definition-name" },
     { "include": "navigate.injection.sql#jinja-syntax" }
