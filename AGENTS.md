@@ -10,7 +10,9 @@ We could also get some inspiration from https://github.com/tonsky/vscode-theme-a
 
 The theme must work for anyone who just installs it.
 Never change editor settings to get an effect.
-Design for the syntax grammar only.
+Grammar is the base: the theme must look right without a language server.
+Use semantic tokens only where the grammar cannot tell cases apart, and to undo VS Code default semantic colors.
+Check claims about a language's syntax against its real parser, like CPython `Grammar/python.gram`, `rustc_parse` or `jinja2/parser.py`, not TextMate grammars.
 
 UPSTREAM.md tracks gaps we fix upstream.
 

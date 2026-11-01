@@ -14,11 +14,12 @@
     "rules": {
       "patterns": [
         {
-          "match": "^\\s*(from)\\s+([\\w.]+)\\s+(import)\\b",
+          "match": "^\\s*(?:(lazy)\\s+)?(from)\\b(?:\\s+([\\w.]+)\\s+(import)\\b)?",
           "captures": {
             "1": { "name": "keyword.control.import.python" },
-            "2": { "name": "entity.name.namespace.python" },
-            "3": { "name": "keyword.control.import.python" }
+            "2": { "name": "keyword.control.import.python" },
+            "3": { "name": "entity.name.namespace.python" },
+            "4": { "name": "keyword.control.import.python" }
           }
         },
         {
@@ -28,16 +29,13 @@
           },
           "end": "\\b(in)\\b",
           "endCaptures": {
-            "1": { "name": "keyword.other.in.python" }
+            "1": { "name": "keyword.control.flow.python" }
           },
           "patterns": [{ "include": "source.python" }]
         },
         {
-          "match": "\\b(yield)\\s+(from)\\b",
-          "captures": {
-            "1": { "name": "keyword.control.flow.python" },
-            "2": { "name": "keyword.other.python" }
-          }
+          "name": "keyword.control.flow.python",
+          "match": "\\b(?<!\\.)async(?=\\s+for\\b)"
         },
         {
           "match": "^\\s*(class)\\s+(\\w+)(?=\\s*\\[)",
@@ -54,7 +52,7 @@
         },
         {
           "name": "keyword.other.python",
-          "match": "\\b(?<!\\.)(as|async|del|from|pass|with)\\b"
+          "match": "\\b(?<!\\.)(as|async|del|pass|with)\\b"
         }
       ]
     }

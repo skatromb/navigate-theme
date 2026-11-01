@@ -30,6 +30,26 @@
         {
           "name": "keyword.other.unsafe.rust",
           "match": "\\bunsafe\\b"
+        },
+        {
+          "begin": "\\b(break|continue)\\b",
+          "beginCaptures": {
+            "1": { "name": "keyword.control.rust" }
+          },
+          "end": "('[A-Za-z_]\\w*)\\b(?!')|(?=\\S)",
+          "endCaptures": {
+            "1": { "name": "keyword.control.rust" }
+          }
+        },
+        {
+          "match": "(?<=\\()\\s*(in)\\b",
+          "captures": {
+            "1": { "name": "keyword.other.rust" }
+          }
+        },
+        {
+          "name": "keyword.control.rust",
+          "match": "\\bin\\b"
         }
       ]
     },

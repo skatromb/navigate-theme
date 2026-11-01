@@ -16,14 +16,14 @@ const tokenColors = (c) => [
     name: 'Bold: type names at their definition, top-level functions',
     scope: scopes({
       rust: [
-        'entity.name.type.struct',
-        'entity.name.type.enum',
-        'entity.name.type.trait',
-        'entity.name.type.declaration',
+        'source.rust entity.name.type.struct',
+        'source.rust entity.name.type.enum',
+        'source.rust entity.name.type.trait',
+        'source.rust entity.name.type.declaration',
         'meta.impl.rust > entity.name.type',
         'meta.toplevel.rust meta.function.definition.rust entity.name.function',
       ],
-      python: ['entity.name.type.class', 'meta.toplevel.python meta.function.python entity.name.function'],
+      python: ['source.python entity.name.type.class', 'meta.toplevel.python meta.function.python entity.name.function'],
       sql: ['meta.create.sql entity.name.function.sql', 'entity.name.type.cte.sql'],
       jinja: ['entity.name.function.definition.jinja'],
     }),
@@ -99,12 +99,21 @@ const tokenColors = (c) => [
   { scope: ['markup.strikethrough'], settings: { fontStyle: 'strikethrough' } },
 ];
 
+const semanticTokenColors = (c) => ({
+  '*.documentation': { foreground: c.docComment, fontStyle: 'italic' },
+  'selfKeyword:rust': c.regular,
+  'selfTypeKeyword:rust': c.regular,
+  'operator.controlFlow:rust': c.important,
+  'keyword.unsafe:rust': c.important,
+});
+
 module.exports = (palette) => ({
   name: palette.name,
   $schema: 'vscode://schemas/color-theme',
   type: palette.type,
   include: palette.ui,
-  semanticHighlighting: false,
+  semanticHighlighting: true,
+  semanticTokenColors: semanticTokenColors(palette.colors),
   colors: {
     'editor.background': palette.colors.background,
     'editor.foreground': palette.colors.regular,
