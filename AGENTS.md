@@ -3,6 +3,7 @@ Take care about the DX/UI and its coherence, as professional designer would do.
 Always look at https://github.com/pustota-theme/pustota as of reference implementation (including in repo tooling) before implementing anything.
 
 Look at DESIGN.md, always ask before changing this file.
+Keep DESIGN.md short: general roles and a few examples, no per-language lists.
 @DESIGN.md
 
 We could also get some inspiration from https://github.com/tonsky/vscode-theme-alabaster.
