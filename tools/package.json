@@ -2,7 +2,7 @@
   "name": "navigate-tools",
   "private": true,
   "scripts": {
-    "render": "node render.js rust ../sample/rust.png && node render.js python ../sample/python.png && node render.js sql ../sample/sql.png && node render.js dbt ../sample/dbt.png && node render.js rust ../sample/rust-light.png light && node render.js python ../sample/python-light.png light && node render.js sql ../sample/sql-light.png light && node render.js dbt ../sample/dbt-light.png light"
+    "render": "node render.js rust ../sample/rust/dark.png && node render.js python ../sample/python/dark.png && node render.js sql ../sample/sql/dark.png && node render.js dbt ../sample/dbt/dark.png && node render.js rust ../sample/rust/light.png light && node render.js python ../sample/python/light.png light && node render.js sql ../sample/sql/light.png light && node render.js dbt ../sample/dbt/light.png light"
   },
   "devDependencies": {
     "vscode-oniguruma": "^2.0.1",

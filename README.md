@@ -10,8 +10,8 @@ Most color schemes colorize syntax: keywords, expressions, operators. That doesn
 
 | Rust | Python |
 | --- | --- |
-| ![](sample/rust.png) | ![](sample/python.png) |
-| ![](sample/rust-light.png) | ![](sample/python-light.png) |
+| ![](sample/rust/dark.png) | ![](sample/python/dark.png) |
+| ![](sample/rust/light.png) | ![](sample/python/light.png) |
 
 More languages, including SQL and dbt: [sample/README.md](sample/README.md).
 
