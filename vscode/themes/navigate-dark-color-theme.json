@@ -97,25 +97,6 @@
       }
     },
     {
-      "name": "Regular: math, comparison, logic operators",
-      "scope": [
-        "keyword.operator.math",
-        "keyword.operator.arithmetic",
-        "keyword.operator.comparison",
-        "keyword.operator.relational",
-        "keyword.operator.logical",
-        "keyword.operator.bitwise",
-        "keyword.operator.increment",
-        "keyword.operator.decrement",
-        "keyword.operator.exponent",
-        "keyword.operator.assignment.compound",
-        "keyword.operator.assignment.rust"
-      ],
-      "settings": {
-        "foreground": "#e0ded8"
-      }
-    },
-    {
       "name": "Italic insignificant: doc comments",
       "scope": [
         "comment.line.documentation",

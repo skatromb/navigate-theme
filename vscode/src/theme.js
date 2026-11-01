@@ -66,25 +66,6 @@ const tokenColors = (c) => [
     settings: { foreground: c.insignificant },
   },
   {
-    name: 'Regular: math, comparison, logic operators',
-    scope: scopes({
-      any: [
-        'keyword.operator.math',
-        'keyword.operator.arithmetic',
-        'keyword.operator.comparison',
-        'keyword.operator.relational',
-        'keyword.operator.logical',
-        'keyword.operator.bitwise',
-        'keyword.operator.increment',
-        'keyword.operator.decrement',
-        'keyword.operator.exponent',
-        'keyword.operator.assignment.compound',
-      ],
-      rust: ['keyword.operator.assignment.rust'],
-    }),
-    settings: { foreground: c.regular },
-  },
-  {
     name: 'Italic insignificant: doc comments',
     scope: scopes({
       any: [
