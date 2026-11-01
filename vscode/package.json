@@ -2,7 +2,7 @@
   "name": "navigate-theme",
   "displayName": "Navigate",
   "description": "Color theme that helps you navigate through the code",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "publisher": "skatromb",
   "icon": "icon.png",
   "license": "MIT",
@@ -46,6 +46,16 @@
         "scopeName": "navigate.injection.python",
         "path": "./syntaxes/python.injection.json",
         "injectTo": ["source.python"]
+      },
+      {
+        "scopeName": "navigate.injection.sql",
+        "path": "./syntaxes/sql.injection.json",
+        "injectTo": ["source.sql", "source.sql.jinja"]
+      },
+      {
+        "scopeName": "navigate.injection.jinja",
+        "path": "./syntaxes/jinja.injection.json",
+        "injectTo": ["source.sql", "source.sql.jinja"]
       }
     ]
   }

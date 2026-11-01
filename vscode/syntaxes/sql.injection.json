@@ -1,0 +1,234 @@
+{
+  "scopeName": "navigate.injection.sql",
+  "injectionSelector": "L:source.sql -comment -string -meta.embedded -meta.identifier.quoted",
+  "patterns": [
+    { "include": "#jinja" },
+    {
+      "name": "comment.line.number-sign.sql",
+      "match": "(#).*$",
+      "captures": {
+        "1": { "name": "punctuation.definition.comment.sql" }
+      }
+    },
+    {
+      "name": "string.quoted.single.sql",
+      "begin": "(?i)(?:\\b[rb]{1,2})?'",
+      "end": "'",
+      "beginCaptures": { "0": { "name": "punctuation.definition.string.begin.sql" } },
+      "endCaptures": { "0": { "name": "punctuation.definition.string.end.sql" } },
+      "patterns": [{ "include": "#escape" }, { "include": "#jinja" }]
+    },
+    {
+      "name": "string.quoted.double.sql",
+      "begin": "(?i)(?:\\b[rb]{1,2})?\"",
+      "end": "\"",
+      "beginCaptures": { "0": { "name": "punctuation.definition.string.begin.sql" } },
+      "endCaptures": { "0": { "name": "punctuation.definition.string.end.sql" } },
+      "patterns": [{ "include": "#escape" }, { "include": "#jinja" }]
+    },
+    {
+      "name": "meta.identifier.quoted.sql",
+      "begin": "`",
+      "end": "`",
+      "beginCaptures": { "0": { "name": "punctuation.definition.identifier.begin.sql" } },
+      "endCaptures": { "0": { "name": "punctuation.definition.identifier.end.sql" } },
+      "patterns": [{ "include": "#jinja" }, { "include": "#period" }]
+    },
+    {
+      "name": "meta.create.sql",
+      "match": "(?i)^\\s*(create(?:\\s+or\\s+replace)?(?:\\s+(?:temp|temporary|materialized))?)\\s+(table|view)\\s+(if\\s+not\\s+exists\\s+)?((?:\\w+\\.)*)(\\w+)",
+      "captures": {
+        "1": { "name": "keyword.other.create.sql" },
+        "2": { "name": "keyword.other.sql" },
+        "3": { "name": "keyword.other.sql" },
+        "4": { "patterns": [{ "include": "#period" }] },
+        "5": { "name": "entity.name.function.sql" }
+      }
+    },
+    {
+      "match": "(?i)\\b(window)\\s+\\w+\\s+(as)\\b",
+      "captures": {
+        "1": { "name": "keyword.other.sql" },
+        "2": { "name": "keyword.other.alias.sql" }
+      }
+    },
+    {
+      "match": "(?i)\\b(\\w+)\\s+(as)\\s*(?=\\()",
+      "captures": {
+        "1": { "name": "entity.name.type.cte.sql" },
+        "2": { "name": "keyword.other.alias.sql" }
+      }
+    },
+    {
+      "match": "(?i)\\b(as)\\s+(?!(?:select|with|struct|value)\\b)[A-Za-z_]\\w*\\b(?!\\s*\\()",
+      "captures": {
+        "1": { "name": "keyword.other.alias.sql" }
+      }
+    },
+    {
+      "match": "(?i)(\\s?)\\b(?<!\\.)(and|or|not|in|is|like|ilike|between|exists|any|some|distinct\\s+from)\\b",
+      "captures": {
+        "2": { "name": "keyword.operator.logical.sql" }
+      }
+    },
+    {
+      "name": "storage.type.sql",
+      "match": "(?i)\\b(?:struct|array)(?=\\s*<)"
+    },
+    {
+      "match": "(?i)(\\s)(except|replace)(?=\\s+\\()",
+      "captures": {
+        "2": { "name": "keyword.other.sql" }
+      }
+    },
+    {
+      "name": "keyword.operator.sql",
+      "match": "-(?!-)|/(?!\\*)|[+*%=<>!|&^~]"
+    },
+    {
+      "match": "\\b[A-Za-z_]\\w*((?:\\.(?:\\w+|(?=\\*)))+)",
+      "captures": {
+        "1": { "patterns": [{ "include": "#period" }] }
+      }
+    },
+    {
+      "match": "\\b\\w+(\\()",
+      "captures": {
+        "1": { "name": "punctuation.section.parens.sql" }
+      }
+    },
+    {
+      "name": "variable.other.sql",
+      "match": "(?i)\\b(?:(?<!\\.)(export\\s+data|account|add|all|alter|analyse|analyze|and|any|array|as|asc|assert_rows_modified|asymmetric|at|authorization|before|begin|between|both|break|by|call|cascade|case|cast|check|collate|collation|column|commit|concurrently|connect|connection|constraint|contains|continue|create|cross|cube|current|current_catalog|current_date|current_role|current_schema|current_time|current_timestamp|current_user|database|day|dayofweek|dayofyear|declare|default|deferrable|define|delete|desc|describe|distinct|do|drop|each|else|elseif|end|enum|escape|except|exclude|exec|execute|exists|exit|explain|external|extract|fetch|filter|first|following|for|foreign|freeze|from|full|function|generated|grant|graph_table|group|grouping|groups|gscluster|hash|having|hour|identity|if|ignore|ilike|in|increment|index|initially|inner|inout|insert|intersect|into|is|isnull|isoweek|isoyear|issue|iterate|join|key|language|last|lateral|leading|leave|left|like|limit|localtime|localtimestamp|lookup|loop|merge|microsecond|millisecond|minus|minute|month|name|nanosecond|natural|new|no|not|notnull|nulls|of|offset|on|only|or|order|organization|out|outer|over|overlaps|partition|percent|pivot|placing|preceding|primary|procedure|proto|qualify|quarter|range|recursive|references|regexp|rename|repeat|replace|respect|restrict|return|returning|returns|revoke|right|rlike|rollback|rollup|row|rows|sample|schema|second|select|session_user|set|sets|show|signal|similar|some|start|struct|symmetric|system|system_user|table|tablesample|temporary|then|to|top|trailing|transaction|treat|trigger|truncate|try_cast|unbounded|union|unique|unnest|unpivot|update|use|user|using|values|variadic|verbose|view|week|when|whenever|where|while|window|with|within|without|year|zone)|[A-Za-z_]\\w*)\\b",
+      "captures": {
+        "1": { "name": "keyword.other.sql" }
+      }
+    },
+    {
+      "name": "punctuation.separator.sql",
+      "match": "[,;]"
+    },
+    {
+      "name": "punctuation.section.parens.sql",
+      "match": "[()\\[\\]]"
+    }
+  ],
+  "repository": {
+    "period": {
+      "name": "punctuation.separator.period.sql",
+      "match": "\\."
+    },
+    "escape": {
+      "name": "constant.character.escape.sql",
+      "match": "\\\\."
+    },
+    "jinja": {
+      "patterns": [
+        {
+          "name": "comment.block.jinja",
+          "begin": "\\{#",
+          "end": "#\\}",
+          "beginCaptures": { "0": { "name": "punctuation.definition.comment.begin.jinja" } },
+          "endCaptures": { "0": { "name": "punctuation.definition.comment.end.jinja" } }
+        },
+        {
+          "name": "meta.embedded.block.jinja",
+          "begin": "\\{%[-+]?",
+          "end": "[-+]?%\\}",
+          "beginCaptures": { "0": { "name": "punctuation.section.embedded.begin.jinja" } },
+          "endCaptures": { "0": { "name": "punctuation.section.embedded.end.jinja" } },
+          "patterns": [{ "include": "#jinja-content" }]
+        },
+        {
+          "name": "meta.embedded.inline.jinja",
+          "begin": "\\{\\{[-+]?",
+          "end": "[-+]?\\}\\}",
+          "beginCaptures": { "0": { "name": "punctuation.section.embedded.begin.jinja" } },
+          "endCaptures": { "0": { "name": "punctuation.section.embedded.end.jinja" } },
+          "patterns": [{ "include": "#jinja-content" }]
+        }
+      ]
+    },
+    "jinja-definition-name": {
+      "match": "(?<=\\b(?:macro|test|materialization|snapshot))(\\s+)(\\w+)",
+      "captures": {
+        "2": { "name": "entity.name.function.definition.jinja" }
+      }
+    },
+    "jinja-keywords": {
+      "patterns": [
+        { "include": "#jinja-definition-name" },
+        {
+          "name": "keyword.control.jinja",
+          "match": "(?<!\\.)\\b(?:if|elif|else|endif|for|endfor)\\b"
+        }
+      ]
+    },
+    "jinja-syntax": {
+      "patterns": [
+        {
+          "name": "keyword.other.jinja",
+          "match": "(?<!\\.)\\b(?:as|block|call|do|endblock|endcall|endfilter|endmacro|endraw|endset|endwith|filter|from|import|include|macro|raw|recursive|required|scoped|set|with)\\b"
+        },
+        {
+          "name": "keyword.operator.jinja",
+          "match": "\\b(?:and|or|not|in|is)\\b|[-+~](?!%\\}|\\}\\})|%(?!\\})|[=!<>|*/]"
+        }
+      ]
+    },
+    "jinja-in-string": {
+      "patterns": [
+        {
+          "name": "meta.embedded.block.jinja",
+          "begin": "\\{%[-+]?",
+          "end": "[-+]?%\\}",
+          "beginCaptures": { "0": { "name": "punctuation.section.embedded.begin.jinja" } },
+          "endCaptures": { "0": { "name": "punctuation.section.embedded.end.jinja" } },
+          "patterns": [{ "include": "#escape" }, { "include": "#jinja-content" }]
+        },
+        {
+          "name": "meta.embedded.inline.jinja",
+          "begin": "\\{\\{[-+]?",
+          "end": "[-+]?\\}\\}",
+          "beginCaptures": { "0": { "name": "punctuation.section.embedded.begin.jinja" } },
+          "endCaptures": { "0": { "name": "punctuation.section.embedded.end.jinja" } },
+          "patterns": [{ "include": "#escape" }, { "include": "#jinja-content" }]
+        }
+      ]
+    },
+    "jinja-content": {
+      "patterns": [
+        { "include": "#jinja-keywords" },
+        { "include": "#jinja-syntax" },
+        {
+          "name": "string.quoted.single.jinja",
+          "begin": "'",
+          "end": "'",
+          "patterns": [{ "include": "#escape" }, { "include": "#jinja-in-string" }]
+        },
+        {
+          "name": "string.quoted.double.jinja",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [{ "include": "#escape" }, { "include": "#jinja-in-string" }]
+        },
+        {
+          "name": "constant.numeric.jinja",
+          "match": "\\b\\d+(?:\\.\\d+)?\\b"
+        },
+        {
+          "name": "constant.language.jinja",
+          "match": "\\b(?:true|false|none|True|False|None)\\b"
+        },
+        {
+          "name": "punctuation.section.jinja",
+          "match": "[(){}\\[\\]]"
+        },
+        {
+          "name": "punctuation.separator.jinja",
+          "match": "[,:.]"
+        }
+      ]
+    }
+  }
+}

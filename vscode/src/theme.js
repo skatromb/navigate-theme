@@ -24,6 +24,8 @@ const tokenColors = (c) => [
         'meta.toplevel.rust meta.function.definition.rust entity.name.function',
       ],
       python: ['entity.name.type.class', 'meta.toplevel.python meta.function.python entity.name.function'],
+      sql: ['meta.create.sql entity.name.function.sql', 'entity.name.type.cte.sql'],
+      jinja: ['entity.name.function.definition.jinja'],
     }),
     settings: { fontStyle: 'bold' },
   },
@@ -31,6 +33,12 @@ const tokenColors = (c) => [
     name: 'Italic: comments',
     scope: scopes({
       any: ['comment', 'comment punctuation.definition.comment'],
+      dbt: [
+        'meta.funcsign.dbt',
+        'meta.funcsign.dbt keyword',
+        'meta.funcsign.dbt keyword.control',
+        'meta.funcsign.dbt punctuation',
+      ],
     }),
     settings: { foreground: c.comment, fontStyle: 'italic' },
   },
@@ -64,6 +72,14 @@ const tokenColors = (c) => [
       ],
     }),
     settings: { foreground: c.insignificant },
+  },
+  {
+    name: 'Regular: SQL types, Jinja expressions',
+    scope: scopes({
+      sql: ['storage.type.sql'],
+      jinja: ['meta.embedded.inline.jinja', 'meta.embedded.block.jinja'],
+    }),
+    settings: { foreground: c.regular },
   },
   {
     name: 'Italic insignificant: doc comments',
