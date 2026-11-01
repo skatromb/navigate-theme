@@ -7,7 +7,7 @@ const oniguruma = require('vscode-oniguruma');
 
 const [language, output, variant = 'dark'] = process.argv.slice(2);
 if (!language || !output) {
-  console.error('usage: node tools/render.js <rust|python> <out.png> [dark|light]');
+  console.error('usage: node tools/render.js <rust|python|sql|dbt> <out.png> [dark|light]');
   process.exit(1);
 }
 
@@ -16,14 +16,17 @@ const VSCODE_EXTENSIONS = 'https://raw.githubusercontent.com/microsoft/vscode/1.
 const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 
 const languages = {
-  rust: { scope: 'source.rust', grammar: 'rust/syntaxes/rust.tmLanguage.json', sample: 'sample.rs' },
-  python: { scope: 'source.python', grammar: 'python/syntaxes/MagicPython.tmLanguage.json', sample: 'sample.py' },
+  rust: { scope: 'source.rust', grammar: 'rust/syntaxes/rust.tmLanguage.json', sample: 'sample.rs', injections: ['rust'] },
+  python: { scope: 'source.python', grammar: 'python/syntaxes/MagicPython.tmLanguage.json', sample: 'sample.py', injections: ['python'] },
+  sql: { scope: 'source.sql', grammar: 'sql/syntaxes/sql.tmLanguage.json', sample: 'sample.sql', injections: ['sql', 'jinja'] },
+  dbt: { scope: 'source.sql', grammar: 'sql/syntaxes/sql.tmLanguage.json', sample: 'dbt.sql', injections: ['sql', 'jinja'] },
 }[language];
 
+const injectionScopes = languages.injections.map((name) => `navigate.injection.${name}`);
 const grammarPaths = {
   [languages.scope]: `${VSCODE_EXTENSIONS}/${languages.grammar}`,
   'source.regexp.python': `${VSCODE_EXTENSIONS}/python/syntaxes/MagicRegExp.tmLanguage.json`,
-  [`navigate.injection.${language}`]: path.join(ROOT, 'vscode/syntaxes', `${language}.injection.json`),
+  ...Object.fromEntries(languages.injections.map((name) => [`navigate.injection.${name}`, path.join(ROOT, 'vscode/syntaxes', `${name}.injection.json`)])),
 };
 
 const theme = JSON.parse(fs.readFileSync(path.join(ROOT, `vscode/themes/navigate-${variant}-color-theme.json`)));
@@ -50,7 +53,7 @@ const registry = new vsctm.Registry({
     if (!file) return null;
     return vsctm.parseRawGrammar(file.startsWith('https://') ? await download(file) : fs.readFileSync(file).toString(), file);
   },
-  getInjections: (scopeName) => (scopeName === languages.scope ? [`navigate.injection.${language}`] : []),
+  getInjections: (scopeName) => (scopeName === languages.scope ? injectionScopes : []),
 });
 
 const FONT_STYLE_OFFSET = 11;

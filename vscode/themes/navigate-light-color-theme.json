@@ -38,7 +38,10 @@
         "meta.impl.rust > entity.name.type",
         "meta.toplevel.rust meta.function.definition.rust entity.name.function",
         "entity.name.type.class",
-        "meta.toplevel.python meta.function.python entity.name.function"
+        "meta.toplevel.python meta.function.python entity.name.function",
+        "meta.create.sql entity.name.function.sql",
+        "entity.name.type.cte.sql",
+        "entity.name.function.definition.jinja"
       ],
       "settings": {
         "fontStyle": "bold"
@@ -48,7 +51,11 @@
       "name": "Italic: comments",
       "scope": [
         "comment",
-        "comment punctuation.definition.comment"
+        "comment punctuation.definition.comment",
+        "meta.funcsign.dbt",
+        "meta.funcsign.dbt keyword",
+        "meta.funcsign.dbt keyword.control",
+        "meta.funcsign.dbt punctuation"
       ],
       "settings": {
         "foreground": "#8d6421",
@@ -97,19 +104,11 @@
       }
     },
     {
-      "name": "Regular: math, comparison, logic operators",
+      "name": "Regular: SQL types, Jinja expressions",
       "scope": [
-        "keyword.operator.math",
-        "keyword.operator.arithmetic",
-        "keyword.operator.comparison",
-        "keyword.operator.relational",
-        "keyword.operator.logical",
-        "keyword.operator.bitwise",
-        "keyword.operator.increment",
-        "keyword.operator.decrement",
-        "keyword.operator.exponent",
-        "keyword.operator.assignment.compound",
-        "keyword.operator.assignment.rust"
+        "storage.type.sql",
+        "meta.embedded.inline.jinja",
+        "meta.embedded.block.jinja"
       ],
       "settings": {
         "foreground": "#292720"
