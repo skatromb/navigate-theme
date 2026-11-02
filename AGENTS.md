@@ -16,7 +16,7 @@ Check claims about a language's syntax against its real parser, like CPython `Gr
 
 UPSTREAM.md tracks gaps we fix upstream.
 
-README screenshots: `cd tools && npm install && npm run render`. [tools/render.js](tools/render.js) tokenizes the samples with the VS Code grammars and this theme, then screenshots the HTML with headless Chrome.
+README screenshots: re-render after any change to palettes, scopes, injections or samples: `cd tools && npm install && npm run render`. Nothing checks it. [tools/render.js](tools/render.js) tokenizes the samples with the VS Code grammars and this theme, then screenshots the HTML with headless Chrome.
 
 PRs are squash-merged, the repo allows nothing else: `gh pr merge --squash`.
 
