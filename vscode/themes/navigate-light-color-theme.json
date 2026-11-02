@@ -11,8 +11,8 @@
     },
     "selfKeyword:rust": "#292720",
     "selfTypeKeyword:rust": "#292720",
-    "operator.controlFlow:rust": "#bd5e3e",
-    "keyword.unsafe:rust": "#bd5e3e"
+    "operator.controlFlow:rust": "#c35a22",
+    "keyword.unsafe:rust": "#c35a22"
   },
   "colors": {
     "editor.background": "#fafafa",
@@ -35,7 +35,7 @@
         "keyword.other.unsafe.rust"
       ],
       "settings": {
-        "foreground": "#bd5e3e"
+        "foreground": "#c35a22"
       }
     },
     {
@@ -68,7 +68,7 @@
         "meta.funcsign.dbt punctuation"
       ],
       "settings": {
-        "foreground": "#8d6421",
+        "foreground": "#a37822",
         "fontStyle": "italic"
       }
     },
@@ -84,7 +84,7 @@
         "string.regexp punctuation"
       ],
       "settings": {
-        "foreground": "#3a722f"
+        "foreground": "#3d8f35"
       }
     },
     {

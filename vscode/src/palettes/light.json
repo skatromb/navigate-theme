@@ -6,9 +6,9 @@
   "colors": {
     "background": "#fafafa",
     "regular": "#292720",
-    "important": "#bd5e3e",
-    "comment": "#8d6421",
-    "string": "#3a722f",
+    "important": "#c35a22",
+    "comment": "#a37822",
+    "string": "#3d8f35",
     "insignificant": "#747b86",
     "docComment": "#88919c"
   }
