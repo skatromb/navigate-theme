@@ -201,6 +201,8 @@
     "terminal.ansiYellow": "#f9af4f",
     "terminal.background": "#0a0e14",
     "terminal.foreground": "#e0ded8",
+    "terminal.findMatchBackground": "#f5bd4766",
+    "terminal.findMatchHighlightBackground": "#f5bd4726",
     "extensionButton.prominentBackground": "#f5bd47",
     "extensionButton.prominentForeground": "#0a0e14",
     "extensionButton.prominentHoverBackground": "#e1af4b"
