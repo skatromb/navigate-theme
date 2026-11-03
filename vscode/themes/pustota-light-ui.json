@@ -1,10 +1,8 @@
 {
   "colors": {
     "editor.background": "#fafafa",
-    "editor.findMatchBackground": "#fafafa",
-    "editor.findMatchBorder": "#ab8600",
-    "editor.findMatchHighlightBackground": "#ab86000d",
-    "editor.findMatchHighlightBorder": "#ab8600be",
+    "editor.findMatchBackground": "#ffe018cc",
+    "editor.findMatchHighlightBackground": "#ab860033",
     "editor.findRangeHighlightBackground": "#e7e8e9f2",
     "editor.findRangeHighlightBorder": "#fafafa00",
     "editor.foreground": "#181b1f",
