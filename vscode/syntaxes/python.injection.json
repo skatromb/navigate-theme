@@ -22,7 +22,7 @@
       "patterns": [
         {
           "name": "meta.annotated.python",
-          "begin": "^(?=\\s*(?!(?:else|try|finally|except|lambda)\\b)[A-Za-z_][\\w.]*\\s*:(?!=)\\s*[^\\s#])",
+          "begin": "^(?!.*,\\s*(?:#.*)?$)(?=\\s*(?!(?:else|try|finally|except|lambda)\\b)[A-Za-z_][\\w.]*\\s*:(?!=)\\s*[^\\s#])",
           "end": "$",
           "patterns": [{ "include": "#annotation" }, { "include": "source.python" }]
         },

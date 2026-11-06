@@ -75,7 +75,7 @@ const tokenColors = (c) => [
         'meta.function.decorator.python string',
         'meta.function.decorator.python punctuation.definition.string',
       ],
-      sql: ['meta.type.sql'],
+      sql: ['meta.type.sql', 'meta.type.sql storage.type.sql'],
     }),
     settings: { foreground: c.insignificant },
   },

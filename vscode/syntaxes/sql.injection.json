@@ -14,11 +14,11 @@
       "endCaptures": { "0": { "name": "punctuation.section.parens.sql" } },
       "patterns": [
         {
-          "match": "(?i)\\b(as)\\s+([A-Za-z_]\\w*(?:\\s+(?:with|without)\\s+time\\s+zone|\\s+precision|\\s+varying)?(?:\\s*\\(\\s*\\d+(?:\\s*,\\s*\\d+)?\\s*\\))?(?:\\s*\\[\\s*\\])*)",
-          "captures": {
-            "1": { "name": "keyword.other.sql" },
-            "2": { "name": "meta.type.sql" }
-          }
+          "contentName": "meta.type.sql",
+          "begin": "(?i)\\b(as)\\b",
+          "beginCaptures": { "1": { "name": "keyword.other.sql" } },
+          "end": "(?=\\))",
+          "patterns": [{ "include": "#parens" }, { "include": "$self" }]
         },
         { "include": "#parens" },
         { "include": "$self" }
@@ -39,7 +39,7 @@
       "endCaptures": { "0": { "name": "punctuation.section.parens.sql" } },
       "patterns": [
         {
-          "match": "(?i)(?:^|(?<=[(,]))\\s*(?!(?:primary|foreign|constraint|unique|check|key|index|like|exclude|not|null|default|references|generated|collate|on|period)\\b)((?:\"[^\"]*\"|\\w+))\\s+([A-Za-z_]\\w*(?:\\s+(?:with|without)\\s+time\\s+zone|\\s+precision|\\s+varying)?(?:\\s*\\(\\s*\\d+(?:\\s*,\\s*\\d+)?\\s*\\))?(?:\\s*\\[\\s*\\])*)",
+          "match": "(?i)(?:^|(?<=[(,]))\\s*(?!(?:primary|foreign)\\s+key\\b|constraint\\s|(?:unique|check|exclude)\\b\\s*(?:\\(|using\\b|key\\b|index\\b)|(?:key|index)\\s+\\w+\\s*\\(|like\\s|(?:not|null|default|references|generated|collate|on|period)\\b)((?:\"[^\"]*\"|\\w+))\\s+([A-Za-z_]\\w*(?:\\s+(?:with|without)\\s+time\\s+zone|\\s+precision|\\s+varying)?(?:\\s*\\(\\s*\\d+(?:\\s*,\\s*\\d+)?\\s*\\))?(?:\\s*\\[\\s*\\])*)",
           "captures": {
             "1": { "name": "variable.other.sql" },
             "2": { "name": "meta.type.sql" }
