@@ -33,7 +33,7 @@ impl<GenType: Trait> Struct<'_, GenType> {
 
 impl<GenType> Trait for Struct<'_, GenType>
 where
-    GenType: Trait,
+    GenType: Trait + Sync,
 {
     type Item = Vec<u8>;
 

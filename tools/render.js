@@ -73,6 +73,7 @@ const WIDTH = 1010;
   const grammar = await registry.loadGrammar(languages.scope);
   const colorMap = registry.getColorMap();
   const lines = fs.readFileSync(path.join(ROOT, 'sample', languages.sample), 'utf8').replace(/\n$/, '').split('\n');
+  if (languages.sample.includes('readme.') && lines.length !== 50) throw new Error(`${languages.sample}: ${lines.length} lines, README samples need 50`);
   let ruleStack = vsctm.INITIAL;
   const rows = lines.map((line, index) => {
     const { tokens, ruleStack: next } = grammar.tokenizeLine2(line, ruleStack);
