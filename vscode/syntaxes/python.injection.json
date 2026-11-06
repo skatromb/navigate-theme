@@ -1,6 +1,6 @@
 {
   "scopeName": "navigate.injection.python",
-  "injectionSelector": "L:source.python -comment -string -meta.function.decorator -meta.toplevel -meta.annotated.python",
+  "injectionSelector": "L:source.python -comment -string -meta.function.decorator -meta.toplevel -meta.type.python",
   "patterns": [
     {
       "name": "meta.toplevel.python",
@@ -11,20 +11,17 @@
     { "include": "#rules" }
   ],
   "repository": {
-    "annotation": {
-      "contentName": "meta.type.python",
-      "begin": ":",
-      "beginCaptures": { "0": { "name": "punctuation.separator.colon.python" } },
-      "end": "(?=[=#]|$)",
-      "patterns": [{ "include": "source.python" }]
-    },
     "rules": {
       "patterns": [
         {
-          "name": "meta.annotated.python",
-          "begin": "^(?!.*,\\s*(?:#.*)?$)(?=\\s*(?!(?:else|try|finally|except|lambda)\\b)[A-Za-z_][\\w.]*\\s*:(?!=)\\s*[^\\s#])",
-          "end": "$",
-          "patterns": [{ "include": "#annotation" }, { "include": "source.python" }]
+          "contentName": "meta.type.python",
+          "begin": "^(?!.*,\\s*(?:#.*)?$)\\s*(?!(?:else|try|finally|except|lambda)\\b)([A-Za-z_][\\w.]*)\\s*(:)(?!=)(?=\\s*[^\\s#])",
+          "beginCaptures": {
+            "1": { "patterns": [{ "include": "source.python" }] },
+            "2": { "name": "punctuation.separator.colon.python" }
+          },
+          "end": "(?=[=#)\\]}]|$)",
+          "patterns": [{ "include": "source.python" }]
         },
         {
           "match": "^\\s*(?:(lazy)\\s+)?(from)\\b(?:\\s+([\\w.]+)\\s+(import)\\b)?",
@@ -37,19 +34,12 @@
         },
         {
           "begin": "\\b(?<!\\.)(for)\\b",
-          "beginCaptures": {
-            "1": { "name": "keyword.control.flow.python" }
-          },
+          "beginCaptures": { "1": { "name": "keyword.control.flow.python" } },
           "end": "\\b(in)\\b",
-          "endCaptures": {
-            "1": { "name": "keyword.control.flow.python" }
-          },
+          "endCaptures": { "1": { "name": "keyword.control.flow.python" } },
           "patterns": [{ "include": "source.python" }]
         },
-        {
-          "name": "keyword.control.flow.python",
-          "match": "\\b(?<!\\.)async(?=\\s+for\\b)"
-        },
+        { "name": "keyword.control.flow.python", "match": "\\b(?<!\\.)async(?=\\s+for\\b)" },
         {
           "begin": "^\\s*(?:(class)\\s+(\\w+)|(type)\\s+(\\w+))\\s*(\\[)",
           "beginCaptures": {
@@ -74,15 +64,9 @@
         },
         {
           "match": "^\\s*(type)\\s+(\\w+)(?=\\s*=)",
-          "captures": {
-            "1": { "name": "storage.type.type.python" },
-            "2": { "name": "entity.name.type.alias.python" }
-          }
+          "captures": { "1": { "name": "storage.type.type.python" }, "2": { "name": "entity.name.type.alias.python" } }
         },
-        {
-          "name": "keyword.other.python",
-          "match": "\\b(?<!\\.)(as|async|del|pass|with)\\b"
-        }
+        { "name": "keyword.other.python", "match": "\\b(?<!\\.)(as|async|del|pass|with)\\b" }
       ]
     }
   }

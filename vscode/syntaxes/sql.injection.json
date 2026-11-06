@@ -6,10 +6,7 @@
     {
       "name": "meta.cast.sql",
       "begin": "(?i)\\b((?:try_|safe_)?cast)\\s*(\\()",
-      "beginCaptures": {
-        "1": { "name": "keyword.other.sql" },
-        "2": { "name": "punctuation.section.parens.sql" }
-      },
+      "beginCaptures": { "1": { "name": "keyword.other.sql" }, "2": { "name": "punctuation.section.parens.sql" } },
       "end": "\\)",
       "endCaptures": { "0": { "name": "punctuation.section.parens.sql" } },
       "patterns": [
@@ -26,27 +23,30 @@
     },
     {
       "name": "meta.create.sql",
-      "begin": "(?i)^\\s*(create(?:\\s+or\\s+replace)?(?:\\s+(?:temp|temporary))?)\\s+(table|function|procedure)\\s+(if\\s+not\\s+exists\\s+)?((?:\\w+\\.)*)(\\w+)\\s*(\\()",
+      "begin": "(?i)^\\s*(create(?:\\s+or\\s+replace)?(?:\\s+(?:temp|temporary|materialized))?)\\s+(table|view|function|procedure)\\s+(if\\s+not\\s+exists\\s+)?((?:\\w+\\.)*)(\\w+)",
       "beginCaptures": {
         "1": { "name": "keyword.other.create.sql" },
         "2": { "name": "keyword.other.sql" },
         "3": { "name": "keyword.other.sql" },
         "4": { "patterns": [{ "include": "#period" }] },
-        "5": { "name": "entity.name.function.sql" },
-        "6": { "name": "punctuation.section.parens.sql" }
+        "5": { "name": "entity.name.function.sql" }
       },
-      "end": "\\)",
-      "endCaptures": { "0": { "name": "punctuation.section.parens.sql" } },
+      "end": "(?!\\G)",
       "patterns": [
         {
-          "match": "(?i)(?:^|(?<=[(,]))\\s*(?!(?:primary|foreign)\\s+key\\b|constraint\\s|(?:unique|check|exclude)\\b\\s*(?:\\(|using\\b|key\\b|index\\b)|(?:key|index)\\s+\\w+\\s*\\(|like\\s|(?:not|null|default|references|generated|collate|on|period)\\b)((?:\"[^\"]*\"|\\w+))\\s+([A-Za-z_]\\w*(?:\\s+(?:with|without)\\s+time\\s+zone|\\s+precision|\\s+varying)?(?:\\s*\\(\\s*\\d+(?:\\s*,\\s*\\d+)?\\s*\\))?(?:\\s*\\[\\s*\\])*)",
-          "captures": {
-            "1": { "name": "variable.other.sql" },
-            "2": { "name": "meta.type.sql" }
-          }
-        },
-        { "include": "#parens" },
-        { "include": "$self" }
+          "begin": "\\G\\s*(\\()",
+          "beginCaptures": { "1": { "name": "punctuation.section.parens.sql" } },
+          "end": "\\)",
+          "endCaptures": { "0": { "name": "punctuation.section.parens.sql" } },
+          "patterns": [
+            {
+              "match": "(?i)(?:^|(?<=[(,]))\\s*(?!(?:primary|foreign)\\s+key\\b|constraint\\s|(?:unique|check|exclude)\\b\\s*(?:\\(|using\\b|key\\b|index\\b)|(?:key|index)\\s+\\w+\\s*\\(|like\\s|(?:not|null|default|references|generated|collate|on|period)\\b)((?:\"[^\"]*\"|\\w+))\\s+([A-Za-z_]\\w*(?:\\s+(?:with|without)\\s+time\\s+zone|\\s+precision|\\s+varying)?(?:\\s*\\(\\s*\\d+(?:\\s*,\\s*\\d+)?\\s*\\))?(?:\\s*\\[\\s*\\])*)",
+              "captures": { "1": { "name": "variable.other.sql" }, "2": { "name": "meta.type.sql" } }
+            },
+            { "include": "#parens" },
+            { "include": "$self" }
+          ]
+        }
       ]
     },
     {
@@ -70,21 +70,13 @@
     },
     {
       "match": "(::)\\s*([A-Za-z_]\\w*(?:\\s+(?:with|without)\\s+time\\s+zone|\\s+precision|\\s+varying)?(?:\\s*\\(\\s*\\d+(?:\\s*,\\s*\\d+)?\\s*\\))?(?:\\s*\\[\\s*\\])*)",
-      "captures": {
-        "1": { "name": "keyword.operator.sql" },
-        "2": { "name": "meta.type.sql" }
-      }
+      "captures": { "1": { "name": "keyword.operator.sql" }, "2": { "name": "meta.type.sql" } }
     },
-    {
-      "name": "meta.type.sql",
-      "match": "(?i)\\b(?:date|time|timestamp|datetime|interval)(?=\\s*')"
-    },
+    { "name": "meta.type.sql", "match": "(?i)\\b(?:date|time|timestamp|datetime|interval)(?=\\s*')" },
     {
       "name": "comment.line.number-sign.sql",
       "match": "(#).*$",
-      "captures": {
-        "1": { "name": "punctuation.definition.comment.sql" }
-      }
+      "captures": { "1": { "name": "punctuation.definition.comment.sql" } }
     },
     {
       "name": "string.quoted.single.sql",
@@ -111,111 +103,47 @@
       "patterns": [{ "include": "#jinja" }, { "include": "#period" }]
     },
     {
-      "name": "meta.create.sql",
-      "match": "(?i)^\\s*(create(?:\\s+or\\s+replace)?(?:\\s+(?:temp|temporary|materialized))?)\\s+(table|view)\\s+(if\\s+not\\s+exists\\s+)?((?:\\w+\\.)*)(\\w+)",
-      "captures": {
-        "1": { "name": "keyword.other.create.sql" },
-        "2": { "name": "keyword.other.sql" },
-        "3": { "name": "keyword.other.sql" },
-        "4": { "patterns": [{ "include": "#period" }] },
-        "5": { "name": "entity.name.function.sql" }
-      }
-    },
-    {
       "match": "(?i)\\b(window)\\s+\\w+\\s+(as)\\b",
-      "captures": {
-        "1": { "name": "keyword.other.sql" },
-        "2": { "name": "keyword.other.alias.sql" }
-      }
+      "captures": { "1": { "name": "keyword.other.sql" }, "2": { "name": "keyword.other.alias.sql" } }
     },
     {
       "match": "(?i)\\b(\\w+)\\s+(as)\\s*(?=\\()",
-      "captures": {
-        "1": { "name": "entity.name.type.cte.sql" },
-        "2": { "name": "keyword.other.alias.sql" }
-      }
+      "captures": { "1": { "name": "entity.name.type.cte.sql" }, "2": { "name": "keyword.other.alias.sql" } }
     },
     {
       "match": "(?i)\\b(as)\\s+(?!(?:select|with|struct|value)\\b)[A-Za-z_]\\w*\\b(?!\\s*\\()",
-      "captures": {
-        "1": { "name": "keyword.other.alias.sql" }
-      }
+      "captures": { "1": { "name": "keyword.other.alias.sql" } }
     },
     {
       "match": "(?i)(\\s?)\\b(?<!\\.)(and|or|not|in|is|like|ilike|between|exists|any|some|distinct\\s+from)\\b",
-      "captures": {
-        "2": { "name": "keyword.operator.logical.sql" }
-      }
+      "captures": { "2": { "name": "keyword.operator.logical.sql" } }
     },
-    {
-      "name": "storage.type.sql",
-      "match": "(?i)\\b(?:struct|array)(?=\\s*<)"
-    },
-    {
-      "match": "(?i)(\\s)(except|replace)(?=\\s+\\()",
-      "captures": {
-        "2": { "name": "keyword.other.sql" }
-      }
-    },
-    {
-      "name": "keyword.operator.sql",
-      "match": "-(?!-)|/(?!\\*)|[+*%=<>!|&^~]"
-    },
+    { "name": "storage.type.sql", "match": "(?i)\\b(?:struct|array)(?=\\s*<)" },
+    { "match": "(?i)(\\s)(except|replace)(?=\\s+\\()", "captures": { "2": { "name": "keyword.other.sql" } } },
+    { "name": "keyword.operator.sql", "match": "-(?!-)|/(?!\\*)|[+*%=<>!|&^~]" },
     {
       "match": "\\b[A-Za-z_]\\w*((?:\\.(?:\\w+|(?=\\*)))+)",
-      "captures": {
-        "1": { "patterns": [{ "include": "#period" }] }
-      }
+      "captures": { "1": { "patterns": [{ "include": "#period" }] } }
     },
-    {
-      "match": "\\b\\w+(\\()",
-      "captures": {
-        "1": { "name": "punctuation.section.parens.sql" }
-      }
-    },
+    { "match": "\\b\\w+(\\()", "captures": { "1": { "name": "punctuation.section.parens.sql" } } },
     {
       "name": "variable.other.sql",
       "match": "(?i)\\b(?:(?<!\\.)(export\\s+data|account|add|all|alter|analyse|analyze|and|any|array|as|asc|assert_rows_modified|asymmetric|at|authorization|before|begin|between|both|break|by|call|cascade|case|cast|check|collate|collation|column|commit|concurrently|connect|connection|constraint|contains|continue|create|cross|cube|current|current_catalog|current_date|current_role|current_schema|current_time|current_timestamp|current_user|database|day|dayofweek|dayofyear|declare|default|deferrable|define|delete|desc|describe|distinct|do|drop|each|else|elseif|end|enum|escape|except|exclude|exec|execute|exists|exit|explain|external|extract|fetch|filter|first|following|for|foreign|freeze|from|full|function|generated|grant|graph_table|group|grouping|groups|gscluster|hash|having|hour|identity|if|ignore|ilike|in|increment|index|initially|inner|inout|insert|intersect|into|is|isnull|isoweek|isoyear|issue|iterate|join|key|language|last|lateral|leading|leave|left|like|limit|localtime|localtimestamp|lookup|loop|merge|microsecond|millisecond|minus|minute|month|name|nanosecond|natural|new|no|not|notnull|nulls|of|offset|on|only|or|order|organization|out|outer|over|overlaps|partition|percent|pivot|placing|preceding|primary|procedure|proto|qualify|quarter|range|recursive|references|regexp|rename|repeat|replace|respect|restrict|return|returning|returns|revoke|right|rlike|rollback|rollup|row|rows|sample|schema|second|select|session_user|set|sets|show|signal|similar|some|start|struct|symmetric|system|system_user|table|tablesample|temporary|then|to|top|trailing|transaction|treat|trigger|truncate|try_cast|unbounded|union|unique|unnest|unpivot|update|use|user|using|values|variadic|verbose|view|week|when|whenever|where|while|window|with|within|without|year|zone)|[A-Za-z_]\\w*)\\b",
-      "captures": {
-        "1": { "name": "keyword.other.sql" }
-      }
+      "captures": { "1": { "name": "keyword.other.sql" } }
     },
-    {
-      "name": "punctuation.separator.sql",
-      "match": "[,;]"
-    },
-    {
-      "name": "punctuation.section.parens.sql",
-      "match": "[()\\[\\]]"
-    }
+    { "name": "punctuation.separator.sql", "match": "[,;]" },
+    { "name": "punctuation.section.parens.sql", "match": "[()\\[\\]]" }
   ],
   "repository": {
     "parens": {
-      "patterns": [
-        {
-          "begin": "\\b\\w+(\\()",
-          "beginCaptures": { "1": { "name": "punctuation.section.parens.sql" } },
-          "end": "\\)",
-          "endCaptures": { "0": { "name": "punctuation.section.parens.sql" } },
-          "patterns": [{ "include": "#parens" }, { "include": "$self" }]
-        },
-        {
-          "begin": "\\(",
-          "beginCaptures": { "0": { "name": "punctuation.section.parens.sql" } },
-          "end": "\\)",
-          "endCaptures": { "0": { "name": "punctuation.section.parens.sql" } },
-          "patterns": [{ "include": "#parens" }, { "include": "$self" }]
-        }
-      ]
+      "begin": "(?:\\b\\w+)?(\\()",
+      "beginCaptures": { "1": { "name": "punctuation.section.parens.sql" } },
+      "end": "\\)",
+      "endCaptures": { "0": { "name": "punctuation.section.parens.sql" } },
+      "patterns": [{ "include": "#parens" }, { "include": "$self" }]
     },
-    "period": {
-      "name": "punctuation.separator.period.sql",
-      "match": "\\."
-    },
-    "escape": {
-      "name": "constant.character.escape.sql",
-      "match": "\\\\."
-    },
+    "period": { "name": "punctuation.separator.period.sql", "match": "\\." },
+    "escape": { "name": "constant.character.escape.sql", "match": "\\\\." },
     "jinja": {
       "patterns": [
         {
@@ -245,17 +173,12 @@
     },
     "jinja-definition-name": {
       "match": "(?<=\\b(?:macro|test|materialization|snapshot))(\\s+)(\\w+)",
-      "captures": {
-        "2": { "name": "entity.name.function.definition.jinja" }
-      }
+      "captures": { "2": { "name": "entity.name.function.definition.jinja" } }
     },
     "jinja-keywords": {
       "patterns": [
         { "include": "#jinja-definition-name" },
-        {
-          "name": "keyword.control.jinja",
-          "match": "(?<!\\.)\\b(?:if|elif|else|endif|for|endfor|break|continue)\\b"
-        }
+        { "name": "keyword.control.jinja", "match": "(?<!\\.)\\b(?:if|elif|else|endif|for|endfor|break|continue)\\b" }
       ]
     },
     "jinja-syntax": {
@@ -263,13 +186,9 @@
         {
           "name": "meta.for.jinja",
           "begin": "(?<!\\.)\\b(for)\\b",
-          "beginCaptures": {
-            "1": { "name": "keyword.control.jinja" }
-          },
+          "beginCaptures": { "1": { "name": "keyword.control.jinja" } },
           "end": "\\b(in)\\b|(?=[-+]?%\\})",
-          "endCaptures": {
-            "1": { "name": "keyword.control.jinja" }
-          },
+          "endCaptures": { "1": { "name": "keyword.control.jinja" } },
           "patterns": [{ "include": "#jinja-content" }]
         },
         {
@@ -318,22 +237,10 @@
           "end": "\"",
           "patterns": [{ "include": "#escape" }, { "include": "#jinja-in-string" }]
         },
-        {
-          "name": "constant.numeric.jinja",
-          "match": "\\b\\d+(?:\\.\\d+)?\\b"
-        },
-        {
-          "name": "constant.language.jinja",
-          "match": "\\b(?:true|false|none|True|False|None)\\b"
-        },
-        {
-          "name": "punctuation.section.jinja",
-          "match": "[(){}\\[\\]]"
-        },
-        {
-          "name": "punctuation.separator.jinja",
-          "match": "[,:.]"
-        }
+        { "name": "constant.numeric.jinja", "match": "\\b\\d+(?:\\.\\d+)?\\b" },
+        { "name": "constant.language.jinja", "match": "\\b(?:true|false|none|True|False|None)\\b" },
+        { "name": "punctuation.section.jinja", "match": "[(){}\\[\\]]" },
+        { "name": "punctuation.separator.jinja", "match": "[,:.]" }
       ]
     }
   }

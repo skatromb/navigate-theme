@@ -18,16 +18,15 @@
           "begin": "\\b(fn)\\s+((?:r#(?!crate|[Ss]elf|super))?[A-Za-z0-9_]+)(?=[(<])",
           "beginCaptures": {
             "1": { "name": "keyword.other.fn.rust" },
-            "2": { "name": "entity.name.function.rust" }
+            "2": { "name": "entity.name.function.definition.rust" }
           },
-          "end": "(\\{)|(;)",
+          "end": "(\\{)|(;)|(?=[)\\]}])",
           "endCaptures": {
             "1": { "name": "punctuation.brackets.curly.rust" },
             "2": { "name": "punctuation.semi.rust" }
           },
           "patterns": [
             { "include": "#generic" },
-            { "include": "#params" },
             { "include": "#where" },
             { "include": "#brackets" },
             { "include": "source.rust" }
@@ -44,19 +43,13 @@
           "patterns": [{ "include": "#annotation" }, { "include": "#brackets" }, { "include": "source.rust" }]
         },
         {
-          "begin": "\\b(?:(struct)\\s+(_?[A-Z][A-Za-z0-9_]*)|(enum)\\s+(_?[A-Z][A-Za-z0-9_]*)|(union)\\s+(_?[A-Z][A-Za-z0-9_]*))",
+          "begin": "\\b(struct|enum|union)\\s+(_?[A-Z]\\w*)",
           "beginCaptures": {
-            "1": { "name": "keyword.declaration.struct.rust storage.type.rust" },
-            "2": { "name": "entity.name.type.struct.rust" },
-            "3": { "name": "keyword.declaration.enum.rust storage.type.rust" },
-            "4": { "name": "entity.name.type.enum.rust" },
-            "5": { "name": "keyword.other.rust" },
-            "6": { "name": "entity.name.type.rust" }
+            "1": { "name": "storage.type.rust" },
+            "2": { "name": "entity.name.type.declaration.rust" }
           },
           "end": "(?<=\\})|(;)",
-          "endCaptures": {
-            "1": { "name": "punctuation.semi.rust" }
-          },
+          "endCaptures": { "1": { "name": "punctuation.semi.rust" } },
           "patterns": [
             { "include": "#generic" },
             { "include": "#declarationBody" },
@@ -66,33 +59,13 @@
           ]
         },
         {
-          "begin": "\\b(type)\\s+(_?[A-Z][A-Za-z0-9_]*)",
+          "begin": "\\b(type|trait)\\s+(_?[A-Z]\\w*)",
           "beginCaptures": {
-            "1": { "name": "keyword.declaration.type.rust storage.type.rust" },
+            "1": { "name": "storage.type.rust" },
             "2": { "name": "entity.name.type.declaration.rust" }
           },
-          "end": "(;)",
-          "endCaptures": {
-            "1": { "name": "punctuation.semi.rust" }
-          },
-          "patterns": [
-            { "include": "#generic" },
-            { "include": "#where" },
-            { "include": "#annotation" },
-            { "include": "#brackets" },
-            { "include": "source.rust" }
-          ]
-        },
-        {
-          "begin": "\\b(trait)\\s+(_?[A-Z][A-Za-z0-9_]*)",
-          "beginCaptures": {
-            "1": { "name": "keyword.declaration.trait.rust storage.type.rust" },
-            "2": { "name": "entity.name.type.trait.rust" }
-          },
           "end": "(?=\\{)|(;)",
-          "endCaptures": {
-            "1": { "name": "punctuation.semi.rust" }
-          },
+          "endCaptures": { "1": { "name": "punctuation.semi.rust" } },
           "patterns": [
             { "include": "#generic" },
             { "include": "#where" },
@@ -103,14 +76,10 @@
         },
         { "include": "#where" },
         {
-          "begin": "(?:(?<=[(,={]\\s|[(,={&]|=>\\s|move\\s|async\\s|return\\s)|^\\s*)(\\|)(?![|=])(?=[^|]*\\|)",
-          "beginCaptures": {
-            "1": { "name": "keyword.operator.logical.rust" }
-          },
+          "begin": "(?:(?<=[(,={]\\s|[(,={&]|=>\\s|move\\s|async\\s|return\\s)|^\\s*)(\\|)(?![|=])(?=[^|=]*\\|)",
+          "beginCaptures": { "1": { "name": "keyword.operator.logical.rust" } },
           "end": "\\|",
-          "endCaptures": {
-            "0": { "name": "keyword.operator.logical.rust" }
-          },
+          "endCaptures": { "0": { "name": "keyword.operator.logical.rust" } },
           "patterns": [{ "include": "#annotation" }, { "include": "#brackets" }, { "include": "source.rust" }]
         },
         {
@@ -121,60 +90,33 @@
             "2": { "name": "punctuation.brackets.angle.rust" }
           },
           "end": ">",
-          "endCaptures": {
-            "0": { "name": "punctuation.brackets.angle.rust" }
-          },
-          "patterns": [{ "include": "#path" }, { "include": "#brackets" }, { "include": "source.rust" }]
+          "endCaptures": { "0": { "name": "punctuation.brackets.angle.rust" } },
+          "patterns": [{ "include": "#brackets" }, { "include": "source.rust" }]
         },
         {
           "contentName": "meta.type.rust",
           "begin": "\\bas\\b",
           "beginCaptures": { "0": { "name": "keyword.other.rust" } },
           "end": "(?=[^\\w\\s:*&<\\[]|$)|(?<=[\\w>\\]])(?<!\\bas|\\bconst|\\bmut)(?=\\s*[*&])",
-          "patterns": [{ "include": "#path" }, { "include": "#brackets" }, { "include": "source.rust" }]
+          "patterns": [{ "include": "#brackets" }, { "include": "source.rust" }]
         },
         {
           "name": "meta.impl.rust",
           "begin": "^\\s*(?:(unsafe)\\s+)?(impl)\\b",
-          "beginCaptures": {
-            "1": { "name": "keyword.other.unsafe.rust" },
-            "2": { "name": "keyword.other.rust" }
-          },
+          "beginCaptures": { "1": { "name": "keyword.other.unsafe.rust" }, "2": { "name": "keyword.other.rust" } },
           "end": "(?=\\{|;|\\bwhere\\b)",
           "patterns": [{ "include": "#generic" }, { "include": "source.rust" }]
         },
-        {
-          "name": "keyword.other.unsafe.rust",
-          "match": "\\bunsafe\\b"
-        },
+        { "name": "keyword.other.unsafe.rust", "match": "\\bunsafe\\b" },
         {
           "begin": "\\b(break|continue)\\b",
-          "beginCaptures": {
-            "1": { "name": "keyword.control.rust" }
-          },
+          "beginCaptures": { "1": { "name": "keyword.control.rust" } },
           "end": "('[A-Za-z_]\\w*)\\b(?!')|(?=\\S)",
-          "endCaptures": {
-            "1": { "name": "keyword.control.rust" }
-          }
+          "endCaptures": { "1": { "name": "keyword.control.rust" } }
         },
-        {
-          "match": "(?<=\\()\\s*(in)\\b",
-          "captures": {
-            "1": { "name": "keyword.other.rust" }
-          }
-        },
-        {
-          "name": "keyword.control.rust",
-          "match": "\\bin\\b"
-        }
+        { "match": "(?<=\\()\\s*(in)\\b", "captures": { "1": { "name": "keyword.other.rust" } } },
+        { "name": "keyword.control.rust", "match": "\\bin\\b" }
       ]
-    },
-    "params": {
-      "begin": "\\(",
-      "beginCaptures": { "0": { "name": "punctuation.brackets.round.rust" } },
-      "end": "\\)",
-      "endCaptures": { "0": { "name": "punctuation.brackets.round.rust" } },
-      "patterns": [{ "include": "#annotation" }, { "include": "#brackets" }, { "include": "source.rust" }]
     },
     "where": {
       "name": "meta.where.rust",
@@ -198,7 +140,7 @@
           },
           "end": "\\)",
           "endCaptures": { "0": { "name": "punctuation.brackets.round.rust" } },
-          "patterns": [{ "include": "#path" }, { "include": "#brackets" }, { "include": "source.rust" }]
+          "patterns": [{ "include": "#brackets" }, { "include": "source.rust" }]
         },
         { "include": "#annotation" },
         { "include": "#declarationBody" },
@@ -211,29 +153,22 @@
       "beginCaptures": { "0": { "name": "punctuation.brackets.round.rust" } },
       "end": "\\)",
       "endCaptures": { "0": { "name": "punctuation.brackets.round.rust" } },
-      "patterns": [{ "include": "#path" }, { "include": "#brackets" }, { "include": "source.rust" }]
+      "patterns": [{ "include": "#brackets" }, { "include": "source.rust" }]
     },
     "annotation": {
       "contentName": "meta.type.rust",
       "begin": "(?<!:):(?!:)",
       "beginCaptures": { "0": { "name": "keyword.operator.key-value.rust" } },
       "end": "(?=[,;={})>|]|\\bwhere\\b)",
-      "patterns": [{ "include": "#path" }, { "include": "#brackets" }, { "include": "source.rust" }]
+      "patterns": [{ "include": "#brackets" }, { "include": "source.rust" }]
     },
     "generic": {
       "contentName": "meta.generic.rust",
-      "begin": "(?:\\b(_?[A-Z][A-Za-z0-9_]*)|(?<=[A-Za-z_]))(<)(?![<=])",
-      "beginCaptures": {
-        "1": { "name": "entity.name.type.rust" },
-        "2": { "name": "punctuation.brackets.angle.rust" }
-      },
+      "begin": "(?:\\b(_?[A-Z][A-Za-z0-9_]*)|(?<=\\w))(<)(?![<=])",
+      "beginCaptures": { "1": { "name": "entity.name.type.rust" }, "2": { "name": "punctuation.brackets.angle.rust" } },
       "end": ">",
       "endCaptures": { "0": { "name": "punctuation.brackets.angle.rust" } },
-      "patterns": [{ "include": "#annotation" }, { "include": "#path" }, { "include": "#brackets" }, { "include": "source.rust" }]
-    },
-    "path": {
-      "name": "entity.name.namespace.rust",
-      "match": "\\b[a-z_][A-Za-z0-9_]*(?=::)"
+      "patterns": [{ "include": "#annotation" }, { "include": "#brackets" }, { "include": "source.rust" }]
     },
     "brackets": {
       "patterns": [
@@ -242,21 +177,21 @@
           "beginCaptures": { "0": { "name": "punctuation.brackets.round.rust" } },
           "end": "\\)",
           "endCaptures": { "0": { "name": "punctuation.brackets.round.rust" } },
-          "patterns": [{ "include": "#path" }, { "include": "#brackets" }, { "include": "source.rust" }]
+          "patterns": [{ "include": "#annotation" }, { "include": "#brackets" }, { "include": "source.rust" }]
         },
         {
           "begin": "\\[",
           "beginCaptures": { "0": { "name": "punctuation.brackets.square.rust" } },
           "end": "\\]",
           "endCaptures": { "0": { "name": "punctuation.brackets.square.rust" } },
-          "patterns": [{ "include": "#path" }, { "include": "#brackets" }, { "include": "source.rust" }]
+          "patterns": [{ "include": "#brackets" }, { "include": "source.rust" }]
         },
         {
           "begin": "\\{",
           "beginCaptures": { "0": { "name": "punctuation.brackets.curly.rust" } },
           "end": "\\}",
           "endCaptures": { "0": { "name": "punctuation.brackets.curly.rust" } },
-          "patterns": [{ "include": "#path" }, { "include": "#brackets" }, { "include": "source.rust" }]
+          "patterns": [{ "include": "#brackets" }, { "include": "source.rust" }]
         },
         { "include": "#generic" }
       ]
