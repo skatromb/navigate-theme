@@ -1,0 +1,25 @@
+{
+  "scopeName": "navigate.injection.python-types",
+  "injectionSelector": "L:meta.function.parameters.python -meta.lambda-function -comment -string",
+  "patterns": [
+    {
+      "begin": "\\b([A-Za-z_]\\w*)\\s*(:)",
+      "beginCaptures": {
+        "1": { "name": "variable.parameter.function.language.python" },
+        "2": { "name": "punctuation.separator.annotation.python" }
+      },
+      "end": "(,)|(?=\\))",
+      "endCaptures": { "1": { "name": "punctuation.separator.parameters.python" } },
+      "patterns": [
+        {
+          "contentName": "meta.type.python",
+          "begin": "\\G",
+          "end": "(?=[,=)])",
+          "patterns": [{ "include": "source.python" }]
+        },
+        { "name": "keyword.operator.assignment.python", "match": "=(?!=)" },
+        { "include": "source.python" }
+      ]
+    }
+  ]
+}

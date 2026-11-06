@@ -1,6 +1,6 @@
 {
   "scopeName": "navigate.injection.python",
-  "injectionSelector": "L:source.python -comment -string -meta.function.decorator -meta.toplevel",
+  "injectionSelector": "L:source.python -comment -string -meta.function.decorator -meta.toplevel -meta.annotated.python",
   "patterns": [
     {
       "name": "meta.toplevel.python",
@@ -11,8 +11,21 @@
     { "include": "#rules" }
   ],
   "repository": {
+    "annotation": {
+      "contentName": "meta.type.python",
+      "begin": ":",
+      "beginCaptures": { "0": { "name": "punctuation.separator.colon.python" } },
+      "end": "(?=[=#]|$)",
+      "patterns": [{ "include": "source.python" }]
+    },
     "rules": {
       "patterns": [
+        {
+          "name": "meta.annotated.python",
+          "begin": "^(?=\\s*(?!(?:else|try|finally|except|lambda)\\b)[A-Za-z_][\\w.]*\\s*:(?!=)\\s*[^\\s#])",
+          "end": "$",
+          "patterns": [{ "include": "#annotation" }, { "include": "source.python" }]
+        },
         {
           "match": "^\\s*(?:(lazy)\\s+)?(from)\\b(?:\\s+([\\w.]+)\\s+(import)\\b)?",
           "captures": {
@@ -38,11 +51,24 @@
           "match": "\\b(?<!\\.)async(?=\\s+for\\b)"
         },
         {
-          "match": "^\\s*(class)\\s+(\\w+)(?=\\s*\\[)",
-          "captures": {
+          "begin": "^\\s*(class)\\s+(\\w+)\\s*(\\[)",
+          "beginCaptures": {
             "1": { "name": "storage.type.class.python" },
-            "2": { "name": "entity.name.type.class.python" }
-          }
+            "2": { "name": "entity.name.type.class.python" },
+            "3": { "name": "punctuation.definition.list.begin.python" }
+          },
+          "end": "\\]",
+          "endCaptures": { "0": { "name": "punctuation.definition.list.end.python" } },
+          "patterns": [
+            {
+              "contentName": "meta.type.python",
+              "begin": ":",
+              "beginCaptures": { "0": { "name": "punctuation.separator.colon.python" } },
+              "end": "(?=[,\\]])",
+              "patterns": [{ "include": "source.python" }]
+            },
+            { "include": "source.python" }
+          ]
         },
         {
           "match": "^\\s*(type)\\s+(?=\\w+\\s*[\\[=])",

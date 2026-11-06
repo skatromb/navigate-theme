@@ -48,6 +48,11 @@
         "injectTo": ["source.python"]
       },
       {
+        "scopeName": "navigate.injection.python-types",
+        "path": "./syntaxes/python-types.injection.json",
+        "injectTo": ["source.python"]
+      },
+      {
         "scopeName": "navigate.injection.sql",
         "path": "./syntaxes/sql.injection.json",
         "injectTo": ["source.sql", "source.sql.jinja"]
