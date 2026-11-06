@@ -62,3 +62,13 @@ pub fn pub_fn(param: &str, enum_value: crate::Enum) -> Result<TypeAlias, std::io
 }
 
 pub unsafe trait UnsafeTrait {}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn constant_is_positive() {
+        assert!(CONSTANT > 0);
+    }
+}
