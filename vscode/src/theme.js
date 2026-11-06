@@ -57,7 +57,9 @@ const tokenColors = (c) => [
       rust: [
         'meta.impl.rust keyword.control',
         'variable.language.super',
+        'meta.use variable.language.self',
         'meta.use entity.name.namespace',
+        'meta.type.rust',
         'entity.name.type.lifetime',
         'meta.attribute.rust',
         'meta.attribute.rust string',
