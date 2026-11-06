@@ -1,6 +1,6 @@
 {
   "scopeName": "navigate.injection.rust",
-  "injectionSelector": "L:source.rust -comment -string -meta.attribute -meta.toplevel -meta.use",
+  "injectionSelector": "L:source.rust -comment -string -meta.attribute -meta.toplevel -meta.use -meta.type",
   "patterns": [
     {
       "name": "meta.toplevel.rust",
@@ -103,7 +103,7 @@
         },
         { "include": "#where" },
         {
-          "begin": "(?:(?<=[(,=]\\s|[(,={]|move\\s|return\\s)|^\\s*)(\\|)(?![|=])",
+          "begin": "(?:(?<=[(,={]\\s|[(,={&]|=>\\s|move\\s|async\\s|return\\s)|^\\s*)(\\|)(?![|=])(?=[^|]*\\|)",
           "beginCaptures": {
             "1": { "name": "keyword.operator.logical.rust" }
           },
@@ -130,7 +130,7 @@
           "contentName": "meta.type.rust",
           "begin": "\\bas\\b",
           "beginCaptures": { "0": { "name": "keyword.other.rust" } },
-          "end": "(?=[^\\w\\s:*&<\\[]|$)",
+          "end": "(?=[^\\w\\s:*&<\\[]|$)|(?<=[\\w>\\]])(?<!\\bas|\\bconst|\\bmut)(?=\\s*[*&])",
           "patterns": [{ "include": "#path" }, { "include": "#brackets" }, { "include": "source.rust" }]
         },
         {
