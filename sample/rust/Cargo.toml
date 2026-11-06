@@ -5,3 +5,7 @@ edition = "2021"
 
 [lib]
 path = "sample.rs"
+
+[[test]]
+name = "readme"
+path = "readme.rs"
