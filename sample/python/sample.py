@@ -1,7 +1,12 @@
 import re
 from collections import defaultdict as Alias
+from collections.abc import AsyncIterator, Callable
 from dataclasses import dataclass
 from enum import Enum
+from typing import Protocol
+
+type TypeAlias = Alias[str, bool]
+type Callback[**Spec, Output] = Callable[Spec, Output]
 
 CONSTANT: int = 30
 
@@ -12,8 +17,13 @@ class Kind(Enum):
     VARIANT = 1
 
 
+class Trait(Protocol):
+    def method(self) -> int | None: ...
+
+
 @dataclass(frozen=True)
-class Struct[GenType]:
+class Struct[GenType: Trait]:
+    gen_field: GenType
     str_field: str
     vec_field: list[int]
 
@@ -30,8 +40,17 @@ class Struct[GenType]:
     async def fetch(self) -> int:
         return len(self.vec_field)
 
+    async def drain(self, source: AsyncIterator[int]) -> list[int]:
+        drained: list[int] = []
+        async for number in source:
+            drained.append(number)
+        return drained
 
-def pub_fn(path: str, kind: Kind) -> Alias[str, bool]:
+    async def collect(self, source: AsyncIterator[int]) -> list[int]:
+        return [number async for number in source if number > 0]
+
+
+def pub_fn(path: str, kind: Kind) -> TypeAlias:
     try:
         with open(path) as source:
             text = source.read()
@@ -47,3 +66,17 @@ def pub_fn(path: str, kind: Kind) -> Alias[str, bool]:
 
 def generator(limit: int):
     yield from sorted(range(limit), key=lambda number: -number)
+
+
+def first_big(numbers: list[int]) -> int | None:
+    while numbers:
+        if (number := numbers[-1]) > CONSTANT:
+            break
+        del numbers[-1]
+    else:
+        return None
+    return number
+
+
+def test_constant_is_positive():
+    assert CONSTANT > 0

@@ -16,8 +16,8 @@ const VSCODE_EXTENSIONS = 'https://raw.githubusercontent.com/microsoft/vscode/1.
 const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 
 const languages = {
-  rust: { scope: 'source.rust', grammar: 'rust/syntaxes/rust.tmLanguage.json', sample: 'rust/sample.rs', injections: ['rust'] },
-  python: { scope: 'source.python', grammar: 'python/syntaxes/MagicPython.tmLanguage.json', sample: 'python/sample.py', injections: ['python', 'python-parameters'] },
+  rust: { scope: 'source.rust', grammar: 'rust/syntaxes/rust.tmLanguage.json', sample: 'rust/readme.rs', injections: ['rust'] },
+  python: { scope: 'source.python', grammar: 'python/syntaxes/MagicPython.tmLanguage.json', sample: 'python/readme.py', injections: ['python', 'python-parameters'] },
   sql: { scope: 'source.sql', grammar: 'sql/syntaxes/sql.tmLanguage.json', sample: 'sql/sample.sql', injections: ['sql', 'jinja'] },
   dbt: { scope: 'source.sql', grammar: 'sql/syntaxes/sql.tmLanguage.json', sample: 'dbt/sample.sql', injections: ['sql', 'jinja'] },
 }[language];

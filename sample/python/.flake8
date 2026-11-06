@@ -1,0 +1,2 @@
+[flake8]
+exclude = sample.py, readme.py
