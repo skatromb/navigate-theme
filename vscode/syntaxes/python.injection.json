@@ -1,10 +1,10 @@
 {
   "scopeName": "navigate.injection.python",
-  "injectionSelector": "L:source.python -comment -string -meta.function.decorator -meta.toplevel",
+  "injectionSelector": "L:source.python -comment -string -meta.function.decorator -meta.toplevel -meta.type.python",
   "patterns": [
     {
       "name": "meta.toplevel.python",
-      "begin": "^(?=(?:async\\s+)?def\\b)",
+      "begin": "^(?=(?:async\\s+)?def\\b|class\\b|type\\s+\\w+\\s*[\\[=])",
       "end": "$",
       "patterns": [{ "include": "#rules" }, { "include": "source.python" }]
     },
@@ -13,6 +13,16 @@
   "repository": {
     "rules": {
       "patterns": [
+        {
+          "contentName": "meta.type.python",
+          "begin": "^(?!.*,\\s*(?:#.*)?$)\\s*(?!(?:else|try|finally|except|lambda)\\b)([A-Za-z_][\\w.]*)\\s*(:)(?!=)(?=\\s*[^\\s#])",
+          "beginCaptures": {
+            "1": { "patterns": [{ "include": "source.python" }] },
+            "2": { "name": "punctuation.separator.colon.python" }
+          },
+          "end": "(?=[=#)\\]}]|$)",
+          "patterns": [{ "include": "source.python" }]
+        },
         {
           "match": "^\\s*(?:(lazy)\\s+)?(from)\\b(?:\\s+([\\w.]+)\\s+(import)\\b)?",
           "captures": {
@@ -24,36 +34,39 @@
         },
         {
           "begin": "\\b(?<!\\.)(for)\\b",
-          "beginCaptures": {
-            "1": { "name": "keyword.control.flow.python" }
-          },
+          "beginCaptures": { "1": { "name": "keyword.control.flow.python" } },
           "end": "\\b(in)\\b",
-          "endCaptures": {
-            "1": { "name": "keyword.control.flow.python" }
-          },
+          "endCaptures": { "1": { "name": "keyword.control.flow.python" } },
           "patterns": [{ "include": "source.python" }]
         },
+        { "name": "keyword.control.flow.python", "match": "\\b(?<!\\.)async(?=\\s+for\\b)" },
         {
-          "name": "keyword.control.flow.python",
-          "match": "\\b(?<!\\.)async(?=\\s+for\\b)"
-        },
-        {
-          "match": "^\\s*(class)\\s+(\\w+)(?=\\s*\\[)",
-          "captures": {
+          "begin": "^\\s*(?:(class)\\s+(\\w+)|(type)\\s+(\\w+))\\s*(\\[)",
+          "beginCaptures": {
             "1": { "name": "storage.type.class.python" },
-            "2": { "name": "entity.name.type.class.python" }
-          }
+            "2": { "name": "entity.name.type.class.python" },
+            "3": { "name": "storage.type.type.python" },
+            "4": { "name": "entity.name.type.alias.python" },
+            "5": { "name": "punctuation.definition.list.begin.python" }
+          },
+          "end": "\\]",
+          "endCaptures": { "0": { "name": "punctuation.definition.list.end.python" } },
+          "patterns": [
+            {
+              "contentName": "meta.type.python",
+              "begin": ":",
+              "beginCaptures": { "0": { "name": "punctuation.separator.colon.python" } },
+              "end": "(?=[,\\]])",
+              "patterns": [{ "include": "source.python" }]
+            },
+            { "include": "source.python" }
+          ]
         },
         {
-          "match": "^\\s*(type)\\s+(?=\\w+\\s*[\\[=])",
-          "captures": {
-            "1": { "name": "storage.type.type.python" }
-          }
+          "match": "^\\s*(type)\\s+(\\w+)(?=\\s*=)",
+          "captures": { "1": { "name": "storage.type.type.python" }, "2": { "name": "entity.name.type.alias.python" } }
         },
-        {
-          "name": "keyword.other.python",
-          "match": "\\b(?<!\\.)(as|async|del|pass|with)\\b"
-        }
+        { "name": "keyword.other.python", "match": "\\b(?<!\\.)(as|async|del|pass|with)\\b" }
       ]
     }
   }

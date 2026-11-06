@@ -1,0 +1,17 @@
+{
+  "scopeName": "navigate.injection.python-parameters",
+  "injectionSelector": "L:meta.function.parameters.python -meta.lambda-function -comment -string",
+  "patterns": [
+    {
+      "contentName": "meta.type.python",
+      "begin": "\\b([A-Za-z_]\\w*)\\s*(:)",
+      "beginCaptures": {
+        "1": { "name": "variable.parameter.function.language.python" },
+        "2": { "name": "punctuation.separator.annotation.python" }
+      },
+      "end": "(,)|(?=[=)])",
+      "endCaptures": { "1": { "name": "punctuation.separator.parameters.python" } },
+      "patterns": [{ "include": "source.python" }]
+    }
+  ]
+}

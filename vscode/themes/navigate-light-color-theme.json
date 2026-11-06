@@ -41,13 +41,12 @@
     {
       "name": "Bold: type names at their definition, top-level functions",
       "scope": [
-        "source.rust entity.name.type.struct",
-        "source.rust entity.name.type.enum",
-        "source.rust entity.name.type.trait",
         "meta.toplevel.rust entity.name.type.declaration",
-        "meta.impl.rust > entity.name.type",
-        "meta.toplevel.rust meta.function.definition.rust entity.name.function",
-        "source.python entity.name.type.class",
+        "meta.toplevel.rust entity.name.module",
+        "meta.toplevel.rust meta.impl.rust > entity.name.type",
+        "meta.toplevel.rust entity.name.function.definition",
+        "meta.toplevel.python entity.name.type.class",
+        "meta.toplevel.python entity.name.type.alias",
         "meta.toplevel.python meta.function.python entity.name.function",
         "meta.create.sql entity.name.function.sql",
         "entity.name.type.cte.sql",
@@ -98,16 +97,23 @@
         "punctuation",
         "meta.impl.rust keyword.control",
         "variable.language.super",
+        "meta.use variable.language.self",
         "meta.use entity.name.namespace",
+        "meta.type.rust",
         "entity.name.type.lifetime",
         "meta.attribute.rust",
         "meta.attribute.rust string",
         "meta.attribute.rust punctuation.definition.string",
         "entity.name.namespace.python",
+        "meta.type.python",
+        "meta.type.python string",
+        "meta.type.python punctuation.definition.string",
         "constant.character.format.placeholder.other.python",
         "meta.function.decorator.python",
         "meta.function.decorator.python string",
-        "meta.function.decorator.python punctuation.definition.string"
+        "meta.function.decorator.python punctuation.definition.string",
+        "meta.type.sql",
+        "meta.type.sql storage.type.sql"
       ],
       "settings": {
         "foreground": "#747b86"

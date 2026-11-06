@@ -5,7 +5,7 @@ with paid_orders as (
         orders.order_id,
         orders.customer_id,
         cast(orders.created_at as date) as order_date,
-        orders.amount_cents / 100.0 as amount
+        orders.amount_cents::numeric / 100 as amount
     from raw.orders as orders
     where orders.status = 'paid'
       and orders.amount_cents > 0

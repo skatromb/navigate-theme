@@ -12,9 +12,11 @@ pub struct Struct<'lifetime, GenType> {
 
 pub enum Enum {
     Variant { field: u32 },
+    Tuple(Vec<u8>),
 }
 
-pub trait Trait {
+pub trait Trait: Send {
+    type Item;
     fn method(&self) -> Option<i64>;
 }
 
@@ -22,9 +24,19 @@ impl<GenType: Trait> Struct<'_, GenType> {
     pub async fn async_fn(param: &GenType) -> i64 {
         async { param.method().unwrap_or(0) }.await
     }
+
+    pub fn reset(mut self, len: impl Fn() -> usize) -> Self {
+        self.vec_field = vec![0; len()];
+        self
+    }
 }
 
-impl<GenType: Trait> Trait for Struct<'_, GenType> {
+impl<GenType> Trait for Struct<'_, GenType>
+where
+    GenType: Trait,
+{
+    type Item = Vec<u8>;
+
     fn method(&self) -> Option<i64> {
         for item in &self.vec_field {
             if *item <= 0 {
@@ -36,15 +48,27 @@ impl<GenType: Trait> Trait for Struct<'_, GenType> {
     }
 }
 
-pub fn pub_fn(param: &str, enum_value: Enum) -> Result<TypeAlias, std::io::Error> {
-    let local = std::fs::read_to_string(param)?;
+pub fn pub_fn(param: &str, enum_value: crate::Enum) -> Result<TypeAlias, std::io::Error> {
+    let local: String = std::fs::read_to_string(param)?;
     let parsed = local.parse::<u64>().unwrap_or(0);
-    println!("parsed {parsed} from {}", param);
+    let bytes: [u8; 4] = (parsed as u32).to_be_bytes();
+    let is_big = |value: u32| value > CONSTANT;
+    println!("parsed {bytes:?} from {}", param);
     match enum_value {
-        Enum::Variant { field } if field > CONSTANT => todo!(),
+        Enum::Variant { field } if is_big(field) => todo!(),
         _ => {}
     }
     Ok(Alias::new())
 }
 
 pub unsafe trait UnsafeTrait {}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn constant_is_positive() {
+        assert!(CONSTANT > 0);
+    }
+}
