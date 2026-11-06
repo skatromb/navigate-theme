@@ -4,8 +4,8 @@
   "patterns": [
     {
       "name": "meta.toplevel.rust",
-      "begin": "^(?=(?:pub(?:\\([^)]*\\))?\\s+)?(?:(?:async|const|unsafe|extern\\s+\"[^\"]*\")\\s+)*(?:fn|type)\\b|\\s*pub(?:\\([^)]*\\))?\\s+type\\b)",
-      "end": "(?<=\\{|;)",
+      "begin": "^(?=(?:pub(?:\\([^)]*\\))?\\s+)?(?:(?:async|const|unsafe|extern\\s+\"[^\"]*\")\\s+)*(?:fn|type|struct|enum|union|trait|impl)\\b)",
+      "end": "(?<=[{};])",
       "patterns": [{ "include": "#rules" }, { "include": "source.rust" }]
     },
     { "include": "#rules" }

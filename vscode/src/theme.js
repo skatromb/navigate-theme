@@ -16,11 +16,11 @@ const tokenColors = (c) => [
     name: 'Bold: type names at their definition, top-level functions',
     scope: scopes({
       rust: [
-        'source.rust entity.name.type.struct',
-        'source.rust entity.name.type.enum',
-        'source.rust entity.name.type.trait',
+        'meta.toplevel.rust entity.name.type.struct',
+        'meta.toplevel.rust entity.name.type.enum',
+        'meta.toplevel.rust entity.name.type.trait',
         'meta.toplevel.rust entity.name.type.declaration',
-        'meta.impl.rust > entity.name.type',
+        'meta.toplevel.rust meta.impl.rust > entity.name.type',
         'meta.toplevel.rust meta.function.definition.rust entity.name.function',
       ],
       python: ['source.python entity.name.type.class', 'meta.toplevel.python meta.function.python entity.name.function'],
