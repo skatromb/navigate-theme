@@ -20,6 +20,8 @@ Review a change: `cd vscode && npm run dev`, then open the sample, like `code sa
 
 README screenshots: re-render before a release, so the repo and the Marketplace do not show old colors: `cd tools && npm install && npm run render`. Nothing checks it. [tools/render.js](tools/render.js) tokenizes the samples with the VS Code grammars and this theme, then screenshots the HTML with headless Chrome.
 
+README screenshots render [sample/rust/readme.rs](sample/rust/readme.rs) and [sample/python/readme.py](sample/python/readme.py). Both must be exactly 50 lines, so the README rows match. `render.js` fails otherwise. Put the full syntax coverage in `sample.*`.
+
 PRs are squash-merged, the repo allows nothing else: `gh pr merge --squash`.
 
 Release: bump `version` in [vscode/package.json](vscode/package.json), merge, then push tag `v<version>` on `main`. [.github/workflows/publish.yml](.github/workflows/publish.yml) publishes to the Marketplace with `vsce publish --oidc` and to Open VSX with `ovsx publish --trusted-publishing`, no tokens.
