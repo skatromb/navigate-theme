@@ -48,8 +48,8 @@
         "injectTo": ["source.python"]
       },
       {
-        "scopeName": "navigate.injection.python-types",
-        "path": "./syntaxes/python-types.injection.json",
+        "scopeName": "navigate.injection.python-parameters",
+        "path": "./syntaxes/python-parameters.injection.json",
         "injectTo": ["source.python"]
       },
       {

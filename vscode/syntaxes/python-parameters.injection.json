@@ -1,5 +1,5 @@
 {
-  "scopeName": "navigate.injection.python-types",
+  "scopeName": "navigate.injection.python-parameters",
   "injectionSelector": "L:meta.function.parameters.python -meta.lambda-function -comment -string",
   "patterns": [
     {
