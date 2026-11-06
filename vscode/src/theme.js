@@ -19,7 +19,7 @@ const tokenColors = (c) => [
         'source.rust entity.name.type.struct',
         'source.rust entity.name.type.enum',
         'source.rust entity.name.type.trait',
-        'source.rust entity.name.type.declaration',
+        'meta.toplevel.rust entity.name.type.declaration',
         'meta.impl.rust > entity.name.type',
         'meta.toplevel.rust meta.function.definition.rust entity.name.function',
       ],
