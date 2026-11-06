@@ -4,7 +4,7 @@
   "patterns": [
     {
       "name": "meta.toplevel.python",
-      "begin": "^(?=(?:async\\s+)?def\\b)",
+      "begin": "^(?=(?:async\\s+)?def\\b|class\\b|type\\s+\\w+\\s*[\\[=])",
       "end": "$",
       "patterns": [{ "include": "#rules" }, { "include": "source.python" }]
     },
@@ -51,11 +51,13 @@
           "match": "\\b(?<!\\.)async(?=\\s+for\\b)"
         },
         {
-          "begin": "^\\s*(class)\\s+(\\w+)\\s*(\\[)",
+          "begin": "^\\s*(?:(class)\\s+(\\w+)|(type)\\s+(\\w+))\\s*(\\[)",
           "beginCaptures": {
             "1": { "name": "storage.type.class.python" },
             "2": { "name": "entity.name.type.class.python" },
-            "3": { "name": "punctuation.definition.list.begin.python" }
+            "3": { "name": "storage.type.type.python" },
+            "4": { "name": "entity.name.type.alias.python" },
+            "5": { "name": "punctuation.definition.list.begin.python" }
           },
           "end": "\\]",
           "endCaptures": { "0": { "name": "punctuation.definition.list.end.python" } },
@@ -71,9 +73,10 @@
           ]
         },
         {
-          "match": "^\\s*(type)\\s+(?=\\w+\\s*[\\[=])",
+          "match": "^\\s*(type)\\s+(\\w+)(?=\\s*=)",
           "captures": {
-            "1": { "name": "storage.type.type.python" }
+            "1": { "name": "storage.type.type.python" },
+            "2": { "name": "entity.name.type.alias.python" }
           }
         },
         {

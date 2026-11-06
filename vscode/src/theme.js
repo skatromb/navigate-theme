@@ -24,7 +24,7 @@ const tokenColors = (c) => [
         'meta.toplevel.rust meta.impl.rust > entity.name.type',
         'meta.toplevel.rust meta.function.definition.rust entity.name.function',
       ],
-      python: ['source.python entity.name.type.class', 'meta.toplevel.python meta.function.python entity.name.function'],
+      python: ['meta.toplevel.python entity.name.type.class', 'meta.toplevel.python entity.name.type.alias', 'meta.toplevel.python meta.function.python entity.name.function'],
       sql: ['meta.create.sql entity.name.function.sql', 'entity.name.type.cte.sql'],
       jinja: ['entity.name.function.definition.jinja'],
     }),
