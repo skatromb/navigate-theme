@@ -7,12 +7,13 @@ const oniguruma = require('vscode-oniguruma');
 
 const [language, output, variant = 'dark'] = process.argv.slice(2);
 if (!language || !output) {
-  console.error('usage: node tools/render.js <rust|python|sql|dbt> <out.png> [dark|light]');
+  console.error('usage: node tools/render.js <rust|python|sql|dbt|json|yaml|toml> <out.png> [dark|light]');
   process.exit(1);
 }
 
 const ROOT = path.join(__dirname, '..');
 const VSCODE_EXTENSIONS = 'https://raw.githubusercontent.com/microsoft/vscode/1.143.1/extensions';
+const TOML_GRAMMAR = 'https://raw.githubusercontent.com/tamasfe/taplo/1c96904b014d2bc9fe998eae2c7d17c7c6fe204a/editors/vscode/toml.tmLanguage.json';
 const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 
 const languages = {
@@ -20,12 +21,16 @@ const languages = {
   python: { scope: 'source.python', grammar: 'python/syntaxes/MagicPython.tmLanguage.json', sample: 'python/readme.py', injections: ['python', 'python-parameters'] },
   sql: { scope: 'source.sql', grammar: 'sql/syntaxes/sql.tmLanguage.json', sample: 'sql/sample.sql', injections: ['sql', 'jinja'] },
   dbt: { scope: 'source.sql', grammar: 'sql/syntaxes/sql.tmLanguage.json', sample: 'dbt/sample.sql', injections: ['sql', 'jinja'] },
+  json: { scope: 'source.json', grammar: 'json/syntaxes/JSON.tmLanguage.json', sample: 'json/sample.json', injections: [] },
+  yaml: { scope: 'source.yaml', grammar: 'yaml/syntaxes/yaml.tmLanguage.json', sample: 'yaml/sample.yaml', injections: [] },
+  toml: { scope: 'source.toml', grammar: TOML_GRAMMAR, sample: 'toml/sample.toml', injections: [] },
 }[language];
 
 const injectionScopes = languages.injections.map((name) => `navigate.injection.${name}`);
 const grammarPaths = {
-  [languages.scope]: `${VSCODE_EXTENSIONS}/${languages.grammar}`,
+  [languages.scope]: languages.grammar.startsWith('https://') ? languages.grammar : `${VSCODE_EXTENSIONS}/${languages.grammar}`,
   'source.regexp.python': `${VSCODE_EXTENSIONS}/python/syntaxes/MagicRegExp.tmLanguage.json`,
+  'source.yaml.1.2': `${VSCODE_EXTENSIONS}/yaml/syntaxes/yaml-1.2.tmLanguage.json`,
   ...Object.fromEntries(languages.injections.map((name) => [`navigate.injection.${name}`, path.join(ROOT, 'vscode/syntaxes', `${name}.injection.json`)])),
 };
 

@@ -1,0 +1,20 @@
+{
+  "name": "navigate-sample",
+  "version": "1.4.0",
+  "private": true,
+  "license": null,
+  "description": "Sync orders to the warehouse every 15 minutes",
+  "scripts": {
+    "build": "node src/build.js",
+    "test": "node --test \"test/**/*.test.js\""
+  },
+  "retry": {
+    "attempts": 3,
+    "backoffSeconds": 1.5,
+    "statusCodes": [429, 500, 503]
+  },
+  "destinations": [
+    { "type": "bigquery", "dataset": "analytics", "partitioned": true },
+    { "type": "s3", "bucket": "raw-orders", "prefix": "orders/" }
+  ]
+}

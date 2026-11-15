@@ -74,14 +74,17 @@ const tokenColors = (c) => [
         'meta.function.decorator.python punctuation.definition.string',
       ],
       sql: ['meta.type.sql', 'meta.type.sql storage.type.sql'],
+      yaml: ['keyword.control.flow.block-scalar', 'entity.other.document', 'entity.name.tag.yaml punctuation.definition.string'],
     }),
     settings: { foreground: c.insignificant },
   },
   {
-    name: 'Regular: SQL types, Jinja expressions',
+    name: 'Regular: SQL types, Jinja expressions, JSON and YAML keys, YAML numbers and anchors',
     scope: scopes({
       sql: ['storage.type.sql'],
       jinja: ['meta.embedded.inline.jinja', 'meta.embedded.block.jinja'],
+      json: ['support.type.property-name.json', 'support.type.property-name.json constant.character.escape'],
+      yaml: ['entity.name.tag.yaml', 'entity.name.tag.yaml constant.character.escape', 'string.unquoted.plain constant', 'variable.other.anchor.yaml', 'variable.other.alias.yaml'],
     }),
     settings: { foreground: c.regular },
   },
