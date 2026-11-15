@@ -7,7 +7,7 @@ const oniguruma = require('vscode-oniguruma');
 
 const [language, output, variant = 'dark'] = process.argv.slice(2);
 if (!language || !output) {
-  console.error('usage: node tools/render.js <rust|python|sql|dbt> <out.png> [dark|light]');
+  console.error('usage: node tools/render.js <rust|python|sql|dbt|json|yaml> <out.png> [dark|light]');
   process.exit(1);
 }
 
@@ -20,12 +20,15 @@ const languages = {
   python: { scope: 'source.python', grammar: 'python/syntaxes/MagicPython.tmLanguage.json', sample: 'python/readme.py', injections: ['python', 'python-parameters'] },
   sql: { scope: 'source.sql', grammar: 'sql/syntaxes/sql.tmLanguage.json', sample: 'sql/sample.sql', injections: ['sql', 'jinja'] },
   dbt: { scope: 'source.sql', grammar: 'sql/syntaxes/sql.tmLanguage.json', sample: 'dbt/sample.sql', injections: ['sql', 'jinja'] },
+  json: { scope: 'source.json', grammar: 'json/syntaxes/JSON.tmLanguage.json', sample: 'json/sample.json', injections: [] },
+  yaml: { scope: 'source.yaml', grammar: 'yaml/syntaxes/yaml.tmLanguage.json', sample: 'yaml/sample.yaml', injections: [] },
 }[language];
 
 const injectionScopes = languages.injections.map((name) => `navigate.injection.${name}`);
 const grammarPaths = {
   [languages.scope]: `${VSCODE_EXTENSIONS}/${languages.grammar}`,
   'source.regexp.python': `${VSCODE_EXTENSIONS}/python/syntaxes/MagicRegExp.tmLanguage.json`,
+  'source.yaml.1.2': `${VSCODE_EXTENSIONS}/yaml/syntaxes/yaml-1.2.tmLanguage.json`,
   ...Object.fromEntries(languages.injections.map((name) => [`navigate.injection.${name}`, path.join(ROOT, 'vscode/syntaxes', `${name}.injection.json`)])),
 };
 

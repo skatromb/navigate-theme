@@ -1,0 +1,39 @@
+# Sync orders to the warehouse every 15 minutes.
+version: 2
+
+x-defaults: &defaults
+  image: "ghcr.io/acme/sync:1.4.0"
+  restart: on-failure
+  timeout: 30s
+  retries: 3
+  debug: false
+  proxy: null
+
+services:
+  orders:
+    <<: *defaults
+    command: ["sync", "--table", 'orders']
+    environment:
+      DATASET: analytics
+      SCHEDULE: "*/15 * * * *"
+    depends_on:
+      - postgres
+      - warehouse
+
+  postgres:
+    <<: *defaults
+    image: postgres:16
+    healthcheck:
+      test: pg_isready -U sync
+      interval: 10s
+
+query: |
+  select order_id, amount
+  from raw.orders
+  where status = 'paid'
+
+tags: !!set
+  ? daily
+  ? finance
+---
+"quoted key": 1.5

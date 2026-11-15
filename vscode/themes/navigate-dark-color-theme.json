@@ -113,18 +113,26 @@
         "meta.function.decorator.python string",
         "meta.function.decorator.python punctuation.definition.string",
         "meta.type.sql",
-        "meta.type.sql storage.type.sql"
+        "meta.type.sql storage.type.sql",
+        "keyword.control.flow.block-scalar",
+        "entity.other.document",
+        "entity.name.tag.yaml punctuation.definition.string"
       ],
       "settings": {
         "foreground": "#949ca8"
       }
     },
     {
-      "name": "Regular: SQL types, Jinja expressions",
+      "name": "Regular: SQL types, Jinja expressions, JSON and YAML keys, YAML numbers and anchors",
       "scope": [
         "storage.type.sql",
         "meta.embedded.inline.jinja",
-        "meta.embedded.block.jinja"
+        "meta.embedded.block.jinja",
+        "support.type.property-name.json",
+        "entity.name.tag.yaml",
+        "string.unquoted.plain constant",
+        "variable.other.anchor.yaml",
+        "variable.other.alias.yaml"
       ],
       "settings": {
         "foreground": "#e0ded8"
