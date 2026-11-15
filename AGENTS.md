@@ -26,4 +26,4 @@ PRs are squash-merged, the repo allows nothing else: `gh pr merge --squash`.
 
 Release: bump `version` in [vscode/package.json](vscode/package.json), merge, then push tag `v<version>` on `main`. [.github/workflows/publish.yml](.github/workflows/publish.yml) publishes to the Marketplace with `vsce publish --oidc` and to Open VSX with `ovsx publish --trusted-publishing`, no tokens.
 
-After a release, wait 5 minutes, then replace the dev build with the Marketplace one, to check the published version: `code --install-extension skatromb.navigate-theme@<version> --force`.
+After a release, wait 5 minutes, then replace the dev build with the Marketplace one, to check the published version. Uninstall first, as the dev build has the same version and `--force` keeps it: `code --uninstall-extension skatromb.navigate-theme && code --install-extension skatromb.navigate-theme@<version>`.
