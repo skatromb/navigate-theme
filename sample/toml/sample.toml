@@ -1,0 +1,35 @@
+# Sync orders to the warehouse every 15 minutes.
+[package]
+name = "navigate-sample"
+version = "1.4.0"
+edition = 2024
+publish = false
+description = """
+Sync orders to the warehouse
+every 15 minutes."""
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+tokio = { version = "1.40", default-features = false }
+
+[retry]
+attempts = 3
+backoff.seconds = 1.5
+backoff.max = inf
+status-codes = [429, 500, 503]
+"quoted key" = 'C:\literal\path'
+
+[schedule]
+cron = "*/15 * * * *"
+starts = 2024-01-02T10:00:00Z
+window = 07:30:00
+
+[[destinations]]
+type = "bigquery"
+dataset = "analytics"
+partitioned = true
+
+[[destinations]]
+type = "s3"
+bucket = "raw-orders"
+prefix = "orders/"
