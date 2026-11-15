@@ -83,8 +83,8 @@ const tokenColors = (c) => [
     scope: scopes({
       sql: ['storage.type.sql'],
       jinja: ['meta.embedded.inline.jinja', 'meta.embedded.block.jinja'],
-      json: ['support.type.property-name.json'],
-      yaml: ['entity.name.tag.yaml', 'string.unquoted.plain constant', 'variable.other.anchor.yaml', 'variable.other.alias.yaml'],
+      json: ['support.type.property-name.json', 'support.type.property-name.json constant.character.escape'],
+      yaml: ['entity.name.tag.yaml', 'entity.name.tag.yaml constant.character.escape', 'string.unquoted.plain constant', 'variable.other.anchor.yaml', 'variable.other.alias.yaml'],
     }),
     settings: { foreground: c.regular },
   },
