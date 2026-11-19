@@ -119,11 +119,11 @@
       ]
     },
     "where": {
-      "name": "meta.where.rust",
+      "contentName": "meta.type.rust",
       "begin": "\\bwhere\\b",
       "beginCaptures": { "0": { "name": "keyword.other.rust" } },
       "end": "(?=[{;])",
-      "patterns": [{ "include": "#annotation" }, { "include": "#brackets" }, { "include": "source.rust" }]
+      "patterns": [{ "include": "source.rust" }]
     },
     "declarationBody": {
       "begin": "\\{",
@@ -163,12 +163,12 @@
       "patterns": [{ "include": "#brackets" }, { "include": "source.rust" }]
     },
     "generic": {
-      "contentName": "meta.generic.rust",
+      "contentName": "meta.type.rust",
       "begin": "(?:\\b(_?[A-Z][A-Za-z0-9_]*)|(?<=\\w))(<)(?![<=])",
       "beginCaptures": { "1": { "name": "entity.name.type.rust" }, "2": { "name": "punctuation.brackets.angle.rust" } },
       "end": ">",
       "endCaptures": { "0": { "name": "punctuation.brackets.angle.rust" } },
-      "patterns": [{ "include": "#annotation" }, { "include": "#brackets" }, { "include": "source.rust" }]
+      "patterns": [{ "include": "#brackets" }, { "include": "source.rust" }]
     },
     "brackets": {
       "patterns": [

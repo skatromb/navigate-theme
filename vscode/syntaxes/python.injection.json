@@ -41,30 +41,22 @@
         },
         { "name": "keyword.control.flow.python", "match": "\\b(?<!\\.)async(?=\\s+for\\b)" },
         {
-          "begin": "^\\s*(?:(class)\\s+(\\w+)|(type)\\s+(\\w+))\\s*(\\[)",
+          "contentName": "meta.type.python",
+          "begin": "^\\s*(class)\\s+(\\w+)\\s*(\\[)",
           "beginCaptures": {
             "1": { "name": "storage.type.class.python" },
             "2": { "name": "entity.name.type.class.python" },
-            "3": { "name": "storage.type.type.python" },
-            "4": { "name": "entity.name.type.alias.python" },
-            "5": { "name": "punctuation.definition.list.begin.python" }
+            "3": { "name": "punctuation.definition.list.begin.python" }
           },
           "end": "\\]",
           "endCaptures": { "0": { "name": "punctuation.definition.list.end.python" } },
-          "patterns": [
-            {
-              "contentName": "meta.type.python",
-              "begin": ":",
-              "beginCaptures": { "0": { "name": "punctuation.separator.colon.python" } },
-              "end": "(?=[,\\]])",
-              "patterns": [{ "include": "source.python" }]
-            },
-            { "include": "source.python" }
-          ]
+          "patterns": [{ "include": "source.python" }]
         },
         {
-          "match": "^\\s*(type)\\s+(\\w+)(?=\\s*=)",
-          "captures": { "1": { "name": "storage.type.type.python" }, "2": { "name": "entity.name.type.alias.python" } }
+          "begin": "^\\s*(type)\\s+(\\w+)(?=\\s*[\\[=])",
+          "beginCaptures": { "1": { "name": "storage.type.type.python" }, "2": { "name": "entity.name.type.alias.python" } },
+          "end": "$",
+          "patterns": [{ "include": "navigate.injection.python-return#typeArgs" }, { "include": "source.python" }]
         },
         { "name": "keyword.other.python", "match": "\\b(?<!\\.)(as|async|del|pass|with)\\b" }
       ]

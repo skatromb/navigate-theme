@@ -53,6 +53,11 @@
         "injectTo": ["source.python"]
       },
       {
+        "scopeName": "navigate.injection.python-return",
+        "path": "./syntaxes/python-return.injection.json",
+        "injectTo": ["source.python"]
+      },
+      {
         "scopeName": "navigate.injection.sql",
         "path": "./syntaxes/sql.injection.json",
         "injectTo": ["source.sql", "source.sql.jinja"]
