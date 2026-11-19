@@ -1,6 +1,6 @@
 {
   "scopeName": "navigate.injection.python",
-  "injectionSelector": "L:source.python -comment -string -meta.function.decorator -meta.toplevel -meta.type.python",
+  "injectionSelector": "L:(source.python | meta.embedded.block.python) -comment -string -meta.function.decorator -meta.toplevel -meta.type.python",
   "patterns": [
     {
       "name": "meta.toplevel.python",
