@@ -1,6 +1,6 @@
 {
   "scopeName": "navigate.injection.rust",
-  "injectionSelector": "L:source.rust -comment -string -meta.attribute -meta.toplevel -meta.use -meta.type",
+  "injectionSelector": "L:(source.rust | meta.embedded.block.rust) -comment -string -meta.attribute -meta.toplevel -meta.use -meta.type",
   "patterns": [
     {
       "name": "meta.toplevel.rust",

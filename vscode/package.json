@@ -2,7 +2,7 @@
   "name": "navigate-theme",
   "displayName": "Navigate",
   "description": "Color theme that helps you navigate through the code",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "publisher": "skatromb",
   "icon": "icon.png",
   "license": "MIT",
@@ -40,27 +40,27 @@
       {
         "scopeName": "navigate.injection.rust",
         "path": "./syntaxes/rust.injection.json",
-        "injectTo": ["source.rust"]
+        "injectTo": ["source.rust", "text.html.markdown"]
       },
       {
         "scopeName": "navigate.injection.python",
         "path": "./syntaxes/python.injection.json",
-        "injectTo": ["source.python"]
+        "injectTo": ["source.python", "text.html.markdown"]
       },
       {
         "scopeName": "navigate.injection.python-parameters",
         "path": "./syntaxes/python-parameters.injection.json",
-        "injectTo": ["source.python"]
+        "injectTo": ["source.python", "text.html.markdown"]
       },
       {
         "scopeName": "navigate.injection.python-return",
         "path": "./syntaxes/python-return.injection.json",
-        "injectTo": ["source.python"]
+        "injectTo": ["source.python", "text.html.markdown"]
       },
       {
         "scopeName": "navigate.injection.sql",
         "path": "./syntaxes/sql.injection.json",
-        "injectTo": ["source.sql", "source.sql.jinja"]
+        "injectTo": ["source.sql", "source.sql.jinja", "text.html.markdown"]
       },
       {
         "scopeName": "navigate.injection.jinja",

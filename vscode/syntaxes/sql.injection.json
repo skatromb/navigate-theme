@@ -1,6 +1,6 @@
 {
   "scopeName": "navigate.injection.sql",
-  "injectionSelector": "L:source.sql -comment -string -meta.embedded -meta.identifier.quoted -meta.cast.sql -meta.create.sql",
+  "injectionSelector": "L:(source.sql | meta.embedded.block.sql) -comment -string -(source.sql meta.embedded) -(meta.embedded.block.sql meta.embedded) -meta.identifier.quoted -meta.cast.sql -meta.create.sql",
   "patterns": [
     { "include": "#jinja" },
     {
