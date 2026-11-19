@@ -18,7 +18,7 @@ const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 
 const languages = {
   rust: { scope: 'source.rust', grammar: 'rust/syntaxes/rust.tmLanguage.json', sample: 'rust/readme.rs', injections: ['rust'] },
-  python: { scope: 'source.python', grammar: 'python/syntaxes/MagicPython.tmLanguage.json', sample: 'python/readme.py', injections: ['python', 'python-parameters'] },
+  python: { scope: 'source.python', grammar: 'python/syntaxes/MagicPython.tmLanguage.json', sample: 'python/readme.py', injections: ['python', 'python-parameters', 'python-return'] },
   sql: { scope: 'source.sql', grammar: 'sql/syntaxes/sql.tmLanguage.json', sample: 'sql/sample.sql', injections: ['sql', 'jinja'] },
   dbt: { scope: 'source.sql', grammar: 'sql/syntaxes/sql.tmLanguage.json', sample: 'dbt/sample.sql', injections: ['sql', 'jinja'] },
   json: { scope: 'source.json', grammar: 'json/syntaxes/JSON.tmLanguage.json', sample: 'json/sample.json', injections: [] },

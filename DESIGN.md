@@ -15,7 +15,7 @@ Colors come from the grammar. Semantic tokens only fix what the grammar cannot t
 
 ## Insignificant
 
-- ![](swatches/949CA8.png) Gray: pure syntax, like keywords, operators, punctuation, template delimiters, attributes and decorators. Also import path prefixes and type annotations.
+- ![](swatches/949CA8.png) Gray: pure syntax, like keywords, operators, punctuation, template delimiters, attributes and decorators. Also import path prefixes and types, except when used as a value, like `Option` in `-> Option<i64>` or `Some(x)`.
 - ![](swatches/7C8490.png) _Italic gray_: doc comments, like `/// Doc` and `"""docstrings"""`
 
 Grammar gaps are fixed with injections in [vscode/syntaxes](vscode/syntaxes), scopes per language are in [vscode/src/theme.js](vscode/src/theme.js).

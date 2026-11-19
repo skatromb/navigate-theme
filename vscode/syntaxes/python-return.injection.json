@@ -1,0 +1,25 @@
+{
+  "scopeName": "navigate.injection.python-return",
+  "injectionSelector": "L:meta.function.python -meta.function.parameters.python -comment -string",
+  "patterns": [
+    {
+      "begin": "->",
+      "beginCaptures": { "0": { "name": "punctuation.separator.annotation.result.python" } },
+      "end": "(?=:)",
+      "patterns": [{ "include": "#typeArgs" }, { "include": "source.python" }]
+    }
+  ],
+  "repository": {
+    "typeArgs": {
+      "contentName": "meta.type.python",
+      "begin": "(?:\\b([A-Za-z_][\\w.]*))?(\\[)",
+      "beginCaptures": {
+        "1": { "patterns": [{ "include": "source.python" }] },
+        "2": { "name": "punctuation.definition.arguments.begin.python" }
+      },
+      "end": "\\]",
+      "endCaptures": { "0": { "name": "punctuation.definition.arguments.end.python" } },
+      "patterns": [{ "include": "source.python" }]
+    }
+  }
+}
