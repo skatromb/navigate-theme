@@ -29,13 +29,13 @@ Source: `crates/grammars/src/rust/highlights.scm`.
 
 ## Inspecting
 
-- `sample/rust/sample.rs` fits one screen and has every element the theme styles. Screenshots go to `screenshots/`, git-ignored.
+- `sample/rust/sample.rs` fits one screen and has every element the theme styles. Screenshots go to `zed/screenshots/`, git-ignored.
 - `dev: open highlights tree view`: range, color, capture and semantic token per highlight. Opens by hand only.
-- `python3 tools/semtok.py <rust-analyzer> <project root> <file>`: tokens straight from rust-analyzer. Set `RA_INIT='{...}'` to pass init options.
+- `python3 zed/tools/semtok.py <rust-analyzer> <project root> <file>`: tokens straight from rust-analyzer. Set `RA_INIT='{...}'` to pass init options.
 
 ## Automation
 
-- `screencapture -x -l <window id> out.png` grabs one Zed window, even behind others. Window ids: `swift tools/winid.swift`. Needs Screen Recording for Zed. 1 second after `zed <file>` is enough.
+- `screencapture -x -l <window id> out.png` grabs one Zed window, even behind others. Window ids: `swift zed/tools/winid.swift`. Needs Screen Recording for Zed. 1 second after `zed <file>` is enough.
 - `zed <file>` picks the window whose worktree contains the file. No way to target a window.
 - `osascript` keystrokes need System Events permission.
 - `zed: reload extensions` only rebuilds the index. It reloads a dev extension only when `extension.toml` changed. After a theme edit use Rebuild in the extensions panel (log: `finished compiling extension`).

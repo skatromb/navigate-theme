@@ -14,7 +14,7 @@ Grammar is the base: the theme must look right without a language server.
 Use semantic tokens only where the grammar cannot tell cases apart, and to undo VS Code default semantic colors.
 Check claims about a language's syntax against its real parser, like CPython `Grammar/python.gram`, `rustc_parse` or `jinja2/parser.py`, not TextMate grammars.
 
-UPSTREAM.md tracks gaps we fix upstream.
+[zed/UPSTREAM.md](zed/UPSTREAM.md) tracks gaps we fix upstream.
 
 Review a change: after each theme change, install it in VS Code without asking: `cd vscode && npm run dev`. Then open the sample, like `code sample/rust/sample.rs`. Do not render screenshots for review.
 
