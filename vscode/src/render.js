@@ -7,11 +7,11 @@ const oniguruma = require('vscode-oniguruma');
 
 const [language, output, variant = 'dark'] = process.argv.slice(2);
 if (!language || !output) {
-  console.error('usage: node tools/render.js <rust|python|sql|dbt|json|yaml|toml> <out.png> [dark|light]');
+  console.error('usage: node src/render.js <rust|python|sql|dbt|json|yaml|toml> <out.png> [dark|light]');
   process.exit(1);
 }
 
-const ROOT = path.join(__dirname, '..');
+const ROOT = path.join(__dirname, '../..');
 const VSCODE_EXTENSIONS = 'https://raw.githubusercontent.com/microsoft/vscode/1.143.1/extensions';
 const TOML_GRAMMAR = 'https://raw.githubusercontent.com/tamasfe/taplo/1c96904b014d2bc9fe998eae2c7d17c7c6fe204a/editors/vscode/toml.tmLanguage.json';
 const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
@@ -77,7 +77,7 @@ const WIDTH = 1010;
 (async () => {
   const grammar = await registry.loadGrammar(languages.scope);
   const colorMap = registry.getColorMap();
-  const lines = fs.readFileSync(path.join(ROOT, 'sample', languages.sample), 'utf8').replace(/\n$/, '').split('\n');
+  const lines = fs.readFileSync(path.join(ROOT, 'samples', languages.sample), 'utf8').replace(/\n$/, '').split('\n');
   if (languages.sample.includes('readme.') && lines.length !== 50) throw new Error(`${languages.sample}: ${lines.length} lines, README samples need 50`);
   let ruleStack = vsctm.INITIAL;
   const rows = lines.map((line, index) => {

@@ -1,4 +1,4 @@
-screenshots/
-sample/rust/target/
+zed/screenshots/
+samples/rust/target/
 *.vsix
 node_modules/

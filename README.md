@@ -10,9 +10,9 @@ Most color schemes colorize syntax: keywords, expressions, operators. That doesn
 
 | Rust | Python |
 | --- | --- |
-| ![](sample/rust/dark.png) | ![](sample/python/dark.png) |
-| ![](sample/rust/light.png) | ![](sample/python/light.png) |
+| ![](samples/rust/dark.png) | ![](samples/python/dark.png) |
+| ![](samples/rust/light.png) | ![](samples/python/light.png) |
 
-More languages, including SQL, dbt, JSON, YAML and TOML: [sample/README.md](sample/README.md).
+More languages, including SQL, dbt, JSON, YAML and TOML: [samples/README.md](samples/README.md).
 
 [DESIGN.md](DESIGN.md) explains the colors. Panels are copied from [Pustota contrast](https://github.com/pustota-theme/pustota) (MIT, © Nikita Sobolev).

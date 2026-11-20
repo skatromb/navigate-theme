@@ -9,6 +9,6 @@ updates:
         patterns: ["*"]
 
   - package-ecosystem: npm
-    directory: /tools
+    directory: /vscode
     schedule:
       interval: weekly
