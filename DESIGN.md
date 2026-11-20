@@ -4,7 +4,7 @@ Colors come from the grammar. Semantic tokens only fix what the grammar cannot t
 
 ## Important
 
-- **Bold**: names at their top-level definition: types, classes, top-level functions, macros, named queries. Example: `struct **Order**`, `class **Order**`
+- **Bold**: items that read like article headings in your code, at any depth: declarations of types, functions, methods, modules, macros, impl headers, named queries. Values stay regular: constants, fields, variables.
 - ![](samples/swatches/E3825F.png) Orange-brown: control flow, as it needs extra attention: `return`, `break`, `continue`, `if`, `for … in`
 - ![](samples/swatches/CFA463.png) _Italic ochre_: comments, as they carry important notes
 - ![](samples/swatches/86C17A.png) Green: string literals that you look for when debugging. Code inside a string, like a template expression, keeps its colors

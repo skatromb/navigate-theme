@@ -2,6 +2,7 @@
   "scopeName": "navigate.injection.python-return",
   "injectionSelector": "L:meta.function.python -meta.function.parameters.python -comment -string",
   "patterns": [
+    { "match": "(?<=\\bdef\\s)\\s*([A-Za-z_]\\w*)", "captures": { "1": { "name": "entity.name.function.python" } } },
     {
       "begin": "->",
       "beginCaptures": { "0": { "name": "punctuation.separator.annotation.result.python" } },
