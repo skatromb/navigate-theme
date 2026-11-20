@@ -2,7 +2,7 @@
   "name": "navigate-tools",
   "private": true,
   "scripts": {
-    "render": "node render.js rust ../sample/rust/dark.png && node render.js python ../sample/python/dark.png && node render.js sql ../sample/sql/dark.png && node render.js dbt ../sample/dbt/dark.png && node render.js json ../sample/json/dark.png && node render.js yaml ../sample/yaml/dark.png && node render.js toml ../sample/toml/dark.png && node render.js rust ../sample/rust/light.png light && node render.js python ../sample/python/light.png light && node render.js sql ../sample/sql/light.png light && node render.js dbt ../sample/dbt/light.png light && node render.js json ../sample/json/light.png light && node render.js yaml ../sample/yaml/light.png light && node render.js toml ../sample/toml/light.png light"
+    "render": "node render.js rust ../samples/rust/dark.png && node render.js python ../samples/python/dark.png && node render.js sql ../samples/sql/dark.png && node render.js dbt ../samples/dbt/dark.png && node render.js json ../samples/json/dark.png && node render.js yaml ../samples/yaml/dark.png && node render.js toml ../samples/toml/dark.png && node render.js rust ../samples/rust/light.png light && node render.js python ../samples/python/light.png light && node render.js sql ../samples/sql/light.png light && node render.js dbt ../samples/dbt/light.png light && node render.js json ../samples/json/light.png light && node render.js yaml ../samples/yaml/light.png light && node render.js toml ../samples/toml/light.png light"
   },
   "devDependencies": {
     "vscode-oniguruma": "^2.0.1",

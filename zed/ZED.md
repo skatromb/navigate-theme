@@ -29,7 +29,7 @@ Source: `crates/grammars/src/rust/highlights.scm`.
 
 ## Inspecting
 
-- `sample/rust/sample.rs` fits one screen and has every element the theme styles. Screenshots go to `zed/screenshots/`, git-ignored.
+- `samples/rust/sample.rs` fits one screen and has every element the theme styles. Screenshots go to `zed/screenshots/`, git-ignored.
 - `dev: open highlights tree view`: range, color, capture and semantic token per highlight. Opens by hand only.
 - `python3 zed/tools/semtok.py <rust-analyzer> <project root> <file>`: tokens straight from rust-analyzer. Set `RA_INIT='{...}'` to pass init options.
 
