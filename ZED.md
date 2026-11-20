@@ -22,9 +22,10 @@ Source: `crates/grammars/src/rust/highlights.scm`.
 - Every type name is `type`: declarations, references, `impl Encoder`, `Some`, `Ok`. Traits have `type.interface`, also everywhere, so a trait declaration needs rust-analyzer too. Enum names in `use` lists are `type` in tree-sitter and `type.enum` in rust-analyzer: color both the same.
 - `return`, `break`, `continue`, `if`, `match`, `for`, `in`, `await` share `keyword.control`. rust-analyzer marks the same set as `controlFlow`. No way to split them.
 - `?` is a plain `operator`. Only rust-analyzer marks it `controlFlow`, as token type `operator`, so a rule maps it to `keyword.control`.
-- `<` and `>` are `operator` everywhere, also in `Vec<T>`: the operator list comes after the bracket pattern and wins. Fix in flight, see UPSTREAM.md.
+- `<` and `>` are `operator` everywhere, also in `Vec<T>`: the operator list comes after the bracket pattern and wins.
 - Tail expressions have no capture in tree-sitter or rust-analyzer. A returned value cannot be colored.
-- Struct, enum, trait and const declaration names need rust-analyzer: tree-sitter has no `type.definition` or `constant.definition` for Rust. Go has it. Fix in flight, see UPSTREAM.md.
+- Struct, enum, trait declaration names need rust-analyzer: tree-sitter has no `type.definition` for Rust. Go has it. On hold, see UPSTREAM.md.
+- `semantic_tokens: full` turns tree-sitter off, so only rust-analyzer modifiers can make a name bold there.
 
 ## Inspecting
 
