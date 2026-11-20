@@ -1,15 +1,7 @@
 {
   "scopeName": "navigate.injection.rust",
-  "injectionSelector": "L:(source.rust | meta.embedded.block.rust) -comment -string -meta.attribute -meta.toplevel -meta.use -meta.type",
-  "patterns": [
-    {
-      "name": "meta.toplevel.rust",
-      "begin": "^(?=(?:pub(?:\\([^)]*\\))?\\s+)?(?:(?:async|const|unsafe|extern\\s+\"[^\"]*\")\\s+)*(?:fn|type|struct|enum|union|trait|impl|mod(?=\\s+\\w+\\s*\\{))\\b)",
-      "end": "(?<=[{};])",
-      "patterns": [{ "include": "#rules" }, { "include": "source.rust" }]
-    },
-    { "include": "#rules" }
-  ],
+  "injectionSelector": "L:(source.rust | meta.embedded.block.rust) -comment -string -meta.attribute -meta.use -meta.type",
+  "patterns": [{ "include": "#rules" }],
   "repository": {
     "rules": {
       "patterns": [

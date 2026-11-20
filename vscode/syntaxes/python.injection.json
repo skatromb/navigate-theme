@@ -1,15 +1,7 @@
 {
   "scopeName": "navigate.injection.python",
-  "injectionSelector": "L:(source.python | meta.embedded.block.python) -comment -string -meta.function.decorator -meta.toplevel -meta.type.python",
-  "patterns": [
-    {
-      "name": "meta.toplevel.python",
-      "begin": "^(?=(?:async\\s+)?def\\b|class\\b|type\\s+\\w+\\s*[\\[=])",
-      "end": "$",
-      "patterns": [{ "include": "#rules" }, { "include": "source.python" }]
-    },
-    { "include": "#rules" }
-  ],
+  "injectionSelector": "L:(source.python | meta.embedded.block.python) -comment -string -meta.function.decorator -meta.type.python",
+  "patterns": [{ "include": "#rules" }],
   "repository": {
     "rules": {
       "patterns": [
@@ -52,6 +44,7 @@
           "endCaptures": { "0": { "name": "punctuation.definition.list.end.python" } },
           "patterns": [{ "include": "source.python" }]
         },
+        { "match": "(?<=\\bclass\\s)\\s*([A-Za-z_]\\w*)", "captures": { "1": { "name": "entity.name.type.class.python" } } },
         {
           "begin": "^\\s*(type)\\s+(\\w+)(?=\\s*[\\[=])",
           "beginCaptures": { "1": { "name": "storage.type.type.python" }, "2": { "name": "entity.name.type.alias.python" } },

@@ -13,15 +13,17 @@ const tokenColors = (c) => [
     settings: { foreground: c.important },
   },
   {
-    name: 'Bold: type names at their definition, top-level functions',
+    name: 'Bold: declaration names',
     scope: scopes({
       rust: [
-        'meta.toplevel.rust entity.name.type.declaration',
-        'meta.toplevel.rust entity.name.module',
-        'meta.toplevel.rust meta.impl.rust > entity.name.type',
-        'meta.toplevel.rust entity.name.function.definition',
+        'source.rust entity.name.type.declaration.rust',
+        'meta.embedded.block.rust entity.name.type.declaration.rust',
+        'entity.name.module.rust',
+        'meta.impl.rust > entity.name.type',
+        'entity.name.function.definition.rust',
+        'meta.macro.rules.rust entity.name.function.macro.rust',
       ],
-      python: ['meta.toplevel.python entity.name.type.class', 'meta.toplevel.python entity.name.type.alias', 'meta.toplevel.python meta.function.python entity.name.function'],
+      python: ['entity.name.type.class.python', 'entity.name.type.alias.python', 'meta.function.python entity.name.function.python'],
       sql: ['meta.create.sql entity.name.function.sql', 'entity.name.type.cte.sql'],
       jinja: ['entity.name.function.definition.jinja'],
     }),
