@@ -17,10 +17,10 @@ pub enum Enum {
 
 pub trait Trait: Send {
     type Item;
-    fn method(&self) -> Option<i64>;
+    fn method(&self) -> Option<Self::Item>;
 }
 
-impl<GenType: Trait> Struct<'_, GenType> {
+impl<GenType: Trait<Item = i64>> Struct<'_, GenType> {
     pub async fn async_fn(param: &GenType) -> i64 {
         async { param.method().unwrap_or(0) }.await
     }
@@ -35,9 +35,9 @@ impl<GenType> Trait for Struct<'_, GenType>
 where
     GenType: Trait + Sync,
 {
-    type Item = Vec<u8>;
+    type Item = i64;
 
-    fn method(&self) -> Option<i64> {
+    fn method(&self) -> Option<Self::Item> {
         for item in &self.vec_field {
             if *item <= 0 {
                 continue; // line comment
