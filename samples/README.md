@@ -1,6 +1,6 @@
 # Samples
 
-Rendered with `cd tools && npm install && npm run render`.
+Rendered with `cd vscode && npm install && npm run render`.
 
 Rust and Python screenshots render `readme.*`, not `sample.*`.
 

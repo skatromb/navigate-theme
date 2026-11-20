@@ -7,11 +7,11 @@ const oniguruma = require('vscode-oniguruma');
 
 const [language, output, variant = 'dark'] = process.argv.slice(2);
 if (!language || !output) {
-  console.error('usage: node tools/render.js <rust|python|sql|dbt|json|yaml|toml> <out.png> [dark|light]');
+  console.error('usage: node src/render.js <rust|python|sql|dbt|json|yaml|toml> <out.png> [dark|light]');
   process.exit(1);
 }
 
-const ROOT = path.join(__dirname, '..');
+const ROOT = path.join(__dirname, '../..');
 const VSCODE_EXTENSIONS = 'https://raw.githubusercontent.com/microsoft/vscode/1.143.1/extensions';
 const TOML_GRAMMAR = 'https://raw.githubusercontent.com/tamasfe/taplo/1c96904b014d2bc9fe998eae2c7d17c7c6fe204a/editors/vscode/toml.tmLanguage.json';
 const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';

@@ -18,7 +18,7 @@ Check claims about a language's syntax against its real parser, like CPython `Gr
 
 Review a change: after each theme change, install it in VS Code without asking: `cd vscode && npm run dev`. Then open the sample, like `code samples/rust/sample.rs`. Do not render screenshots for review.
 
-README screenshots: re-render before a release, so the repo and the Marketplace do not show old colors: `cd tools && npm install && npm run render`. Nothing checks it. [tools/render.js](tools/render.js) tokenizes the samples with the VS Code grammars and this theme, then screenshots the HTML with headless Chrome.
+README screenshots: re-render before a release, so the repo and the Marketplace do not show old colors: `cd vscode && npm install && npm run render`. Nothing checks it. [vscode/src/render.js](vscode/src/render.js) tokenizes the samples with the VS Code grammars and this theme, then screenshots the HTML with headless Chrome.
 
 README screenshots render [samples/rust/readme.rs](samples/rust/readme.rs) and [samples/python/readme.py](samples/python/readme.py). Both must be exactly 50 lines, so the README rows match. `render.js` fails otherwise. Put the full syntax coverage in `sample.*`.
 
