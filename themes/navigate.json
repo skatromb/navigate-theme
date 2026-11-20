@@ -502,6 +502,11 @@
             "font_style": null,
             "font_weight": 700
           },
+          "type.class.definition": {
+            "color": "#080808",
+            "font_style": null,
+            "font_weight": 700
+          },
           "type.definition": {
             "color": "#080808",
             "font_style": null,
