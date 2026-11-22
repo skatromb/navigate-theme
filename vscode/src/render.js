@@ -7,7 +7,7 @@ const oniguruma = require('vscode-oniguruma');
 
 const [language, output, variant = 'dark'] = process.argv.slice(2);
 if (!language || !output) {
-  console.error('usage: node src/render.js <rust|python|sql|dbt|json|yaml|toml> <out.png> [dark|light]');
+  console.error('usage: node src/render.js <rust|python|sql|dbt|json|yaml|toml|bash> <out.png> [dark|light]');
   process.exit(1);
 }
 
@@ -24,6 +24,7 @@ const languages = {
   json: { scope: 'source.json', grammar: 'json/syntaxes/JSON.tmLanguage.json', sample: 'json/sample.json', injections: [] },
   yaml: { scope: 'source.yaml', grammar: 'yaml/syntaxes/yaml.tmLanguage.json', sample: 'yaml/sample.yaml', injections: [] },
   toml: { scope: 'source.toml', grammar: TOML_GRAMMAR, sample: 'toml/sample.toml', injections: [] },
+  bash: { scope: 'source.shell', grammar: 'shellscript/syntaxes/shell-unix-bash.tmLanguage.json', sample: 'bash/sample.sh', injections: ['bash-exit', 'bash-option-value', 'bash-expansion', 'bash-arithmetic', 'bash-case'] },
 }[language];
 
 const injectionScopes = languages.injections.map((name) => `navigate.injection.${name}`);

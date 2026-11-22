@@ -1,0 +1,12 @@
+{
+  "scopeName": "navigate.injection.bash-option-value",
+  "injectionSelector": "L:source.shell constant.other.option -string.unquoted.argument.shell",
+  "patterns": [
+    {
+      "begin": "=",
+      "end": "(?=[ \\t]|;|\\||&|\\n|\\)|`|\\{|\\}|\\]|$)",
+      "contentName": "string.unquoted.argument.shell",
+      "patterns": [{ "include": "source.shell#option_context" }]
+    }
+  ]
+}

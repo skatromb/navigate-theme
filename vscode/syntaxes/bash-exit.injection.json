@@ -1,0 +1,10 @@
+{
+  "scopeName": "navigate.injection.bash-exit",
+  "injectionSelector": "L:source.shell -comment -string -meta.argument, L:source.shell string meta.scope.subshell -meta.scope.subshell string",
+  "patterns": [
+    {
+      "match": "(?:^|(?<=[;&|(){]|\\bthen|\\bdo|\\belse))\\s*(exit)(?![\\w-])",
+      "captures": { "1": { "name": "keyword.control.exit.shell" } }
+    }
+  ]
+}

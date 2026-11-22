@@ -52,7 +52,8 @@
         "meta.function.python entity.name.function.python",
         "meta.create.sql entity.name.function.sql",
         "entity.name.type.cte.sql",
-        "entity.name.function.definition.jinja"
+        "entity.name.function.definition.jinja",
+        "meta.function.shell entity.name.function.shell"
       ],
       "settings": {
         "fontStyle": "bold"
@@ -118,14 +119,29 @@
         "meta.type.sql storage.type.sql",
         "keyword.control.flow.block-scalar",
         "entity.other.document",
-        "entity.name.tag.yaml punctuation.definition.string"
+        "entity.name.tag.yaml punctuation.definition.string",
+        "source.shell constant.other.option",
+        "constant.character.escape.line-continuation.shell",
+        "string.interpolated.process-substitution.shell > punctuation.definition.string",
+        "source.shell string punctuation.definition.variable variable"
       ],
       "settings": {
         "foreground": "#747b86"
       }
     },
     {
-      "name": "Regular: SQL types, Jinja expressions, JSON and YAML keys, YAML numbers and anchors",
+      "name": "Insignificant: shebang",
+      "scope": [
+        "meta.shebang.shell",
+        "meta.shebang.shell punctuation.definition.comment.shebang.shell"
+      ],
+      "settings": {
+        "foreground": "#747b86",
+        "fontStyle": ""
+      }
+    },
+    {
+      "name": "Regular: SQL types, Jinja expressions, JSON and YAML keys, YAML numbers and anchors, shell words and code inside strings",
       "scope": [
         "storage.type.sql",
         "meta.embedded.inline.jinja",
@@ -136,7 +152,16 @@
         "entity.name.tag.yaml constant.character.escape",
         "string.unquoted.plain constant",
         "variable.other.anchor.yaml",
-        "variable.other.alias.yaml"
+        "variable.other.alias.yaml",
+        "string.unquoted.argument.shell",
+        "string.unquoted.shell",
+        "string.interpolated.process-substitution.shell",
+        "string.interpolated.backtick.shell",
+        "string.unquoted.herestring.shell",
+        "source.shell string meta.arithmetic.shell",
+        "source.shell string variable",
+        "source.shell string meta.parameter-expansion",
+        "source.shell string meta.scope.subshell"
       ],
       "settings": {
         "foreground": "#292720"
