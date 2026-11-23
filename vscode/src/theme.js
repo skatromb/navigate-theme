@@ -84,7 +84,7 @@ const tokenColors = (c) => [
       ],
       sql: ['meta.type.sql', 'meta.type.sql storage.type.sql'],
       yaml: ['keyword.control.flow.block-scalar', 'entity.other.document', 'entity.name.tag.yaml punctuation.definition.string'],
-      markdown: ['fenced_code.block.language', 'markup.underline.link.markdown'],
+      markdown: ['fenced_code.block.language', 'markup.underline.link', 'meta.separator.markdown', 'markup.heading.setext'],
       bash: [
         'source.shell constant.other.option',
         'meta.embedded.block.shellscript constant.other.option',
