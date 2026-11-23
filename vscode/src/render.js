@@ -7,7 +7,7 @@ const oniguruma = require('vscode-oniguruma');
 
 const [language, output, variant = 'dark'] = process.argv.slice(2);
 if (!language || !output) {
-  console.error('usage: node src/render.js <rust|python|sql|dbt|json|yaml|toml|bash> <out.png> [dark|light]');
+  console.error('usage: node src/render.js <rust|python|sql|dbt|json|yaml|toml|bash|markdown> <out.png> [dark|light]');
   process.exit(1);
 }
 
@@ -25,11 +25,14 @@ const languages = {
   yaml: { scope: 'source.yaml', grammar: 'yaml/syntaxes/yaml.tmLanguage.json', sample: 'yaml/sample.yaml', injections: [] },
   toml: { scope: 'source.toml', grammar: TOML_GRAMMAR, sample: 'toml/sample.toml', injections: [] },
   bash: { scope: 'source.shell', grammar: 'shellscript/syntaxes/shell-unix-bash.tmLanguage.json', sample: 'bash/sample.sh', injections: ['bash-exit', 'bash-option-value', 'bash-expansion', 'bash-arithmetic', 'bash-case', 'bash-line-end'] },
+  markdown: { scope: 'text.html.markdown', grammar: 'markdown-basics/syntaxes/markdown.tmLanguage.json', sample: 'markdown/sample.md', injections: ['python', 'python-parameters', 'python-return', 'sql'] },
 }[language];
 
 const injectionScopes = languages.injections.map((name) => `navigate.injection.${name}`);
 const grammarPaths = {
   [languages.scope]: languages.grammar.startsWith('https://') ? languages.grammar : `${VSCODE_EXTENSIONS}/${languages.grammar}`,
+  'source.python': `${VSCODE_EXTENSIONS}/python/syntaxes/MagicPython.tmLanguage.json`,
+  'source.sql': `${VSCODE_EXTENSIONS}/sql/syntaxes/sql.tmLanguage.json`,
   'source.regexp.python': `${VSCODE_EXTENSIONS}/python/syntaxes/MagicRegExp.tmLanguage.json`,
   'source.yaml.1.2': `${VSCODE_EXTENSIONS}/yaml/syntaxes/yaml-1.2.tmLanguage.json`,
   ...Object.fromEntries(languages.injections.map((name) => [`navigate.injection.${name}`, path.join(ROOT, 'vscode/syntaxes', `${name}.injection.json`)])),
@@ -68,6 +71,7 @@ const FOREGROUND_OFFSET = 15;
 const FOREGROUND_MASK = 0b111111111 << FOREGROUND_OFFSET;
 const ITALIC = 1;
 const BOLD = 2;
+const STRIKETHROUGH = 8;
 
 const escape = (text) => text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
@@ -90,7 +94,7 @@ const WIDTH = 1010;
       const meta = tokens[i + 1];
       const style = (meta & FONT_STYLE_MASK) >>> FONT_STYLE_OFFSET;
       const color = colorMap[(meta & FOREGROUND_MASK) >>> FOREGROUND_OFFSET];
-      const css = [`color:${color}`, style & ITALIC && 'font-style:italic', style & BOLD && 'font-weight:bold'].filter(Boolean).join(';');
+      const css = [`color:${color}`, style & ITALIC && 'font-style:italic', style & BOLD && 'font-weight:bold', style & STRIKETHROUGH && 'text-decoration:line-through'].filter(Boolean).join(';');
       html += `<span style="${css}">${escape(line.slice(tokens[i], end))}</span>`;
     }
     return `<div>${html}</div>`;

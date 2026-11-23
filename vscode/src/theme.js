@@ -27,6 +27,7 @@ const tokenColors = (c) => [
       sql: ['meta.create.sql entity.name.function.sql', 'entity.name.type.cte.sql'],
       jinja: ['entity.name.function.definition.jinja'],
       bash: ['meta.function.shell entity.name.function.shell'],
+      markdown: ['entity.name.section.markdown'],
     }),
     settings: { fontStyle: 'bold' },
   },
@@ -44,15 +45,16 @@ const tokenColors = (c) => [
     settings: { foreground: c.comment, fontStyle: 'italic' },
   },
   {
-    name: 'Strings',
+    name: 'Strings and Markdown code',
     scope: scopes({
       any: ['string', 'punctuation.definition.string', 'punctuation.definition.char', 'constant.character.escape'],
       python: ['storage.type.string.python', 'string.regexp keyword', 'string.regexp punctuation'],
+      markdown: ['markup.inline.raw.string.markdown', 'markup.fenced_code.block.markdown', 'markup.raw.block.markdown'],
     }),
     settings: { foreground: c.string },
   },
   {
-    name: 'Insignificant: keywords, syntax operators, punctuation',
+    name: 'Insignificant: keywords, syntax operators, punctuation, Markdown URLs',
     scope: scopes({
       any: ['keyword', 'storage', 'keyword.control.import', 'keyword.control.export', 'keyword.control.from', 'punctuation'],
       rust: [
@@ -78,6 +80,7 @@ const tokenColors = (c) => [
       ],
       sql: ['meta.type.sql', 'meta.type.sql storage.type.sql'],
       yaml: ['keyword.control.flow.block-scalar', 'entity.other.document', 'entity.name.tag.yaml punctuation.definition.string'],
+      markdown: ['fenced_code.block.language', 'markup.underline.link.markdown'],
       bash: [
         'source.shell constant.other.option',
         'meta.embedded.block.shellscript constant.other.option',
@@ -95,9 +98,10 @@ const tokenColors = (c) => [
     settings: { foreground: c.insignificant, fontStyle: '' },
   },
   {
-    name: 'Regular: SQL types, Jinja expressions, JSON and YAML keys, YAML numbers and anchors, shell words and code inside strings',
+    name: 'Regular: SQL types, Jinja expressions, JSON and YAML keys, YAML numbers and anchors, shell words, code inside strings, Markdown link text and code blocks with a language',
     scope: scopes({
       sql: ['storage.type.sql'],
+      markdown: ['markup.fenced_code.block.markdown meta.embedded.block', 'string.other.link.title.markdown', 'string.other.link.description.markdown'],
       jinja: ['meta.embedded.inline.jinja', 'meta.embedded.block.jinja'],
       json: ['support.type.property-name.json', 'support.type.property-name.json constant.character.escape'],
       yaml: ['entity.name.tag.yaml', 'entity.name.tag.yaml constant.character.escape', 'string.unquoted.plain constant', 'variable.other.anchor.yaml', 'variable.other.alias.yaml'],
