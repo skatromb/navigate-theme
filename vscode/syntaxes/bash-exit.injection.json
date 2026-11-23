@@ -1,6 +1,6 @@
 {
   "scopeName": "navigate.injection.bash-exit",
-  "injectionSelector": "L:(source.shell | meta.embedded.block.shellscript) -comment -string -meta.argument, L:(source.shell | meta.embedded.block.shellscript) string meta.scope.subshell -meta.scope.subshell string, L:(source.shell | meta.embedded.block.shellscript) string.interpolated.backtick.shell -string.interpolated.backtick.shell string",
+  "injectionSelector": "L:(source.shell | meta.embedded.block.shellscript) -comment -string -meta.argument -(meta.case.shell -meta.case.entry.body.shell),L:(source.shell | meta.embedded.block.shellscript) string meta.scope.subshell -meta.scope.subshell string, L:(source.shell | meta.embedded.block.shellscript) string.interpolated.backtick.shell -string.interpolated.backtick.shell string",
   "patterns": [
     {
       "match": "(?:^|(?<=[;&|(){`]|\\bthen|\\bdo|\\belse))\\s*(exit)(?![\\w=-])",
