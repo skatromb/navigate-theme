@@ -1,0 +1,13 @@
+{
+  "scopeName": "navigate.injection.bash-case",
+  "injectionSelector": "L:(source.shell | meta.embedded.block.shellscript) meta.case.shell -meta.case.entry.body.shell -meta.case.entry.pattern.shell",
+  "patterns": [
+    {
+      "begin": "(?<=\\))",
+      "end": "(;;&?|;&)|(?=\\besac\\b)",
+      "endCaptures": { "1": { "name": "punctuation.terminator.statement.case.shell" } },
+      "name": "meta.case.entry.body.shell",
+      "patterns": [{ "include": "source.shell#typical_statements" }, { "include": "source.shell#initial_context" }]
+    }
+  ]
+}

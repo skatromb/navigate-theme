@@ -1,0 +1,31 @@
+{
+  "scopeName": "navigate.injection.bash-arithmetic",
+  "injectionSelector": "L:(source.shell | meta.embedded.block.shellscript) -comment -string.quoted.single -string.quoted.heredoc",
+  "patterns": [
+    {
+      "begin": "\\$\\(\\(",
+      "beginCaptures": { "0": { "name": "punctuation.section.arithmetic.double.shell" } },
+      "end": "\\)\\)",
+      "endCaptures": { "0": { "name": "punctuation.section.arithmetic.double.shell" } },
+      "name": "meta.arithmetic.shell",
+      "patterns": [{ "include": "#expression" }]
+    }
+  ],
+  "repository": {
+    "expression": {
+      "patterns": [
+        { "include": "source.shell#interpolation" },
+        { "include": "source.shell#string" },
+        { "include": "#group" },
+        { "include": "source.shell#math" }
+      ]
+    },
+    "group": {
+      "begin": "\\(",
+      "beginCaptures": { "0": { "name": "punctuation.section.arithmetic.single.shell" } },
+      "end": "\\)",
+      "endCaptures": { "0": { "name": "punctuation.section.arithmetic.single.shell" } },
+      "patterns": [{ "include": "#expression" }]
+    }
+  }
+}
