@@ -11,4 +11,5 @@ Rust and Python screenshots render `readme.*`, not `sample.*`.
 - JSON: [sample.json](json/sample.json), [dark](json/dark.png), [light](json/light.png)
 - YAML: [sample.yaml](yaml/sample.yaml), [dark](yaml/dark.png), [light](yaml/light.png)
 - Bash: [sample.sh](bash/sample.sh), [dark](bash/dark.png), [light](bash/light.png)
+- Markdown: [sample.md](markdown/sample.md), [dark](markdown/dark.png), [light](markdown/light.png)
 - TOML, needs [Even Better TOML](https://marketplace.visualstudio.com/items?itemName=tamasfe.even-better-toml): [sample.toml](toml/sample.toml), [dark](toml/dark.png), [light](toml/light.png)

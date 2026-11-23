@@ -46,16 +46,27 @@
         "entity.name.module.rust",
         "meta.impl.rust > entity.name.type",
         "entity.name.function.definition.rust",
-        "meta.macro.rules.rust entity.name.function.macro.rust",
         "entity.name.type.class.python",
         "entity.name.type.alias.python",
         "meta.function.python entity.name.function.python",
         "meta.create.sql entity.name.function.sql",
         "entity.name.type.cte.sql",
         "entity.name.function.definition.jinja",
-        "meta.function.shell entity.name.function.shell"
+        "meta.function.shell entity.name.function.shell",
+        "entity.name.section.markdown"
       ],
       "settings": {
+        "foreground": "#292720",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "Bold important: macro declaration names",
+      "scope": [
+        "meta.macro.rules.rust entity.name.function.macro.rust"
+      ],
+      "settings": {
+        "foreground": "#c35a22",
         "fontStyle": "bold"
       }
     },
@@ -75,7 +86,7 @@
       }
     },
     {
-      "name": "Strings",
+      "name": "Strings and Markdown code",
       "scope": [
         "string",
         "punctuation.definition.string",
@@ -83,14 +94,17 @@
         "constant.character.escape",
         "storage.type.string.python",
         "string.regexp keyword",
-        "string.regexp punctuation"
+        "string.regexp punctuation",
+        "markup.inline.raw.string.markdown",
+        "markup.fenced_code.block.markdown",
+        "markup.raw.block.markdown"
       ],
       "settings": {
         "foreground": "#3d8f35"
       }
     },
     {
-      "name": "Insignificant: keywords, syntax operators, punctuation",
+      "name": "Insignificant: keywords, syntax operators, punctuation, Markdown URLs",
       "scope": [
         "keyword",
         "storage",
@@ -120,6 +134,10 @@
         "keyword.control.flow.block-scalar",
         "entity.other.document",
         "entity.name.tag.yaml punctuation.definition.string",
+        "fenced_code.block.language",
+        "markup.underline.link",
+        "meta.separator.markdown",
+        "markup.heading.setext",
         "source.shell constant.other.option",
         "meta.embedded.block.shellscript constant.other.option",
         "constant.character.escape.line-continuation.shell",
@@ -143,9 +161,12 @@
       }
     },
     {
-      "name": "Regular: SQL types, Jinja expressions, JSON and YAML keys, YAML numbers and anchors, shell words and code inside strings",
+      "name": "Regular: SQL types, Jinja expressions, JSON and YAML keys, YAML numbers and anchors, shell words, code inside strings, Markdown link text and code blocks with a language",
       "scope": [
         "storage.type.sql",
+        "markup.fenced_code.block.markdown meta.embedded.block",
+        "string.other.link.title.markdown",
+        "string.other.link.description.markdown",
         "meta.embedded.inline.jinja",
         "meta.embedded.block.jinja",
         "support.type.property-name.json",
