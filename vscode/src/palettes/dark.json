@@ -6,6 +6,7 @@
   "colors": {
     "background": "#0a0e14",
     "regular": "#e0ded8",
+    "header": "#f5f4f0",
     "important": "#e3825f",
     "comment": "#cfa463",
     "string": "#86c17a",

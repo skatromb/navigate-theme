@@ -46,7 +46,6 @@
         "entity.name.module.rust",
         "meta.impl.rust > entity.name.type",
         "entity.name.function.definition.rust",
-        "meta.macro.rules.rust entity.name.function.macro.rust",
         "entity.name.type.class.python",
         "entity.name.type.alias.python",
         "meta.function.python entity.name.function.python",
@@ -57,6 +56,17 @@
         "entity.name.section.markdown"
       ],
       "settings": {
+        "foreground": "#292720",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "Bold important: macro declaration names",
+      "scope": [
+        "meta.macro.rules.rust entity.name.function.macro.rust"
+      ],
+      "settings": {
+        "foreground": "#c35a22",
         "fontStyle": "bold"
       }
     },

@@ -21,7 +21,6 @@ const tokenColors = (c) => [
         'entity.name.module.rust',
         'meta.impl.rust > entity.name.type',
         'entity.name.function.definition.rust',
-        'meta.macro.rules.rust entity.name.function.macro.rust',
       ],
       python: ['entity.name.type.class.python', 'entity.name.type.alias.python', 'meta.function.python entity.name.function.python'],
       sql: ['meta.create.sql entity.name.function.sql', 'entity.name.type.cte.sql'],
@@ -29,7 +28,12 @@ const tokenColors = (c) => [
       bash: ['meta.function.shell entity.name.function.shell'],
       markdown: ['entity.name.section.markdown'],
     }),
-    settings: { fontStyle: 'bold' },
+    settings: { foreground: c.header, fontStyle: 'bold' },
+  },
+  {
+    name: 'Bold important: macro declaration names',
+    scope: ['meta.macro.rules.rust entity.name.function.macro.rust'],
+    settings: { foreground: c.important, fontStyle: 'bold' },
   },
   {
     name: 'Italic: comments',
