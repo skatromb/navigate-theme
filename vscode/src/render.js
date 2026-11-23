@@ -24,7 +24,7 @@ const languages = {
   json: { scope: 'source.json', grammar: 'json/syntaxes/JSON.tmLanguage.json', sample: 'json/sample.json', injections: [] },
   yaml: { scope: 'source.yaml', grammar: 'yaml/syntaxes/yaml.tmLanguage.json', sample: 'yaml/sample.yaml', injections: [] },
   toml: { scope: 'source.toml', grammar: TOML_GRAMMAR, sample: 'toml/sample.toml', injections: [] },
-  bash: { scope: 'source.shell', grammar: 'shellscript/syntaxes/shell-unix-bash.tmLanguage.json', sample: 'bash/sample.sh', injections: ['bash-exit', 'bash-option-value', 'bash-expansion', 'bash-arithmetic', 'bash-case'] },
+  bash: { scope: 'source.shell', grammar: 'shellscript/syntaxes/shell-unix-bash.tmLanguage.json', sample: 'bash/sample.sh', injections: ['bash-exit', 'bash-option-value', 'bash-expansion', 'bash-arithmetic', 'bash-case', 'bash-line-end'] },
 }[language];
 
 const injectionScopes = languages.injections.map((name) => `navigate.injection.${name}`);

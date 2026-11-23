@@ -121,9 +121,11 @@
         "entity.other.document",
         "entity.name.tag.yaml punctuation.definition.string",
         "source.shell constant.other.option",
+        "meta.embedded.block.shellscript constant.other.option",
         "constant.character.escape.line-continuation.shell",
         "string.interpolated.process-substitution.shell > punctuation.definition.string",
-        "source.shell string punctuation.definition.variable variable"
+        "source.shell string punctuation.definition.variable variable",
+        "meta.embedded.block.shellscript string punctuation.definition.variable variable"
       ],
       "settings": {
         "foreground": "#949ca8"
@@ -161,7 +163,11 @@
         "source.shell string meta.arithmetic.shell",
         "source.shell string variable",
         "source.shell string meta.parameter-expansion",
-        "source.shell string meta.scope.subshell"
+        "source.shell string meta.scope.subshell",
+        "meta.embedded.block.shellscript string meta.arithmetic.shell",
+        "meta.embedded.block.shellscript string variable",
+        "meta.embedded.block.shellscript string meta.parameter-expansion",
+        "meta.embedded.block.shellscript string meta.scope.subshell"
       ],
       "settings": {
         "foreground": "#e0ded8"

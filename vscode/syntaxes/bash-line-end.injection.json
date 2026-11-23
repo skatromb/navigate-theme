@@ -1,0 +1,5 @@
+{
+  "scopeName": "navigate.injection.bash-line-end",
+  "injectionSelector": "L:(source.shell | meta.embedded.block.shellscript) -comment -string",
+  "patterns": [{ "match": "(?<=[{(&|])[ \\t]*\\n" }]
+}

@@ -1,9 +1,9 @@
 {
   "scopeName": "navigate.injection.bash-expansion",
-  "injectionSelector": "L:source.shell meta.parameter-expansion",
+  "injectionSelector": "L:(source.shell | meta.embedded.block.shellscript) meta.parameter-expansion",
   "patterns": [
     {
-      "begin": "(?<=\\$\\{)(!?)([A-Za-z_]\\w*|\\d+)(?:(\\[)([^\\]]*)(\\]))?(?=:?[-=+?]|##?|%%?|/)",
+      "begin": "(?<=\\$\\{)(!?)([A-Za-z_]\\w*|\\d+|[@*#?$!-])(?:(\\[)([^\\]]*)(\\]))?(?=:?[-=+?]|##?|%%?|/)",
       "beginCaptures": {
         "1": { "name": "keyword.operator.expansion.shell" },
         "2": { "name": "variable.other.normal.shell" },

@@ -1,9 +1,9 @@
 {
   "scopeName": "navigate.injection.bash-exit",
-  "injectionSelector": "L:source.shell -comment -string -meta.argument, L:source.shell string meta.scope.subshell -meta.scope.subshell string",
+  "injectionSelector": "L:(source.shell | meta.embedded.block.shellscript) -comment -string -meta.argument, L:(source.shell | meta.embedded.block.shellscript) string meta.scope.subshell -meta.scope.subshell string, L:(source.shell | meta.embedded.block.shellscript) string.interpolated.backtick.shell -string.interpolated.backtick.shell string",
   "patterns": [
     {
-      "match": "(?:^|(?<=[;&|(){]|\\bthen|\\bdo|\\belse))\\s*(exit)(?![\\w-])",
+      "match": "(?:^|(?<=[;&|(){`]|\\bthen|\\bdo|\\belse))\\s*(exit)(?![\\w=-])",
       "captures": { "1": { "name": "keyword.control.exit.shell" } }
     }
   ]

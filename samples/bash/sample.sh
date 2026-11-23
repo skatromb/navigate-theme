@@ -38,7 +38,8 @@ gsutil -m cp -n "$TMP_DIR/manifest.csv" "gs://${BUCKET}/manifest.csv"
 
 while IFS=, read -r table status; do
   case "$status" in
-    paid | refunded) sync_table "$table" || exit 2 ;;
+    refunded | voided) log "revert ${table}" ;&
+    paid) sync_table "$table" || exit 2 ;;
     test*) continue ;;
     *) log "skip ${table@Q}" ;;
   esac

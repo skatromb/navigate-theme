@@ -1,6 +1,6 @@
 {
   "scopeName": "navigate.injection.bash-option-value",
-  "injectionSelector": "L:source.shell constant.other.option -string.unquoted.argument.shell",
+  "injectionSelector": "L:(source.shell | meta.embedded.block.shellscript) constant.other.option -string.unquoted.argument.shell",
   "patterns": [
     {
       "begin": "=",

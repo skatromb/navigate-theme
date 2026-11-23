@@ -2,7 +2,7 @@
   "name": "navigate-theme",
   "displayName": "Navigate",
   "description": "Color theme that helps you navigate through the code",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "publisher": "skatromb",
   "icon": "icon.png",
   "license": "MIT",
@@ -95,6 +95,11 @@
       {
         "scopeName": "navigate.injection.bash-case",
         "path": "./syntaxes/bash-case.injection.json",
+        "injectTo": ["source.shell", "text.html.markdown"]
+      },
+      {
+        "scopeName": "navigate.injection.bash-line-end",
+        "path": "./syntaxes/bash-line-end.injection.json",
         "injectTo": ["source.shell", "text.html.markdown"]
       }
     ]

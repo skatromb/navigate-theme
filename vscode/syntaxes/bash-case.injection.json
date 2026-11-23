@@ -1,6 +1,6 @@
 {
   "scopeName": "navigate.injection.bash-case",
-  "injectionSelector": "L:source.shell meta.case.shell -meta.case.entry.body.shell -meta.case.entry.pattern.shell",
+  "injectionSelector": "L:(source.shell | meta.embedded.block.shellscript) meta.case.shell -meta.case.entry.body.shell -meta.case.entry.pattern.shell",
   "patterns": [
     {
       "begin": "(?<=\\))",

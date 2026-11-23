@@ -1,6 +1,6 @@
 {
   "scopeName": "navigate.injection.bash-arithmetic",
-  "injectionSelector": "L:source.shell -comment",
+  "injectionSelector": "L:(source.shell | meta.embedded.block.shellscript) -comment -string.quoted.single -string.quoted.heredoc",
   "patterns": [
     {
       "begin": "\\$\\(\\(",
